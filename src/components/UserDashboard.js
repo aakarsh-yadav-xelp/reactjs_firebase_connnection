@@ -32,10 +32,22 @@ export default class UserDashboard extends React.Component {
     let agents = _.toArray(this.props.agents);
     return (
       <div className="UserDashboard">
-        {agents &&
-          agents.map(agent => {
-            return this.renderAgents(agent);
-          })}
+        <div className="UserDashboard-List">
+          <div className="UserDashboard-ListHeader">
+            <div className="UserDashboard-ItemAge">Age</div>
+            <div className="UserDashboard-ItemIdNumber">Id No.</div>
+            <div className="UserDashboard-ItemMobile">Mobile</div>
+            <div className="UserDashboard-ItemGender">Gender</div>
+            <div className="UserDashboard-ItemOAmount">Amount</div>
+            <div className="UserDashboard-ItemSelectedOption">
+              selected Option
+            </div>
+          </div>
+          {agents &&
+            agents.map(agent => {
+              return this.renderAgents(agent);
+            })}
+        </div>
       </div>
     );
   }
