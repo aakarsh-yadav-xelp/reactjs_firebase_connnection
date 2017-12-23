@@ -1,5 +1,6 @@
 .UserDashboard {
   width: 100%;
+  display: flex
 }
 .UserDashboard-Item {
   display: flex;
@@ -11,6 +12,18 @@
   border-radius: 3px;
   font-size: 13px;
   cursor: pointer;
+}
+.UserDashboard-List{
+  width:70%;
+}
+.UserDashboard-ListHeader{
+  width: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 30px;
+  font-family: sans-serif;
+  font-size: 15px;
+  font-weight: 600;
 }
 .UserDashboard-ItemAge {
   width: 10%;
