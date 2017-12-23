@@ -60,7 +60,6 @@ export function getAgentsRequest() {
   };
 }
 export function getAgentsSuccess(agents) {
-  console.log(agents);
   return {
     type: GET_AGENTS_SUCCESS,
     status: SUCCESS,

@@ -9,29 +9,16 @@
   border: solid 1px;
   width: 100%;
 }
-.UserDashboard-ItemAge {
+.UserAgent-ItemAge {
   display: flex;
+  align-items: center;
+  padding: 10px;
 }
 .UserAgent-ItemAgeLabel {
   width: 20%;
 }
 .UserAgent-ItemAgeValue {
   width: 80%;
-}
-.UserDashboard-ItemIdNumber {
-  width: 25%;
-}
-.UserDashboard-ItemMobile {
-  width: 15%;
-}
-.UserDashboard-ItemGender {
-  width: 15%;
-}
-.UserDashboard-ItemOAmount {
-  width: 20%;
-}
-.UserDashboard-ItemSelectedOption {
-  width: 15%;
 }
 
 .UserAgent-ItemHeader {
