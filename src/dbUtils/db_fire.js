@@ -1,11 +1,11 @@
 import firebase from "firebase";
 var config = {
-  apiKey: "AIzaSyC8joxNtFcJMl37tovTPCAddbCoDhBoxr8",
-  authDomain: "learning-5e27e.firebaseapp.com",
-  databaseURL: "https://learning-5e27e.firebaseio.com",
-  projectId: "learning-5e27e",
-  storageBucket: "learning-5e27e.appspot.com",
-  messagingSenderId: "952354135029"
+  apiKey: "AIzaSyBMaqG6hN2gKmthKIEjTPq2DVGiCGDBR9A",
+  authDomain: "asda-c340d.firebaseapp.com",
+  databaseURL: "https://asda-c340d.firebaseio.com",
+  projectId: "asda-c340d",
+  storageBucket: "asda-c340d.appspot.com",
+  messagingSenderId: "248687791336"
 };
 var fire = firebase.initializeApp(config);
 export default fire;

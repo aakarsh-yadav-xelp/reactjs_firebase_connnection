@@ -1,0 +1,11 @@
+.Button-input {
+  font-family: sans-serif;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 300ms;
+}
+.Button-input:hover {
+  opacity: 0.8;
+}
