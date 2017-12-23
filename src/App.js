@@ -14,9 +14,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header {...this.props} />
         <Route exact path="/" component={Home} />
         <Route path="/login" component={LoginContainer} />
+        <Route
+          path="/signUp"
+          render={() => {
+            return <h1>signUp is comming soon</h1>;
+          }}
+        />
         <Route exact path="/agents" component={UserDashboardContainer} />
         <Route path="/agents/:agentId/:subAgentId" component={AgentContainer} />
       </div>
