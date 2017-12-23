@@ -1,0 +1,32 @@
+.UserDashboard {
+  width: 100%;
+}
+.UserDashboard-Item {
+  display: flex;
+  width: 98%;
+  margin: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: solid 1px rgb(206, 204, 204);
+  border-radius: 3px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.UserDashboard-ItemAge {
+  width: 10%;
+}
+.UserDashboard-ItemIdNumber {
+  width: 25%;
+}
+.UserDashboard-ItemMobile {
+  width: 15%;
+}
+.UserDashboard-ItemGender {
+  width: 15%;
+}
+.UserDashboard-ItemOAmount {
+  width: 20%;
+}
+.UserDashboard-ItemSelectedOption {
+  width: 15%;
+}

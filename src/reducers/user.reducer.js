@@ -8,7 +8,6 @@ const user = (
   },
   action
 ) => {
-  console.log(action);
   switch (action.type) {
     case userActions.USER_LOGIN_REQUEST:
     case userActions.GET_AGENTS_REQUEST:
@@ -23,7 +22,7 @@ const user = (
       });
     case userActions.GET_AGENTS_SUCCESS:
       return Object.assign({}, state, {
-        user: action.user,
+        agents: action.agents,
         state: action.status
       });
     case userActions.USER_LOGIN_FAILURE:
