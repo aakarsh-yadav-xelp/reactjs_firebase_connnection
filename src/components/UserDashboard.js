@@ -6,20 +6,19 @@ export default class UserDashboard extends React.Component {
     this.props.history.push(`/agents/${id}`);
   }
   renderUniqueAgents(agent) {
+    console.log(agent);
     return (
       <div
         className="UserDashboard-Item"
         onClick={() => this.redirectToAgentInfo(agent.idNumber)}
         key={agent.idNumber}
       >
-        <div className="UserDashboard-ItemAge">{agent.age}</div>
+        <div className="UserDashboard-ItemAge">{agent.name}</div>
         <div className="UserDashboard-ItemIdNumber"> {agent.idNumber}</div>
         <div className="UserDashboard-ItemMobile">{agent.mobile}</div>
         <div className="UserDashboard-ItemGender">{agent.gender}</div>
-        <div className="UserDashboard-ItemOAmount">{agent.oAmount}</div>
-        <div className="UserDashboard-ItemSelectedOption">
-          {agent.selectedOOption}
-        </div>
+        <div className="UserDashboard-ItemOAmount">{agent.occupation}</div>
+        <div className="UserDashboard-ItemSelectedOption">{agent.location}</div>
       </div>
     );
   }
@@ -34,14 +33,12 @@ export default class UserDashboard extends React.Component {
       <div className="UserDashboard">
         <div className="UserDashboard-List">
           <div className="UserDashboard-ListHeader">
-            <div className="UserDashboard-ItemAge">Age</div>
+            <div className="UserDashboard-ItemAge">Name</div>
             <div className="UserDashboard-ItemIdNumber">Id No.</div>
             <div className="UserDashboard-ItemMobile">Mobile</div>
             <div className="UserDashboard-ItemGender">Gender</div>
-            <div className="UserDashboard-ItemOAmount">Amount</div>
-            <div className="UserDashboard-ItemSelectedOption">
-              selected Option
-            </div>
+            <div className="UserDashboard-ItemOAmount">occupation</div>
+            <div className="UserDashboard-ItemSelectedOption">location</div>
           </div>
           {agents &&
             agents.map(agent => {
