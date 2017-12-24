@@ -1,6 +1,6 @@
 .UserDashboard {
   width: 100%;
-  display: flex
+  display: flex;
 }
 .UserDashboard-Item {
   display: flex;
@@ -13,10 +13,31 @@
   font-size: 13px;
   cursor: pointer;
 }
-.UserDashboard-List{
-  width:70%;
+.UserDashboard-tab {
+  width: 20%;
+  margin-top: 40px;
 }
-.UserDashboard-ListHeader{
+.UserDashboard-tabItem-active {
+  background-color: "#131d1d";
+  color: "grey";
+}
+.UserDashboard-tabItem {
+  font-size: 17px;
+  font-family: sans-serif;
+  width: 90%;
+  color: #1d3316;
+  text-align: left;
+  padding-left: 20px;
+  display: flex;
+  height: 40px;
+  align-items: center;
+  border-bottom: solid 1px #ecedec;
+  cursor: pointer;
+}
+.UserDashboard-List {
+  width: 70%;
+}
+.UserDashboard-ListHeader {
   width: 100%;
   display: -ms-flexbox;
   display: flex;
