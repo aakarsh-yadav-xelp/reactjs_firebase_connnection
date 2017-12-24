@@ -139,42 +139,42 @@ export function getPayment() {
   };
 }
 
-export function getMeaageRequest() {
+export function getMessageRequest() {
   return {
     type: GET_MESSAGE_REQUEST,
     status: REQUEST
   };
 }
-export function getMeaageSuccess(messages) {
+export function getMessageSuccess(messages) {
   return {
     type: GET_MESSAGE_SUCCESS,
     status: SUCCESS,
     messages
   };
 }
-export function getMeaageFailure(error) {
+export function getMessageFailure(error) {
   return {
     type: GET_MESSAGE_FAILURE,
     status: FAILURE,
     error
   };
 }
-export function getMeaage() {
+export function getMessage() {
   return async (dispatch, state) => {
-    dispatch(getMeaageRequest());
+    dispatch(getMessageRequest());
     try {
-      let ref = await fire.database().ref("payments");
+      let ref = await fire.database().ref("message");
       await ref.on(
         "value",
         async function(snapshot) {
-          dispatch(getMeaageSuccess(snapshot.val()));
+          dispatch(getMessageSuccess(snapshot.val()));
         },
         function(errorObject) {
           throw new Error("Error");
         }
       );
     } catch (e) {
-      dispatch(getMeaageFailure("Error in logging in user"));
+      dispatch(getMessageFailure("Error in logging in user"));
     }
   };
 }

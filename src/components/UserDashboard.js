@@ -13,7 +13,6 @@ export default class UserDashboard extends React.Component {
     this.props.history.push(`/agents/${id}`);
   }
   renderUniqueAgents(agent) {
-    console.log(agent);
     return (
       <div
         className="UserDashboard-Item"
@@ -52,6 +51,45 @@ export default class UserDashboard extends React.Component {
       </div>
     );
   }
+
+  renderUniquePayments(payment) {
+    return (
+      <div className="UserDashboard-Item" key={payment.id}>
+        <div className="UserDashboard-ItemAge">{payment.name}</div>
+        <div className="UserDashboard-ItemIdNumber"> {payment.amountPaid}</div>
+        <div className="UserDashboard-ItemMobile">{payment.balance}</div>
+        <div className="UserDashboard-ItemGender">{payment.totalPaid}</div>
+        <div className="UserDashboard-ItemOAmount">{payment.time}</div>
+        <div className="UserDashboard-ItemSelectedOption">
+          {payment.amountPayable}
+        </div>
+      </div>
+    );
+  }
+  renderPayments(payments) {
+    return _.toArray(payments).map(item => {
+      return this.renderUniquePayments(item);
+    });
+  }
+
+  renderSecond(payments) {
+    return (
+      <div>
+        <div className="UserDashboard-ListHeader">
+          <div className="UserDashboard-ItemAge">Name</div>
+          <div className="UserDashboard-ItemIdNumber">AmountPaid</div>
+          <div className="UserDashboard-ItemMobile">Balance</div>
+          <div className="UserDashboard-ItemGender">TotalPaid</div>
+          <div className="UserDashboard-ItemOAmount">Time</div>
+          <div className="UserDashboard-ItemSelectedOption">amountPayable</div>
+        </div>
+        {payments &&
+          payments.map(payment => {
+            return this.renderPayments(payment);
+          })}
+      </div>
+    );
+  }
   render() {
     let classForFirst = classNames("UserDashboard-tabItem", {
       "UserDashboard-tabItem-active": this.state.selectedTab === 1
@@ -63,6 +101,8 @@ export default class UserDashboard extends React.Component {
       "UserDashboard-tabItem-active": this.state.selectedTab === 3
     });
     let agents = _.toArray(this.props.agents);
+    let messages = _.toArray(this.props.messages);
+    let payments = _.toArray(this.props.payments);
     return (
       <div className="UserDashboard">
         <div className="UserDashboard-tab">
@@ -78,14 +118,20 @@ export default class UserDashboard extends React.Component {
           >
             Payment
           </div>
-          <div
+          {/* <div
             className={classForThird}
             onClick={() => this.setState({ selectedTab: 3 })}
           >
             Messages
-          </div>
+          </div> */}
         </div>
-        <div className="UserDashboard-List">{this.renderfirst(agents)}</div>
+        <div className="UserDashboard-List">
+          {this.state.selectedTab === 1
+            ? this.renderfirst(agents)
+            : this.state.selectedTab === 2
+              ? this.renderSecond(payments)
+              : this.renderfirst(messages)}
+        </div>
       </div>
     );
   }

@@ -17,10 +17,7 @@
   width: 20%;
   margin-top: 40px;
 }
-.UserDashboard-tabItem-active {
-  background-color: "#131d1d";
-  color: "grey";
-}
+
 .UserDashboard-tabItem {
   font-size: 17px;
   font-family: sans-serif;
@@ -33,6 +30,10 @@
   align-items: center;
   border-bottom: solid 1px #ecedec;
   cursor: pointer;
+}
+.UserDashboard-tabItem-active {
+  background-color: #131d1d;
+  color: grey;
 }
 .UserDashboard-List {
   width: 70%;
