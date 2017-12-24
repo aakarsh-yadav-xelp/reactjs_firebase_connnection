@@ -9,6 +9,12 @@ const mapDispatchToProps = dispatch => {
     }
   };
 };
-
-const AppContainer = withRouter(connect(null, mapDispatchToProps)(App));
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  };
+};
+const AppContainer = withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(App)
+);
 export default AppContainer;

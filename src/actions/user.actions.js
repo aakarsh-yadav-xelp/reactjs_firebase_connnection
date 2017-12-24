@@ -9,46 +9,33 @@ export const GET_AGENTS_FAILURE = "GET_AGENTS_failure";
 
 export function userLoginRequest() {
   return {
+    type: USER_LOGIN_SUCCESS,
     status: REQUEST
   };
 }
 export function userLoginSuccess(user) {
+  console.log(user);
   return {
+    type: USER_LOGIN_SUCCESS,
     status: SUCCESS,
     user
   };
 }
 export function userLoginFailure(error) {
   return {
+    type: USER_LOGIN_FAILURE,
     status: FAILURE,
     error
   };
 }
 export function userLogin(userObj) {
+  console.log(userObj);
   return async dispatch => {
     dispatch(userLoginRequest());
-    try {
-      let user = await fire
-        .auth()
-        .createUserWithEmailAndPassword(userObj.email, userObj.password);
-      let firebaseUserPath = "/user/" + user.uid;
-      await fire
-        .database()
-        .ref(firebaseUserPath)
-        .update({
-          FirstName: userObj.firstName,
-          LastName: userObj.lastName,
-          Email: userObj.email,
-          PhoneNumber: userObj.phoneNumber,
-          UID: user.uid
-        });
-      const userSnapshot = await fire
-        .database()
-        .ref(firebaseUserPath)
-        .once("value");
-      dispatch(userLoginSuccess(userSnapshot.val()));
-    } catch (e) {
-      dispatch(userLoginFailure("Error in logging in user"));
+    if (userObj.email === "admin" && userObj.password === "idiotBox") {
+      dispatch(userLoginSuccess("admin"));
+    } else {
+      dispatch(userLoginFailure("Invalid detail"));
     }
   };
 }

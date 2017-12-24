@@ -12,7 +12,6 @@ export default class Home extends React.Component {
     this.props.history.push("/agents");
   }
   render() {
-    console.log(this.props);
     return (
       <div className="Home">
         <div className="Home-title">Welcome to IdiotBox</div>

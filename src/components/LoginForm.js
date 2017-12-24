@@ -20,7 +20,6 @@ export default class LoginForm extends React.Component {
         password: this.state.password
       });
     }
-    console.log("lonig");
   }
   render() {
     return (

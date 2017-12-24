@@ -9,9 +9,15 @@ import "./App.css";
 
 class App extends Component {
   componentDidMount() {
-    this.props.getAgents();
+    console.log(this.props.user);
+    if (this.props.user && this.props.user.isLoggedIn) {
+      this.props.getAgents();
+    } else {
+      this.props.history.push("/login");
+    }
   }
   render() {
+    console.log(this.props.user);
     return (
       <div className="App">
         <Header {...this.props} />

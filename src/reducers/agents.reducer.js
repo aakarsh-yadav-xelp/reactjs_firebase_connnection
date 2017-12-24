@@ -1,26 +1,25 @@
 import * as userActions from "../actions/user.actions";
-const user = (
+const agents = (
   state = {
-    isLoggedIn: false,
-    user: null,
+    agents: [],
     status: null,
     error: null
   },
   action
 ) => {
-  console.log(action);
   switch (action.type) {
-    case userActions.USER_LOGIN_REQUEST:
-      return Object.assign({}, state.user, {
-        status: action.status
-      });
-    case userActions.USER_LOGIN_SUCCESS:
+    case userActions.GET_AGENTS_REQUEST:
       return Object.assign({}, state, {
-        isLoggedIn: true,
-        user: action.user,
         status: action.status
       });
-    case userActions.USER_LOGIN_FAILURE:
+
+    case userActions.GET_AGENTS_SUCCESS:
+      return Object.assign({}, state, {
+        agents: action.agents,
+        status: action.status
+      });
+
+    case userActions.GET_AGENTS_FAILURE:
       return Object.assign({}, state, {
         status: action.status,
         error: action.error
@@ -30,4 +29,4 @@ const user = (
   }
 };
 
-export default user;
+export default agents;

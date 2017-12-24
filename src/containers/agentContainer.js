@@ -3,8 +3,9 @@ import { withRouter } from "react-router-dom";
 import AgentDashboard from "../components/agentDashboard";
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
-    agents: state.user.agents
+    agents: state.agents.agents
   };
 };
 
