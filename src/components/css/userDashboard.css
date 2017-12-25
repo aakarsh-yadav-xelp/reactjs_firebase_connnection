@@ -15,6 +15,7 @@
   display: flex;
 }
 .UserDashboard-Item {
+  align-items: center;
   display: flex;
   width: 98%;
   margin: 15px;
@@ -58,7 +59,7 @@
   margin-top: 30px;
   font-family: bolder;
   font-size: 15px;
-  font-weight: 300;
+  font-weight: 600;
 }
 .UserDashboard-ItemAge {
   width: 10%;

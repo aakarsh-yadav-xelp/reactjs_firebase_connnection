@@ -1,6 +1,7 @@
 import React from "react";
 import _ from "lodash";
 import classNames from "classnames";
+import { convertDateStringToTimeAgoFromNow } from "../dbUtils/timeUtils";
 import "./css/userDashboard.css";
 export default class UserDashboard extends React.Component {
   constructor(props) {
@@ -59,9 +60,12 @@ export default class UserDashboard extends React.Component {
         <div className="UserDashboard-ItemIdNumber"> {payment.amountPaid}</div>
         <div className="UserDashboard-ItemMobile">{payment.balance}</div>
         <div className="UserDashboard-ItemGender">{payment.totalPaid}</div>
-        <div className="UserDashboard-ItemOAmount">{payment.time}</div>
+
         <div className="UserDashboard-ItemSelectedOption">
           {payment.amountPayable}
+        </div>
+        <div className="UserDashboard-ItemOAmount">
+          {convertDateStringToTimeAgoFromNow(payment.time)}
         </div>
       </div>
     );
@@ -80,8 +84,9 @@ export default class UserDashboard extends React.Component {
           <div className="UserDashboard-ItemIdNumber">AmountPaid</div>
           <div className="UserDashboard-ItemMobile">Balance</div>
           <div className="UserDashboard-ItemGender">TotalPaid</div>
-          <div className="UserDashboard-ItemOAmount">Time</div>
+
           <div className="UserDashboard-ItemSelectedOption">amountPayable</div>
+          <div className="UserDashboard-ItemOAmount">Time</div>
         </div>
         {payments &&
           payments.map(payment => {

@@ -1,3 +1,15 @@
+@font-face {
+  font-family: ragular;
+  src: url(../fonts/Adamina-Regular.ttf);
+}
+@font-face {
+  font-family: bolder;
+  src: url(../fonts/AlegreyaSans-Medium.ttf);
+}
+@font-face {
+  font-family: italic;
+  src: url(../fonts/AlegreyaSans-Italic.ttf);
+}
 .UserAgent {
   width: 100%;
   display: flex;
@@ -20,9 +32,8 @@
 .UserAgent-ItemAgeValue {
   width: 80%;
 }
-
 .UserAgent-ItemHeader {
-  font-family: sans-serif;
+  font-family: ragular;
   font-size: 25px;
   padding-bottom: 15px;
   border-bottom: solid 1px #1c6d1c;
