@@ -4,7 +4,7 @@ import AgentDashboard from "../components/agentDashboard";
 
 const mapStateToProps = state => {
   return {
-    agents: state.user.agents
+    agents: state.agents.agents
   };
 };
 
