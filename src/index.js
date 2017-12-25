@@ -7,11 +7,15 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import AppContainer from "./containers/AppContainer";
 import user from "./reducers/user.reducer";
+import agents from "./reducers/agent.reducer";
+import payments from "./reducers/payment.reducer";
 
 import registerServiceWorker from "./registerServiceWorker";
 
 const allReducer = combineReducers({
-  user
+  user,
+  agents,
+  payments
 });
 const store = createStore(allReducer, applyMiddleware(thunk));
 ReactDOM.render(

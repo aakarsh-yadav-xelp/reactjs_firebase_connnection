@@ -1,6 +1,9 @@
 import React from "react";
 import _ from "lodash";
 import classNames from "classnames";
+import Icon from "./Icon";
+import UserIcon from "./img/user.svg";
+import MoneyIcon from "./img/money.svg";
 import { convertDateStringToTimeAgoFromNow } from "../dbUtils/timeUtils";
 import "./css/userDashboard.css";
 export default class UserDashboard extends React.Component {
@@ -38,12 +41,12 @@ export default class UserDashboard extends React.Component {
     return (
       <div>
         <div className="UserDashboard-ListHeader">
-          <div className="UserDashboard-ItemAge">Name</div>
-          <div className="UserDashboard-ItemIdNumber">Id No.</div>
-          <div className="UserDashboard-ItemMobile">Mobile</div>
-          <div className="UserDashboard-ItemGender">Gender</div>
-          <div className="UserDashboard-ItemOAmount">occupation</div>
-          <div className="UserDashboard-ItemSelectedOption">location</div>
+          <div className="UserDashboard-ItemHeaderAge">Name</div>
+          <div className="UserDashboard-ItemHeaderIdNumber">Id Number</div>
+          <div className="UserDashboard-ItemHeaderMobile">Mobile</div>
+          <div className="UserDashboard-ItemHeaderGender">Gender</div>
+          <div className="UserDashboard-ItemHeaderOAmount">occupation</div>
+          <div className="UserDashboard-ItemHeaderSelectedOption">location</div>
         </div>
         {agents &&
           agents.map(agent => {
@@ -115,13 +118,13 @@ export default class UserDashboard extends React.Component {
             className={classForFirst}
             onClick={() => this.setState({ selectedTab: 1 })}
           >
-            Agents List
+            <Icon image={UserIcon} />Agents List
           </div>
           <div
             className={classForSecond}
             onClick={() => this.setState({ selectedTab: 2 })}
           >
-            Payment
+            <Icon image={MoneyIcon} />Payment
           </div>
           {/* <div
             className={classForThird}

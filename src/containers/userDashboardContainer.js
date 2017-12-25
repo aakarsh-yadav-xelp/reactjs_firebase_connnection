@@ -6,9 +6,8 @@ import { getAgents } from "../actions/user.actions";
 const mapStateToProps = state => {
   console.log(state);
   return {
-    agents: state.user.agents,
-    payments: state.user.payments,
-    messages: state.user.messages
+    agents: state.agents.agents,
+    payments: state.payments.payments
   };
 };
 
