@@ -37,24 +37,6 @@ export default class UserDashboard extends React.Component {
       return this.renderUniqueAgents(item);
     });
   }
-  renderfirst(agents) {
-    return (
-      <div>
-        <div className="UserDashboard-ListHeader">
-          <div className="UserDashboard-ItemHeaderAge">Name</div>
-          <div className="UserDashboard-ItemHeaderIdNumber">Id Number</div>
-          <div className="UserDashboard-ItemHeaderMobile">Mobile</div>
-          <div className="UserDashboard-ItemHeaderGender">Gender</div>
-          <div className="UserDashboard-ItemHeaderOAmount">occupation</div>
-          <div className="UserDashboard-ItemHeaderSelectedOption">location</div>
-        </div>
-        {agents &&
-          agents.map(agent => {
-            return this.renderAgents(agent);
-          })}
-      </div>
-    );
-  }
 
   renderUniquePayments(payment) {
     return (
@@ -116,29 +98,32 @@ export default class UserDashboard extends React.Component {
         <div className="UserDashboard-tab">
           <div
             className={classForFirst}
-            onClick={() => this.setState({ selectedTab: 1 })}
+            onClick={() => this.props.history.push("/agents")}
           >
             <Icon image={UserIcon} />Agents List
           </div>
           <div
             className={classForSecond}
-            onClick={() => this.setState({ selectedTab: 2 })}
+            onClick={() => this.props.history.push("/payment")}
           >
             <Icon image={MoneyIcon} />Payment
           </div>
-          {/* <div
-            className={classForThird}
-            onClick={() => this.setState({ selectedTab: 3 })}
-          >
-            Messages
-          </div> */}
         </div>
         <div className="UserDashboard-List">
-          {this.state.selectedTab === 1
-            ? this.renderfirst(agents)
-            : this.state.selectedTab === 2
-              ? this.renderSecond(payments)
-              : this.renderfirst(messages)}
+          <div className="UserDashboard-ListHeader">
+            <div className="UserDashboard-ItemHeaderAge">Name</div>
+            <div className="UserDashboard-ItemHeaderIdNumber">Id Number</div>
+            <div className="UserDashboard-ItemHeaderMobile">Mobile</div>
+            <div className="UserDashboard-ItemHeaderGender">Gender</div>
+            <div className="UserDashboard-ItemHeaderOAmount">occupation</div>
+            <div className="UserDashboard-ItemHeaderSelectedOption">
+              location
+            </div>
+          </div>
+          {agents &&
+            agents.map(agent => {
+              return this.renderAgents(agent);
+            })}
         </div>
       </div>
     );

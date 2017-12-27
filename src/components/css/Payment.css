@@ -1,0 +1,199 @@
+.Payment {
+  width: 100%;
+  display: flex;
+}
+.Payment-tab {
+  width: 20%;
+  margin-top: 40px;
+  background: #131e1e;
+  padding-top: 20px;
+  height: 500px;
+}
+
+.Payment-tabItem {
+  font-size: 17px;
+  font-family: bolder;
+  width: 100%;
+  color: grey;
+  text-align: left;
+  padding-left: 20px;
+  display: flex;
+  height: 40px;
+  align-items: center;
+  border-bottom: solid 1px rgba(252, 254, 254, 0.19);
+  cursor: pointer;
+  transition: 300ms;
+}
+.Payment-tabItem:hover {
+  background: rgba(252, 254, 254, 0.19);
+  color: #fff;
+}
+.Payment-tabItem:active {
+  color: #1d3316;
+}
+.Payment-tabItem-active {
+  background-color: #fff;
+  color: grey;
+}
+.Payment-tabItem-active:hover {
+  background: #fff;
+  color: grey;
+}
+.Payment-List {
+  padding: 20px;
+  width: 80%;
+}
+.Payment-Item {
+  align-items: center;
+  display: flex;
+  width: 98%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  border-bottom: solid 1px rgb(206, 204, 204);
+  border-radius: 3px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 200ms;
+}
+.Payment-Item:hover {
+  background-color: rgb(206, 204, 204);
+}
+.Payment-ListHeader {
+  width: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 20px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-family: bolder;
+  font-size: 15px;
+  font-weight: 600;
+}
+.Payment-ItemAge {
+  width: 20%;
+  text-align: initial;
+}
+.Payment-ItemIdNumber {
+  width: 25%;
+  text-align: initial;
+}
+.Payment-ItemMobile {
+  width: 15%;
+  text-align: initial;
+}
+.Payment-ItemGender {
+  width: 15%;
+  text-align: initial;
+}
+.Payment-ItemOAmount {
+  width: 10%;
+  text-align: initial;
+}
+.Payment-ItemSelectedOption {
+  width: 15%;
+  text-align: initial;
+}
+
+.Payment-ItemHeaderAge {
+  width: 20%;
+  text-align: initial;
+  position: relative;
+  color: #da3131;
+  font-weight: 600;
+}
+.Payment-ItemHeaderAge::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  height: 1em;
+  width: 36px;
+  border-bottom: 1px solid #da3131;
+  margin-top: 5px;
+}
+.Payment-ItemHeaderIdNumber {
+  width: 24%;
+  position: relative;
+  text-align: initial;
+  color: #08a1ff;
+  font-weight: 600;
+}
+.Payment-ItemHeaderIdNumber::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  height: 1em;
+  width: 63px;
+  border-bottom: 1px solid #08a1ff;
+  margin-top: 5px;
+}
+.Payment-ItemHeaderMobile {
+  width: 15%;
+  position: relative;
+  text-align: initial;
+  color: #237c23;
+  font-weight: 600;
+}
+.Payment-ItemHeaderMobile::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  height: 1em;
+  width: 40px;
+  border-bottom: 1px solid #237c23;
+  margin-top: 5px;
+}
+.Payment-ItemHeaderGender {
+  width: 15%;
+  position: relative;
+  text-align: initial;
+  color: #ff7261;
+  font-weight: 600;
+}
+.Payment-ItemHeaderGender::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  height: 1em;
+  width: 42px;
+  border-bottom: 1px solid #ff7261;
+  margin-top: 5px;
+}
+.Payment-ItemHeaderOAmount {
+  width: 10%;
+  position: relative;
+  text-align: initial;
+  color: #1e358c;
+  font-weight: 600;
+}
+.Payment-ItemHeaderOAmount::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  height: 1em;
+  width: 64px;
+  border-bottom: 1px solid #1e358c;
+  margin-top: 5px;
+}
+.Payment-ItemHeaderSelectedOption {
+  width: 15%;
+  position: relative;
+  text-align: initial;
+  color: #1895c8;
+  font-weight: 600;
+}
+.Payment-ItemHeaderSelectedOption::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  height: 1em;
+  width: 48px;
+  border-bottom: 1px solid #1895c8;
+  margin-top: 5px;
+}

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import UserDashboard from "../components/UserDashboard";
+import Payment from "../components/payment";
 import { getAgents } from "../actions/user.actions";
 
 const mapStateToProps = state => {
@@ -10,7 +10,5 @@ const mapStateToProps = state => {
   };
 };
 
-const UserDashboardContainer = withRouter(
-  connect(mapStateToProps)(UserDashboard)
-);
-export default UserDashboardContainer;
+const PaymentsContainer = withRouter(connect(mapStateToProps)(Payment));
+export default PaymentsContainer;
