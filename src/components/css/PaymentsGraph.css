@@ -125,3 +125,10 @@
   font-family: ragular;
   font-size: 14px;
 }
+.PaymentGraph-graphsItem {
+  background: #ecedec;
+  height: auto;
+  padding: 10px;
+  width: 72%;
+  margin-top: 20px;
+}
