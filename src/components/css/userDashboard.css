@@ -88,14 +88,17 @@
 .UserDashboard-ItemAge {
   width: 20%;
   text-align: initial;
+  font-size: 12px;
 }
 .UserDashboard-ItemIdNumber {
   width: 25%;
   text-align: initial;
+  font-size: 12px;
 }
 .UserDashboard-ItemMobile {
   width: 15%;
   text-align: initial;
+  font-size: 12px;
 }
 .UserDashboard-ItemGender {
   width: 15%;
@@ -104,10 +107,12 @@
 .UserDashboard-ItemOAmount {
   width: 10%;
   text-align: initial;
+  font-size: 12px;
 }
 .UserDashboard-ItemSelectedOption {
   width: 15%;
   text-align: initial;
+  font-size: 12px;
 }
 .UserDashboard-ItemHeaderAge {
   width: 20%;

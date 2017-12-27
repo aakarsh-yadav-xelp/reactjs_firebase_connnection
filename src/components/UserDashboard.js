@@ -16,12 +16,12 @@ export default class UserDashboard extends React.Component {
   redirectToAgentInfo(id) {
     this.props.history.push(`/agents/${id}`);
   }
-  renderUniqueAgents(agent) {
+  renderUniqueAgents(agent, index) {
     return (
       <div
+        key={index}
         className="UserDashboard-Item"
         onClick={() => this.redirectToAgentInfo(agent.idNumber)}
-        key={agent.idNumber}
       >
         <div className="UserDashboard-ItemAge">{agent.name}</div>
         <div className="UserDashboard-ItemIdNumber"> {agent.idNumber}</div>
@@ -32,54 +32,7 @@ export default class UserDashboard extends React.Component {
       </div>
     );
   }
-  renderAgents(agents) {
-    return _.toArray(agents).map(item => {
-      return this.renderUniqueAgents(item);
-    });
-  }
 
-  renderUniquePayments(payment) {
-    return (
-      <div className="UserDashboard-Item" key={payment.id}>
-        <div className="UserDashboard-ItemAge">{payment.name}</div>
-        <div className="UserDashboard-ItemIdNumber"> {payment.amountPaid}</div>
-        <div className="UserDashboard-ItemMobile">{payment.balance}</div>
-        <div className="UserDashboard-ItemGender">{payment.totalPaid}</div>
-
-        <div className="UserDashboard-ItemSelectedOption">
-          {payment.amountPayable}
-        </div>
-        <div className="UserDashboard-ItemOAmount">
-          {convertDateStringToTimeAgoFromNow(payment.time)}
-        </div>
-      </div>
-    );
-  }
-  renderPayments(payments) {
-    return _.toArray(payments).map(item => {
-      return this.renderUniquePayments(item);
-    });
-  }
-
-  renderSecond(payments) {
-    return (
-      <div>
-        <div className="UserDashboard-ListHeader">
-          <div className="UserDashboard-ItemAge">Name</div>
-          <div className="UserDashboard-ItemIdNumber">AmountPaid</div>
-          <div className="UserDashboard-ItemMobile">Balance</div>
-          <div className="UserDashboard-ItemGender">TotalPaid</div>
-
-          <div className="UserDashboard-ItemSelectedOption">amountPayable</div>
-          <div className="UserDashboard-ItemOAmount">Time</div>
-        </div>
-        {payments &&
-          payments.map(payment => {
-            return this.renderPayments(payment);
-          })}
-      </div>
-    );
-  }
   render() {
     let classForFirst = classNames("UserDashboard-tabItem", {
       "UserDashboard-tabItem-active": this.state.selectedTab === 1
@@ -90,9 +43,8 @@ export default class UserDashboard extends React.Component {
     let classForThird = classNames("UserDashboard-tabItem", {
       "UserDashboard-tabItem-active": this.state.selectedTab === 3
     });
-    let agents = _.toArray(this.props.agents);
-    let messages = _.toArray(this.props.messages);
-    let payments = _.toArray(this.props.payments);
+    let { agents, messages, payments } = this.props;
+
     return (
       <div className="UserDashboard">
         <div className="UserDashboard-tab">
@@ -121,8 +73,8 @@ export default class UserDashboard extends React.Component {
             </div>
           </div>
           {agents &&
-            agents.map(agent => {
-              return this.renderAgents(agent);
+            agents.map((agent, index) => {
+              return this.renderUniqueAgents(agent, index);
             })}
         </div>
       </div>

@@ -67,10 +67,14 @@
   padding: 10px;
 }
 .UserAgent-ItemAgeLabel {
+  font-family: bolder;
+  font-size: 16px;
   width: 50%;
   text-align: -webkit-left;
 }
 .UserAgent-ItemAgeValue {
+  font-family: ragular;
+  font-size: 12px;
   width: 50%;
   text-align: -webkit-left;
 }

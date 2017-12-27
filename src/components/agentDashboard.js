@@ -18,52 +18,45 @@ export default class AgentDashboard extends React.Component {
       age: null
     };
   }
-  onSave() {
-    if (this.props.onSave) {
-      this.props.onSave(this.state);
+  onSave(agentId) {
+    if (this.props.onEdit) {
+      this.props.onEdit(agentId, this.state);
+      this.setState({ edit: false });
     }
   }
   redirectToBack() {
     this.props.history.push("/agents");
   }
   renderUniqueAgents(agent) {
-    let agentId = `${this.props.match.params.agentId}/${
-      this.props.match.params.subAgentId
-    }`;
-
     return (
-      agent.idNumber === agentId && (
-        <div className="UserAgent-Item" key={agent.idNumber}>
-          <div className="UserAgent-ItemHeader">Agent Info</div>
-          {_.toPairs(agent).map((item, index) => {
-            return (
-              <div className="UserAgent-ItemAge" key={index}>
-                <div className="UserAgent-ItemAgeLabel">{item[0]}</div>
-                <div className="UserAgent-ItemAgeValue">{item[1]}</div>
-              </div>
-            );
-          })}
-          <div className="UserAgent-button">
-            <div className="UserAgent-buttonItem">
-              <Button label="Go Back" onClick={() => this.redirectToBack()} />
+      <div className="UserAgent-Item" key={agent.idNumber}>
+        <div className="UserAgent-ItemHeader">Agent Info</div>
+        {_.toPairs(agent).map((item, index) => {
+          return (
+            <div className="UserAgent-ItemAge" key={index}>
+              <div className="UserAgent-ItemAgeLabel">{item[0]}</div>
+              <div className="UserAgent-ItemAgeValue">{item[1]}</div>
             </div>
-            <div className="UserAgent-buttonItem">
-              <Button
-                label="Edit"
-                onClick={() => this.setState({ edit: true })}
-              />
-            </div>
+          );
+        })}
+        <div className="UserAgent-button">
+          <div className="UserAgent-buttonItem">
+            <Button label="Go Back" onClick={() => this.redirectToBack()} />
+          </div>
+          <div className="UserAgent-buttonItem">
+            <Button
+              label="Edit"
+              onClick={() => this.setState({ edit: true })}
+            />
           </div>
         </div>
-      )
+      </div>
     );
   }
 
   renderUniqueAgentEdit(agent) {
-    let agentId = `${this.props.match.params.agentId}/${
-      this.props.match.params.subAgentId
-    }`;
-    console.log(agent);
+    let agentId = `${this.props.match.params.agentId}/${this.props.match.params
+      .subAgentId}`;
     return (
       agent.idNumber === agentId && (
         <div className="UserAgent-Item" key={agent.idNumber}>
@@ -318,6 +311,7 @@ export default class AgentDashboard extends React.Component {
             <div className="UserAgent-ItemAgeLabel">paymentTime</div>
             <div className="UserAgent-ItemAgeValue">
               <Input
+                type="date"
                 value={
                   this.state.paymentTime
                     ? this.state.paymentTime
@@ -344,7 +338,7 @@ export default class AgentDashboard extends React.Component {
             <div className="UserAgent-ItemAgeLabel">taxYear</div>
             <div className="UserAgent-ItemAgeValue">
               <Input
-                type="date"
+                type="number"
                 value={this.state.taxYear ? this.state.taxYear : agent.taxYear}
                 onChange={val => this.setState({ taxYear: val })}
               />
@@ -370,7 +364,10 @@ export default class AgentDashboard extends React.Component {
               />
             </div>
             <div className="UserAgent-buttonItem">
-              <Button label="Save" onClick={() => this.onSave()} />
+              <Button
+                label="Save"
+                onClick={() => this.onSave(agent.idNumber)}
+              />
             </div>
           </div>
         </div>
@@ -378,18 +375,15 @@ export default class AgentDashboard extends React.Component {
     );
   }
 
-  renderAgents(agents) {
-    return _.toArray(agents).map(item => {
-      return this.state.edit
-        ? this.renderUniqueAgentEdit(item)
-        : this.renderUniqueAgents(item);
-    });
-  }
-
   render() {
-    console.log(this.state);
     let { pathname } = this.props.location;
-    let agents = _.toArray(this.props.agents);
+    let agents = _.find(this.props.agents, agent => {
+      return (
+        agent.idNumber ===
+        `${this.props.match.params.agentId}/${this.props.match.params
+          .subAgentId}`
+      );
+    });
     let classForFirst = classNames("UserAgent-tabItem", {
       "UserAgent-tabItem-active": pathname === "/agents"
     });
@@ -414,10 +408,11 @@ export default class AgentDashboard extends React.Component {
           </div>
         </div>
         <div className="UserAgent-info">
-          {agents &&
-            agents.map(agent => {
-              return this.renderAgents(agent);
-            })}
+          {agents
+            ? this.state.edit
+              ? this.renderUniqueAgentEdit(agents)
+              : this.renderUniqueAgents(agents)
+            : ""}
         </div>
       </div>
     );
