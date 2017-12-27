@@ -1,39 +1,8 @@
-@font-face {
-  font-family: ragular;
-  src: url(../fonts/Adamina-Regular.ttf);
-}
-@font-face {
-  font-family: bolder;
-  src: url(../fonts/AlegreyaSans-Medium.ttf);
-}
-@font-face {
-  font-family: italic;
-  src: url(../fonts/AlegreyaSans-Italic.ttf);
-}
-.UserDashboard {
+.Payment {
   width: 100%;
   display: flex;
 }
-.UserDashboard-List {
-  padding: 20px;
-}
-.UserDashboard-Item {
-  align-items: center;
-  display: flex;
-  width: 98%;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 20px;
-  border-bottom: solid 1px rgb(206, 204, 204);
-  border-radius: 3px;
-  font-size: 13px;
-  cursor: pointer;
-  transition: 200ms;
-}
-.UserDashboard-Item:hover {
-  background-color: rgb(206, 204, 204);
-}
-.UserDashboard-tab {
+.Payment-tab {
   width: 20%;
   margin-top: 40px;
   background: #131e1e;
@@ -41,7 +10,7 @@
   height: 500px;
 }
 
-.UserDashboard-tabItem {
+.Payment-tabItem {
   font-size: 17px;
   font-family: bolder;
   width: 100%;
@@ -55,26 +24,42 @@
   cursor: pointer;
   transition: 300ms;
 }
-.UserDashboard-tabItem:hover {
+.Payment-tabItem:hover {
   background: rgba(252, 254, 254, 0.19);
   color: #fff;
 }
-.UserDashboard-tabItem:active {
+.Payment-tabItem:active {
   color: #1d3316;
 }
-.UserDashboard-tabItem-active {
+.Payment-tabItem-active {
   background-color: #fff;
   color: grey;
 }
-.UserDashboard-tabItem-active:hover {
+.Payment-tabItem-active:hover {
   background: #fff;
   color: grey;
 }
-.UserDashboard-List {
-  width: 70%;
-  font-family: ragular;
+.Payment-List {
+  padding: 20px;
+  width: 80%;
 }
-.UserDashboard-ListHeader {
+.Payment-Item {
+  align-items: center;
+  display: flex;
+  width: 98%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  border-bottom: solid 1px rgb(206, 204, 204);
+  border-radius: 3px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 200ms;
+}
+.Payment-Item:hover {
+  background-color: rgb(206, 204, 204);
+}
+.Payment-ListHeader {
   width: 100%;
   display: -ms-flexbox;
   display: flex;
@@ -85,43 +70,39 @@
   font-size: 15px;
   font-weight: 600;
 }
-.UserDashboard-ItemAge {
+.Payment-ItemAge {
   width: 20%;
   text-align: initial;
-  font-size: 12px;
 }
-.UserDashboard-ItemIdNumber {
+.Payment-ItemIdNumber {
   width: 25%;
   text-align: initial;
-  font-size: 12px;
 }
-.UserDashboard-ItemMobile {
-  width: 15%;
-  text-align: initial;
-  font-size: 12px;
-}
-.UserDashboard-ItemGender {
+.Payment-ItemMobile {
   width: 15%;
   text-align: initial;
 }
-.UserDashboard-ItemOAmount {
+.Payment-ItemGender {
+  width: 15%;
+  text-align: initial;
+}
+.Payment-ItemOAmount {
   width: 10%;
   text-align: initial;
-  font-size: 12px;
 }
-.UserDashboard-ItemSelectedOption {
+.Payment-ItemSelectedOption {
   width: 15%;
   text-align: initial;
-  font-size: 12px;
 }
-.UserDashboard-ItemHeaderAge {
+
+.Payment-ItemHeaderAge {
   width: 20%;
   text-align: initial;
   position: relative;
   color: #da3131;
   font-weight: 600;
 }
-.UserDashboard-ItemHeaderAge::after {
+.Payment-ItemHeaderAge::after {
   content: "";
   position: absolute;
   left: 0;
@@ -131,14 +112,14 @@
   border-bottom: 1px solid #da3131;
   margin-top: 5px;
 }
-.UserDashboard-ItemHeaderIdNumber {
+.Payment-ItemHeaderIdNumber {
   width: 24%;
   position: relative;
   text-align: initial;
   color: #08a1ff;
   font-weight: 600;
 }
-.UserDashboard-ItemHeaderIdNumber::after {
+.Payment-ItemHeaderIdNumber::after {
   content: "";
   position: absolute;
   left: 0;
@@ -148,14 +129,14 @@
   border-bottom: 1px solid #08a1ff;
   margin-top: 5px;
 }
-.UserDashboard-ItemHeaderMobile {
+.Payment-ItemHeaderMobile {
   width: 15%;
   position: relative;
   text-align: initial;
   color: #237c23;
   font-weight: 600;
 }
-.UserDashboard-ItemHeaderMobile::after {
+.Payment-ItemHeaderMobile::after {
   content: "";
   position: absolute;
   left: 0;
@@ -165,14 +146,14 @@
   border-bottom: 1px solid #237c23;
   margin-top: 5px;
 }
-.UserDashboard-ItemHeaderGender {
+.Payment-ItemHeaderGender {
   width: 15%;
   position: relative;
   text-align: initial;
   color: #ff7261;
   font-weight: 600;
 }
-.UserDashboard-ItemHeaderGender::after {
+.Payment-ItemHeaderGender::after {
   content: "";
   position: absolute;
   left: 0;
@@ -182,14 +163,14 @@
   border-bottom: 1px solid #ff7261;
   margin-top: 5px;
 }
-.UserDashboard-ItemHeaderOAmount {
+.Payment-ItemHeaderOAmount {
   width: 10%;
   position: relative;
   text-align: initial;
   color: #1e358c;
   font-weight: 600;
 }
-.UserDashboard-ItemHeaderOAmount::after {
+.Payment-ItemHeaderOAmount::after {
   content: "";
   position: absolute;
   left: 0;
@@ -199,14 +180,14 @@
   border-bottom: 1px solid #1e358c;
   margin-top: 5px;
 }
-.UserDashboard-ItemHeaderSelectedOption {
+.Payment-ItemHeaderSelectedOption {
   width: 15%;
   position: relative;
   text-align: initial;
   color: #1895c8;
   font-weight: 600;
 }
-.UserDashboard-ItemHeaderSelectedOption::after {
+.Payment-ItemHeaderSelectedOption::after {
   content: "";
   position: absolute;
   left: 0;

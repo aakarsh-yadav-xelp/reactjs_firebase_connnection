@@ -2,15 +2,22 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./css/input.css";
 export default class Input extends React.Component {
-  onChange(val) {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: props.value ? props.value : ""
+    };
+  }
+  onChange(value) {
+    this.setState({ value });
     if (this.props.onChange) {
-      this.props.onChange(val);
+      this.props.onChange(value);
     }
   }
   render() {
     return (
       <input
-        type="text"
+        type={this.props.type}
         className="Input"
         placeholder={this.props.placeholder}
         style={{
@@ -20,14 +27,17 @@ export default class Input extends React.Component {
           color: this.props.color,
           fontSize: `${this.props.fontSize}px`
         }}
+        value={this.state.value}
         onChange={val => this.onChange(val.target.value)}
       />
     );
   }
 }
 Input.defaultProps = {
+  type: "text",
   width: 200,
   height: 40,
   backgroundColor: "#fff",
-  placeholder: ""
+  placeholder: "",
+  value: ""
 };

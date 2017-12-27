@@ -1,7 +1,59 @@
+@font-face {
+  font-family: ragular;
+  src: url(../fonts/Adamina-Regular.ttf);
+}
+@font-face {
+  font-family: bolder;
+  src: url(../fonts/AlegreyaSans-Medium.ttf);
+}
+@font-face {
+  font-family: italic;
+  src: url(../fonts/AlegreyaSans-Italic.ttf);
+}
 .UserAgent {
   width: 100%;
   display: flex;
+}
+.UserAgent-tab {
+  width: 20%;
+  margin-top: 40px;
+  background: #131e1e;
+  padding-top: 20px;
+  height: 500px;
+}
+.UserAgent-tabItem {
+  font-size: 17px;
+  font-family: bolder;
+  width: 100%;
+  color: grey;
+  text-align: left;
+  padding-left: 20px;
+  display: flex;
+  height: 40px;
   align-items: center;
+  border-bottom: solid 1px rgba(252, 254, 254, 0.19);
+  cursor: pointer;
+  transition: 300ms;
+}
+.UserAgent-tabItem:hover {
+  background: rgba(252, 254, 254, 0.19);
+  color: #fff;
+}
+.UserAgent-tabItem:active {
+  color: #1d3316;
+}
+.UserAgent-tabItem-active {
+  background-color: #fff;
+  color: grey;
+}
+.UserAgent-tabItem-active:hover {
+  background: #fff;
+  color: grey;
+}
+.UserAgent-info {
+  width: 80%;
+  display: flex;
+  margin-top: 40px;
 }
 .UserAgent-Item {
   margin: 30px;
@@ -15,16 +67,30 @@
   padding: 10px;
 }
 .UserAgent-ItemAgeLabel {
-  width: 20%;
+  font-family: bolder;
+  font-size: 16px;
+  width: 50%;
+  text-align: -webkit-left;
 }
 .UserAgent-ItemAgeValue {
-  width: 80%;
+  font-family: ragular;
+  font-size: 12px;
+  width: 50%;
+  text-align: -webkit-left;
 }
-
 .UserAgent-ItemHeader {
-  font-family: sans-serif;
+  font-family: ragular;
   font-size: 25px;
   padding-bottom: 15px;
   border-bottom: solid 1px #1c6d1c;
   margin-bottom: 15px;
+}
+.UserAgent-button {
+  display: flex;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+}
+.UserAgent-buttonItem {
+  margin-left: 20px;
 }

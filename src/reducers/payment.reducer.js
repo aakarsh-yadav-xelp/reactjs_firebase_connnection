@@ -1,26 +1,25 @@
-import * as userActions from "../actions/user.actions";
-const user = (
+import * as paymentActions from "../actions/payment.actions";
+const payments = (
   state = {
-    isLoggedIn: false,
-    user: null,
+    payments: null,
     status: null,
     error: null
   },
   action
 ) => {
   switch (action.type) {
-    case userActions.USER_LOGIN_REQUEST:
+    case paymentActions.GET_PAYMENT_REQUEST:
       return Object.assign({}, state, {
-        status: action.status
-      });
-    case userActions.USER_LOGIN_SUCCESS:
-      return Object.assign({}, state, {
-        isLoggedIn: true,
-        user: action.user,
         status: action.status
       });
 
-    case userActions.USER_LOGIN_FAILURE:
+    case paymentActions.GET_PAYMENT_SUCCESS:
+      return Object.assign({}, state, {
+        payments: action.payments,
+        status: action.status
+      });
+
+    case paymentActions.GET_PAYMENT_FAILURE:
       return Object.assign({}, state, {
         status: action.status,
         error: action.error
@@ -30,4 +29,4 @@ const user = (
   }
 };
 
-export default user;
+export default payments;
