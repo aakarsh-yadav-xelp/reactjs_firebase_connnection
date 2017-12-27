@@ -18,9 +18,10 @@
 .PaymentsGraph-tab {
   width: 20%;
   margin-top: 40px;
-  background: #131e1e;
+  background: rgba(50, 71, 90, 1);
   padding-top: 20px;
   height: 500px;
+  box-shadow: 0px 0px 10px #888888;
 }
 .PaymentsGraph-tabItem {
   font-size: 17px;
@@ -40,15 +41,13 @@
   background: rgba(252, 254, 254, 0.19);
   color: #fff;
 }
-.PaymentsGraph-tabItem:active {
-  color: #1d3316;
-}
+
 .PaymentsGraph-tabItem-active {
-  background-color: #fff;
+  background-color: rgba(28, 42, 54, 1);
   color: grey;
 }
 .PaymentsGraph-tabItem-active:hover {
-  background: #fff;
+  background: rgba(28, 42, 54, 1);
   color: grey;
 }
 .PaymentGraph-graphs {
@@ -126,9 +125,10 @@
   font-size: 14px;
 }
 .PaymentGraph-graphsItem {
-  background: #ecedec;
+  background: #fff;
   height: auto;
   padding: 10px;
   width: 72%;
   margin-top: 20px;
+  box-shadow: 0px 0px 10px #888888;
 }
