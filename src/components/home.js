@@ -9,7 +9,7 @@ export default class Home extends React.Component {
     this.props.history.push("/signup");
   }
   redirectToAgentList() {
-    this.props.history.push("/agents");
+    this.props.history.push("/paymentgraph");
   }
   render() {
     return (

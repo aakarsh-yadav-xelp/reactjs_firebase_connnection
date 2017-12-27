@@ -44,6 +44,12 @@ export default class Payment extends React.Component {
       <div className="Payment">
         <div className="Payment-tab">
           <div
+            className={classForThird}
+            onClick={() => this.props.history.push("/paymentgraph")}
+          >
+            <Icon image={MoneyIcon} />Home
+          </div>
+          <div
             className={classForFirst}
             onClick={() => this.props.history.push("/agents")}
           >
@@ -54,12 +60,6 @@ export default class Payment extends React.Component {
             onClick={() => this.props.history.push("/payment")}
           >
             <Icon image={MoneyIcon} />Payment
-          </div>
-          <div
-            className={classForThird}
-            onClick={() => this.props.history.push("/paymentgraph")}
-          >
-            <Icon image={MoneyIcon} />PaymentGraph
           </div>
         </div>
         <div className="Payment-List">
