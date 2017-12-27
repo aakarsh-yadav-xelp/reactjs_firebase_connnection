@@ -25,22 +25,20 @@ export default class Payment extends React.Component {
       </div>
     );
   }
-  renderPayments(payments) {
-    return _.toArray(payments).map(item => {
-      return this.renderUniquePayments(item);
-    });
-  }
 
   render() {
     let { pathname } = this.props.location;
-    let classForFirst = classNames("Payment-tabItem", {
-      "Payment-tabItem-active": pathname === "/agents"
-    });
-    let classForSecond = classNames("Payment-tabItem", {
-      "Payment-tabItem-active": pathname === "/payment"
-    });
 
-    let payments = _.toArray(this.props.payments);
+    let classForFirst = classNames("UserAgent-tabItem", {
+      "UserAgent-tabItem-active": pathname === "/agents"
+    });
+    let classForSecond = classNames("UserAgent-tabItem", {
+      "UserAgent-tabItem-active": pathname === "/payment"
+    });
+    let classForThird = classNames("UserDashboard-tabItem", {
+      "UserDashboard-tabItem-active": pathname === "/paymentgraph"
+    });
+    let payments = this.props.payments;
 
     return (
       <div className="Payment">
@@ -57,6 +55,12 @@ export default class Payment extends React.Component {
           >
             <Icon image={MoneyIcon} />Payment
           </div>
+          <div
+            className={classForThird}
+            onClick={() => this.props.history.push("/paymentgraph")}
+          >
+            <Icon image={MoneyIcon} />PaymentGraph
+          </div>
         </div>
         <div className="Payment-List">
           <div className="Payment-ListHeader">
@@ -71,7 +75,7 @@ export default class Payment extends React.Component {
           </div>
           {payments &&
             payments.map(payment => {
-              return this.renderPayments(payment);
+              return this.renderUniquePayments(payment);
             })}
         </div>
       </div>
