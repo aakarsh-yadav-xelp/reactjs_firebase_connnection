@@ -66,19 +66,19 @@ export default class PaymentsGraph extends React.Component {
             <div className="PaymentGraph-totalBal-item">
               <div className="PaymentGraph-totalBal-label">Total Payable</div>
               <div className="PaymentGraph-totalBal-value">
-                {_.sumBy(payments, pay => pay.amountPayable)}
+                GHS {_.sumBy(payments, pay => pay.amountPayable)}
               </div>
             </div>
             <div className="PaymentGraph-totalBal-item1">
               <div className="PaymentGraph-totalBal-label1">Total Paid</div>
               <div className="PaymentGraph-totalBal-value1">
-                {_.sumBy(payments, pay => pay.amountPaid)}
+                GHS {_.sumBy(payments, pay => pay.amountPaid)}
               </div>
             </div>
             <div className="PaymentGraph-totalBal-item2">
               <div className="PaymentGraph-totalBal-label2">Total Balance</div>
               <div className="PaymentGraph-totalBal-value2">
-                {_.sumBy(payments, pay => pay.balance)}
+                GHS {_.sumBy(payments, pay => pay.balance)}
               </div>
             </div>
           </div>

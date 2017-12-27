@@ -23,7 +23,7 @@ export default class Home extends React.Component {
           <div className="Home-containerSignUp">
             <div className="Home-containerSignUpBody">
               <div className="Home-containerLogin-header">
-                View Our Agents list here..
+                View Our Client list here..
               </div>
               <div className="Home-containerLogin-button">
                 <Button
