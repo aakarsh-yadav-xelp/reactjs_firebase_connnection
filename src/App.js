@@ -6,6 +6,7 @@ import LoginContainer from "./containers/loginContainer";
 import UserDashboardContainer from "./containers/userDashboardContainer";
 import PaymentsContainer from "./containers/paymentsContainer";
 import AgentContainer from "./containers/agentContainer";
+import PaymentsGraphContainer from "./containers/paymentsGraphContainer";
 import "./App.css";
 
 class App extends Component {
@@ -29,6 +30,7 @@ class App extends Component {
         <Route exact path="/" component={Home} />
         <Route exact path="/agents" component={UserDashboardContainer} />
         <Route exact path="/payment" component={PaymentsContainer} />
+        <Route exact path="/paymentgraph" component={PaymentsGraphContainer} />
         <Route path="/agents/:agentId/:subAgentId" component={AgentContainer} />
       </div>
     );

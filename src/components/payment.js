@@ -49,7 +49,7 @@ export default class Payment extends React.Component {
             className={classForFirst}
             onClick={() => this.props.history.push("/agents")}
           >
-            <Icon image={UserIcon} />Agents List
+            <Icon image={UserIcon} />Clients List
           </div>
           <div
             className={classForSecond}

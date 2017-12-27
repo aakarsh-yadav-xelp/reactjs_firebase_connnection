@@ -34,14 +34,16 @@ export default class UserDashboard extends React.Component {
   }
 
   render() {
-    let classForFirst = classNames("UserDashboard-tabItem", {
-      "UserDashboard-tabItem-active": this.state.selectedTab === 1
+    let { pathname } = this.props.location;
+
+    let classForFirst = classNames("UserAgent-tabItem", {
+      "UserAgent-tabItem-active": pathname === "/agents"
     });
-    let classForSecond = classNames("UserDashboard-tabItem", {
-      "UserDashboard-tabItem-active": this.state.selectedTab === 2
+    let classForSecond = classNames("UserAgent-tabItem", {
+      "UserAgent-tabItem-active": pathname === "/payment"
     });
     let classForThird = classNames("UserDashboard-tabItem", {
-      "UserDashboard-tabItem-active": this.state.selectedTab === 3
+      "UserDashboard-tabItem-active": pathname === "/paymentgraph"
     });
     let { agents, messages, payments } = this.props;
 
@@ -52,13 +54,19 @@ export default class UserDashboard extends React.Component {
             className={classForFirst}
             onClick={() => this.props.history.push("/agents")}
           >
-            <Icon image={UserIcon} />Agents List
+            <Icon image={UserIcon} />Clients List
           </div>
           <div
             className={classForSecond}
             onClick={() => this.props.history.push("/payment")}
           >
             <Icon image={MoneyIcon} />Payment
+          </div>
+          <div
+            className={classForThird}
+            onClick={() => this.props.history.push("/paymentgraph")}
+          >
+            <Icon image={MoneyIcon} />PaymentGraph
           </div>
         </div>
         <div className="UserDashboard-List">

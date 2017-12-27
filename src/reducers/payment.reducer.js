@@ -1,4 +1,5 @@
 import * as paymentActions from "../actions/payment.actions";
+import _ from "lodash";
 const payments = (
   state = {
     payments: null,
@@ -7,6 +8,7 @@ const payments = (
   },
   action
 ) => {
+  let temmPayments = [];
   switch (action.type) {
     case paymentActions.GET_PAYMENT_REQUEST:
       return Object.assign({}, state, {
@@ -14,8 +16,14 @@ const payments = (
       });
 
     case paymentActions.GET_PAYMENT_SUCCESS:
+      _.mapValues(action.payments, item => {
+        _.mapValues(item, i => {
+          temmPayments.push(i);
+          return i;
+        });
+      });
       return Object.assign({}, state, {
-        payments: action.payments,
+        payments: temmPayments,
         status: action.status
       });
 

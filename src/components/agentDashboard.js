@@ -30,7 +30,7 @@ export default class AgentDashboard extends React.Component {
   renderUniqueAgents(agent) {
     return (
       <div className="UserAgent-Item" key={agent.idNumber}>
-        <div className="UserAgent-ItemHeader">Agent Info</div>
+        <div className="UserAgent-ItemHeader">Client Info</div>
         {_.toPairs(agent).map((item, index) => {
           return (
             <div className="UserAgent-ItemAge" key={index}>
@@ -60,7 +60,7 @@ export default class AgentDashboard extends React.Component {
     return (
       agent.idNumber === agentId && (
         <div className="UserAgent-Item" key={agent.idNumber}>
-          <div className="UserAgent-ItemHeader">Agent Info</div>
+          <div className="UserAgent-ItemHeader">Client Info</div>
 
           <div className="UserAgent-ItemAge">
             <div className="UserAgent-ItemAgeLabel">Age</div>
@@ -390,7 +390,9 @@ export default class AgentDashboard extends React.Component {
     let classForSecond = classNames("UserAgent-tabItem", {
       "UserAgent-tabItem-active": pathname === "/payment"
     });
-
+    let classForThird = classNames("UserDashboard-tabItem", {
+      "UserDashboard-tabItem-active": this.state.selectedTab === 3
+    });
     return (
       <div className="UserAgent">
         <div className="UserAgent-tab">
@@ -398,13 +400,19 @@ export default class AgentDashboard extends React.Component {
             className={classForFirst}
             onClick={() => this.props.history.push("/agents")}
           >
-            <Icon image={UserIcon} />Agents List
+            <Icon image={UserIcon} />Clients List
           </div>
           <div
             className={classForSecond}
             onClick={() => this.props.history.push("/payment")}
           >
             <Icon image={MoneyIcon} />Payment
+          </div>
+          <div
+            className={classForThird}
+            onClick={() => this.props.history.push("/paymentgraph")}
+          >
+            <Icon image={MoneyIcon} />PaymentGraph
           </div>
         </div>
         <div className="UserAgent-info">
