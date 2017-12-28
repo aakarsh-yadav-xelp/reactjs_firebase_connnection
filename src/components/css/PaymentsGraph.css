@@ -15,45 +15,12 @@
   display: flex;
 }
 
-.PaymentsGraph-tab {
-  width: 20%;
-  margin-top: 40px;
-  background: rgba(50, 71, 90, 1);
-  padding-top: 20px;
-  height: 500px;
-  box-shadow: 0px 0px 10px #888888;
-}
-.PaymentsGraph-tabItem {
-  font-size: 17px;
-  font-family: bolder;
-  width: 100%;
-  color: grey;
-  text-align: left;
-  padding-left: 20px;
-  display: flex;
-  height: 40px;
-  align-items: center;
-  border-bottom: solid 1px rgba(252, 254, 254, 0.19);
-  cursor: pointer;
-  transition: 300ms;
-}
-.PaymentsGraph-tabItem:hover {
-  background: rgba(252, 254, 254, 0.19);
-  color: #fff;
-}
-
-.PaymentsGraph-tabItem-active {
-  background-color: rgba(28, 42, 54, 1);
-  color: grey;
-}
-.PaymentsGraph-tabItem-active:hover {
-  background: rgba(28, 42, 54, 1);
-  color: grey;
-}
 .PaymentGraph-graphs {
-  margin-top: 40px;
   width: 80%;
-  padding: 30px;
+  padding: 0px 30px 30px 0px;
+}
+.PaymentGraph-graphs-Body {
+  margin-left: 20px;
 }
 .PaymentGraph-header {
   font-size: 17px;
@@ -64,65 +31,81 @@
 .PaymentGraph-totalBal {
   width: 100%;
   display: flex;
+  margin-top: 20px;
+  height: 120px;
+  justify-content: space-between;
 }
 .PaymentGraph-totalBal-item {
-  width: 200px;
+  width: 33.33%;
   margin: 10px;
   padding: 10px;
-  background: #795ef1;
-  color: #2b2546;
+  background-color: #fff;
+  display: flex;
+  min-width: 0;
+  word-wrap: break-word;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
 }
 .PaymentGraph-totalBal-label {
-  height: 50px;
+  display: -ms-flexbox;
   display: flex;
+  width: 40%;
+  height: 100%;
+  -ms-flex-pack: center;
   justify-content: center;
+  -ms-flex-align: center;
+  background-image: url("../img/payable.svg");
+  background-size: 50%;
+  background-repeat: no-repeat;
+  opacity: 0.6;
   align-items: center;
-  font-family: bolder;
-  font-size: 16px;
+  background-position: center;
 }
-.paymentgraph-totalbal-value {
+.PaymentGraph-totalBal-value {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.PaymentGraph-totalBal-value-label {
+  font-size: 13px;
+  color: #5e5952;
   font-family: ragular;
-  font-size: 14px;
 }
-.PaymentGraph-totalBal-item1 {
-  width: 200px;
-  margin: 10px;
-  padding: 10px;
-  background: #f1785e;
-  color: #341e19;
+.PaymentGraph-totalBal-value-labelMoney {
+  font-family: bolder;
+  font-size: 20px;
 }
-
 .PaymentGraph-totalBal-label1 {
-  height: 50px;
+  display: -ms-flexbox;
   display: flex;
+  width: 40%;
+  height: 100%;
+  -ms-flex-pack: center;
   justify-content: center;
+  -ms-flex-align: center;
+  background-image: url("../img/paid.svg");
+  background-size: 50%;
+  background-repeat: no-repeat;
+  opacity: 0.6;
   align-items: center;
-  font-family: bolder;
-  font-size: 16px;
+  background-position: center;
 }
-.paymentgraph-totalbal-value1 {
-  font-family: ragular;
-  font-size: 14px;
-}
-.PaymentGraph-totalBal-item2 {
-  width: 200px;
-  margin: 10px;
-  padding: 10px;
-  background: #2bc891;
-  color: #0e251d;
-}
-
 .PaymentGraph-totalBal-label2 {
-  height: 50px;
+  display: -ms-flexbox;
   display: flex;
+  width: 40%;
+  height: 100%;
+  -ms-flex-pack: center;
   justify-content: center;
+  -ms-flex-align: center;
+  background-image: url("../img/balance.svg");
+  background-size: 50%;
+  background-repeat: no-repeat;
+  opacity: 0.6;
   align-items: center;
-  font-family: bolder;
-  font-size: 16px;
-}
-.paymentgraph-totalbal-value2 {
-  font-family: ragular;
-  font-size: 14px;
+  background-position: center;
 }
 .PaymentGraph-graphsItem {
   background: #fff;
@@ -130,5 +113,7 @@
   padding: 10px;
   width: 72%;
   margin-top: 20px;
-  box-shadow: 0px 0px 10px #888888;
+  margin-left: 10px;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
 }

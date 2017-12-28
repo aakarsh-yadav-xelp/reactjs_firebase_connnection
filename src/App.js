@@ -18,7 +18,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header {...this.props} />
         <Route path="/login" component={LoginContainer} />
         <Route
           path="/signUp"

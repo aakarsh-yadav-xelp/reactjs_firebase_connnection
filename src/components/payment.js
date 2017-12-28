@@ -1,10 +1,8 @@
 import React from "react";
 import "./css/Payment.css";
 import _ from "lodash";
-import classNames from "classnames";
-import Icon from "./Icon";
-import UserIcon from "./img/user.svg";
-import MoneyIcon from "./img/money.svg";
+import SideBar from "./sideBar";
+
 import { convertDateStringToTimeAgoFromNow } from "../dbUtils/timeUtils";
 
 export default class Payment extends React.Component {
@@ -27,41 +25,11 @@ export default class Payment extends React.Component {
   }
 
   render() {
-    let { pathname } = this.props.location;
-
-    let classForFirst = classNames("UserAgent-tabItem", {
-      "UserAgent-tabItem-active": pathname === "/agents"
-    });
-    let classForSecond = classNames("UserAgent-tabItem", {
-      "UserAgent-tabItem-active": pathname === "/payment"
-    });
-    let classForThird = classNames("UserDashboard-tabItem", {
-      "UserDashboard-tabItem-active": pathname === "/paymentgraph"
-    });
     let payments = this.props.payments;
 
     return (
       <div className="Payment">
-        <div className="Payment-tab">
-          <div
-            className={classForThird}
-            onClick={() => this.props.history.push("/paymentgraph")}
-          >
-            <Icon image={MoneyIcon} />Home
-          </div>
-          <div
-            className={classForFirst}
-            onClick={() => this.props.history.push("/agents")}
-          >
-            <Icon image={UserIcon} />Clients List
-          </div>
-          <div
-            className={classForSecond}
-            onClick={() => this.props.history.push("/payment")}
-          >
-            <Icon image={MoneyIcon} />Payment
-          </div>
-        </div>
+        <SideBar {...this.props} />
         <div className="Payment-List">
           <div className="Payment-ListHeader">
             <div className="Payment-ItemHeaderAge">Name</div>

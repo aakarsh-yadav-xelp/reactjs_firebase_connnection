@@ -1,6 +1,7 @@
 import React from "react";
 import _ from "lodash";
 import classNames from "classnames";
+import SideBar from "./sideBar";
 import Icon from "./Icon";
 import UserIcon from "./img/user.svg";
 import MoneyIcon from "./img/money.svg";
@@ -49,26 +50,7 @@ export default class UserDashboard extends React.Component {
 
     return (
       <div className="UserDashboard">
-        <div className="UserDashboard-tab">
-          <div
-            className={classForThird}
-            onClick={() => this.props.history.push("/paymentgraph")}
-          >
-            <Icon image={MoneyIcon} />Home
-          </div>
-          <div
-            className={classForFirst}
-            onClick={() => this.props.history.push("/agents")}
-          >
-            <Icon image={UserIcon} />Clients List
-          </div>
-          <div
-            className={classForSecond}
-            onClick={() => this.props.history.push("/payment")}
-          >
-            <Icon image={MoneyIcon} />Payment
-          </div>
-        </div>
+        <SideBar {...this.props} />
         <div className="UserDashboard-List">
           <div className="UserDashboard-ListHeader">
             <div className="UserDashboard-ItemHeaderAge">Name</div>

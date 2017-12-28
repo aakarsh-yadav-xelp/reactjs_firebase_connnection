@@ -1,0 +1,50 @@
+.SideBar-tab {
+  width: 20%;
+  background: rgba(50, 71, 90, 1);
+  position: fixed;
+  background-image: url("../img/background.jpg");
+  background-size: cover;
+}
+.SideBar-adjustwidth {
+  width: 20%;
+}
+.SideBar-tabHeader {
+  height: 70px;
+  width: 100%;
+  font-size: 20px;
+  -ms-flex-pack: center;
+  display: flex;
+  justify-content: center;
+  -ms-flex-line-pack: center;
+  align-items: center;
+  border-bottom: solid 1px rgba(110, 96, 96, 0.5);
+}
+.SideBar-tabItem {
+  font-size: 17px;
+  font-family: bolder;
+  width: 88%;
+  color: #fff;
+  text-align: left;
+  display: flex;
+  height: 40px;
+  align-items: center;
+  border-bottom: solid 1px rgba(252, 254, 254, 0.19);
+  cursor: pointer;
+  transition: 300ms;
+  margin: 20px;
+  border-radius: 5px;
+}
+.SideBar-tabItem:hover {
+  background: rgba(252, 254, 254, 0.19);
+  color: #fff;
+}
+
+.SideBar-tabItem-active {
+  background-color: #fff;
+  color: #000;
+  opacity: 0.4;
+}
+.SideBar-tabItem-active:hover {
+  background: #fff;
+  color: #fff;
+}
