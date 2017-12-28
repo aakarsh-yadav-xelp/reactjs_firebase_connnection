@@ -55,7 +55,7 @@
   justify-content: center;
   -ms-flex-align: center;
   background-image: url("../img/payable.svg");
-  background-size: 50%;
+  background-size: 60px;
   background-repeat: no-repeat;
   opacity: 0.6;
   align-items: center;
@@ -86,7 +86,7 @@
   justify-content: center;
   -ms-flex-align: center;
   background-image: url("../img/paid.svg");
-  background-size: 50%;
+  background-size: 60px;
   background-repeat: no-repeat;
   opacity: 0.6;
   align-items: center;
@@ -101,7 +101,7 @@
   justify-content: center;
   -ms-flex-align: center;
   background-image: url("../img/balance.svg");
-  background-size: 50%;
+  background-size: 60px;
   background-repeat: no-repeat;
   opacity: 0.6;
   align-items: center;
@@ -114,6 +114,9 @@
   width: 72%;
   margin-top: 20px;
   margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
