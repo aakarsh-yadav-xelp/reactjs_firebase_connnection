@@ -78,58 +78,62 @@ export default class PaymentsGraph extends React.Component {
               </div>
             </div>
             <div className="PaymentGraph-graphsItem">
-              <div className="PaymentGraph-header">
-                Graph of transactions per client
+              <div>
+                <div className="PaymentGraph-header">
+                  Graph of transactions per client
+                </div>
+                <BarChart
+                  width={600}
+                  height={300}
+                  data={payments}
+                  margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                >
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="amountPaid" fill="#F1785E" />
+                  <Bar dataKey="amountPayable" fill="#795EF1" />
+                  <Bar dataKey="balance" fill="#2BC891" />
+                </BarChart>
               </div>
-              <BarChart
-                width={600}
-                height={300}
-                data={payments}
-                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-              >
-                <XAxis dataKey="name" />
-                <YAxis />
-                <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="amountPaid" fill="#F1785E" />
-                <Bar dataKey="amountPayable" fill="#795EF1" />
-                <Bar dataKey="balance" fill="#2BC891" />
-              </BarChart>
             </div>
             <div className="PaymentGraph-graphsItem">
-              <div className="PaymentGraph-header">Graph of transations</div>
-              <LineChart
-                width={600}
-                height={300}
-                data={payments}
-                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-              >
-                <XAxis dataKey="name" />
-                <YAxis />
-                <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip />
-                <Legend />
+              <div>
+                <div className="PaymentGraph-header">Graph of transations</div>
+                <LineChart
+                  width={600}
+                  height={300}
+                  data={payments}
+                  margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                >
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <Tooltip />
+                  <Legend />
 
-                <Line
-                  type="monotone"
-                  dataKey="amountPaid"
-                  stroke="#F1785E"
-                  strokeDasharray="5 5"
-                />
-                <Line
-                  type="monotone"
-                  dataKey="amountPayable"
-                  stroke="#82ca9d"
-                  strokeDasharray="3 4 5 2"
-                />
-                <Line
-                  type="monotone"
-                  dataKey="balance"
-                  stroke="#2BC891"
-                  strokeDasharray="3 4 5 2"
-                />
-              </LineChart>
+                  <Line
+                    type="monotone"
+                    dataKey="amountPaid"
+                    stroke="#F1785E"
+                    strokeDasharray="5 5"
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="amountPayable"
+                    stroke="#82ca9d"
+                    strokeDasharray="3 4 5 2"
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="balance"
+                    stroke="#2BC891"
+                    strokeDasharray="3 4 5 2"
+                  />
+                </LineChart>
+              </div>
             </div>
           </div>
         </div>
