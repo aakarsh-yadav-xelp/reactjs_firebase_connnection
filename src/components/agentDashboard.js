@@ -2,7 +2,9 @@ import React from "react";
 import _ from "lodash";
 import "./css/agentDashboard.css";
 import Button from "./button";
+import SideBar from "./sideBar";
 import classNames from "classnames";
+import Header from "./header";
 import Icon from "./Icon";
 import Input from "./input";
 import UserIcon from "./img/user.svg";
@@ -55,8 +57,9 @@ export default class AgentDashboard extends React.Component {
   }
 
   renderUniqueAgentEdit(agent) {
-    let agentId = `${this.props.match.params.agentId}/${this.props.match.params
-      .subAgentId}`;
+    let agentId = `${this.props.match.params.agentId}/${
+      this.props.match.params.subAgentId
+    }`;
     return (
       agent.idNumber === agentId && (
         <div className="UserAgent-Item" key={agent.idNumber}>
@@ -376,51 +379,27 @@ export default class AgentDashboard extends React.Component {
   }
 
   render() {
-    let { pathname } = this.props.location;
     let agents = _.find(this.props.agents, agent => {
       return (
         agent.idNumber ===
-        `${this.props.match.params.agentId}/${this.props.match.params
-          .subAgentId}`
+        `${this.props.match.params.agentId}/${
+          this.props.match.params.subAgentId
+        }`
       );
     });
-    let classForFirst = classNames("UserAgent-tabItem", {
-      "UserAgent-tabItem-active": pathname === "/agents"
-    });
-    let classForSecond = classNames("UserAgent-tabItem", {
-      "UserAgent-tabItem-active": pathname === "/payment"
-    });
-    let classForThird = classNames("UserDashboard-tabItem", {
-      "UserDashboard-tabItem-active": this.state.selectedTab === 3
-    });
+
     return (
       <div className="UserAgent">
-        <div className="UserAgent-tab">
-          <div
-            className={classForThird}
-            onClick={() => this.props.history.push("/paymentgraph")}
-          >
-            <Icon image={MoneyIcon} />Home
-          </div>
-          <div
-            className={classForFirst}
-            onClick={() => this.props.history.push("/agents")}
-          >
-            <Icon image={UserIcon} />Clients List
-          </div>
-          <div
-            className={classForSecond}
-            onClick={() => this.props.history.push("/payment")}
-          >
-            <Icon image={MoneyIcon} />Payment
-          </div>
-        </div>
+        <SideBar {...this.props} />
         <div className="UserAgent-info">
-          {agents
-            ? this.state.edit
-              ? this.renderUniqueAgentEdit(agents)
-              : this.renderUniqueAgents(agents)
-            : ""}
+          <Header {...this.props} />
+          <div className="UserAgent-Body">
+            {agents
+              ? this.state.edit
+                ? this.renderUniqueAgentEdit(agents)
+                : this.renderUniqueAgents(agents)
+              : ""}
+          </div>
         </div>
       </div>
     );

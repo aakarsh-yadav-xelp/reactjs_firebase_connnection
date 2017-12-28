@@ -1,16 +1,32 @@
+@font-face {
+  font-family: ragular;
+  src: url(../fonts/Adamina-Regular.ttf);
+}
+@font-face {
+  font-family: bolder;
+  src: url(../fonts/AlegreyaSans-Medium.ttf);
+}
+@font-face {
+  font-family: italic;
+  src: url(../fonts/AlegreyaSans-Italic.ttf);
+}
 .Header {
+  border: 0;
   width: 100%;
-  height: 60px;
-  cursor: pointer;
+  font-size: 16px;
+  border-radius: 0;
+  height: 50px;
+  background-color: hsla(0, 0%, 100%, 0.96);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 5px 15px;
+  text-align: left;
   display: flex;
-  background: #131d1d;
-  justify-content: end;
   align-items: center;
+  font-family: ragular;
 }
 .Header-text {
   padding-left: 60px;
   color: gray;
   font-size: 25px;
-
   font-family: sans-serif;
 }
