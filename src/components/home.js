@@ -19,6 +19,15 @@ export default class Home extends React.Component {
           "The most technologically efficient machine that man has ever invented
           is the book."
         </div>
+        <div className="Home-logo">
+          <img
+            src={require("./img/logo.jpg")}
+            width={100}
+            height={100}
+            alt={"home-loho"}
+            className="Home-logo-image"
+          />
+        </div>
         <div className="Home-container">
           <div className="Home-containerSignUp">
             <div className="Home-containerSignUpBody">
@@ -36,6 +45,21 @@ export default class Home extends React.Component {
             </div>
           </div>
         </div>
+        <div className="Home-image">
+          <div className="Home-imageItem">
+            <div className="Home-imageItem-image" />
+          </div>
+          <div className="Home-imageItem1">
+            <div className="Home-imageItem-image" />
+          </div>
+          <div className="Home-imageItem2">
+            <div className="Home-imageItem-image" />
+          </div>
+          <div className="Home-imageItem3">
+            <div className="Home-imageItem-image" />
+          </div>
+        </div>
+        <div className="Footer">Contact Us</div>
       </div>
     );
   }
