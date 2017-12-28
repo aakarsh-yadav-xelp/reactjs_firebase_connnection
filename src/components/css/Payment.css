@@ -2,15 +2,17 @@
   width: 100%;
   display: flex;
 }
-.Payment-List {
-  padding: 20px;
-  width: 80%;
-  margin-top: 40px;
-  margin-left: 10px;
-  margin-bottom: 20px;
-  margin-right: 20px;
-  box-shadow: 0px 0px 10px #888888;
+.Payment-graphs-Body {
+  margin-left: 20px;
+  margin-top: 20px;
   background-color: #fff;
+  padding: 10px;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+.Payment-List {
+  width: 80%;
+  padding: 0px 30px 30px 0px;
 }
 .Payment-Item {
   align-items: center;

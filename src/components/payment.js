@@ -2,7 +2,7 @@ import React from "react";
 import "./css/Payment.css";
 import _ from "lodash";
 import SideBar from "./sideBar";
-
+import Header from "./header";
 import { convertDateStringToTimeAgoFromNow } from "../dbUtils/timeUtils";
 
 export default class Payment extends React.Component {
@@ -31,20 +31,23 @@ export default class Payment extends React.Component {
       <div className="Payment">
         <SideBar {...this.props} />
         <div className="Payment-List">
-          <div className="Payment-ListHeader">
-            <div className="Payment-ItemHeaderAge">Name</div>
-            <div className="Payment-ItemHeaderIdNumber">AmountPaid</div>
-            <div className="Payment-ItemHeaderMobile">Balance</div>
-            <div className="Payment-ItemHeaderGender">TotalPaid</div>
-            <div className="Payment-ItemHeaderSelectedOption">
-              amountPayable
+          <Header {...this.props} />
+          <div className="Payment-graphs-Body">
+            <div className="Payment-ListHeader">
+              <div className="Payment-ItemHeaderAge">Name</div>
+              <div className="Payment-ItemHeaderIdNumber">AmountPaid</div>
+              <div className="Payment-ItemHeaderMobile">Balance</div>
+              <div className="Payment-ItemHeaderGender">TotalPaid</div>
+              <div className="Payment-ItemHeaderSelectedOption">
+                amountPayable
+              </div>
+              <div className="Payment-ItemHeaderOAmount">Time</div>
             </div>
-            <div className="Payment-ItemHeaderOAmount">Time</div>
+            {payments &&
+              payments.map(payment => {
+                return this.renderUniquePayments(payment);
+              })}
           </div>
-          {payments &&
-            payments.map(payment => {
-              return this.renderUniquePayments(payment);
-            })}
         </div>
       </div>
     );

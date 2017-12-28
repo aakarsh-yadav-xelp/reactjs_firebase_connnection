@@ -4,6 +4,7 @@ import "./css/agentDashboard.css";
 import Button from "./button";
 import SideBar from "./sideBar";
 import classNames from "classnames";
+import Header from "./header";
 import Icon from "./Icon";
 import Input from "./input";
 import UserIcon from "./img/user.svg";
@@ -391,11 +392,14 @@ export default class AgentDashboard extends React.Component {
       <div className="UserAgent">
         <SideBar {...this.props} />
         <div className="UserAgent-info">
-          {agents
-            ? this.state.edit
-              ? this.renderUniqueAgentEdit(agents)
-              : this.renderUniqueAgents(agents)
-            : ""}
+          <Header {...this.props} />
+          <div className="UserAgent-Body">
+            {agents
+              ? this.state.edit
+                ? this.renderUniqueAgentEdit(agents)
+                : this.renderUniqueAgents(agents)
+              : ""}
+          </div>
         </div>
       </div>
     );

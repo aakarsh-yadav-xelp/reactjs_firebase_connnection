@@ -2,6 +2,7 @@ import React from "react";
 import _ from "lodash";
 import classNames from "classnames";
 import SideBar from "./sideBar";
+import Header from "./header";
 import Icon from "./Icon";
 import UserIcon from "./img/user.svg";
 import MoneyIcon from "./img/money.svg";
@@ -52,20 +53,23 @@ export default class UserDashboard extends React.Component {
       <div className="UserDashboard">
         <SideBar {...this.props} />
         <div className="UserDashboard-List">
-          <div className="UserDashboard-ListHeader">
-            <div className="UserDashboard-ItemHeaderAge">Name</div>
-            <div className="UserDashboard-ItemHeaderIdNumber">Id Number</div>
-            <div className="UserDashboard-ItemHeaderMobile">Mobile</div>
-            <div className="UserDashboard-ItemHeaderGender">Gender</div>
-            <div className="UserDashboard-ItemHeaderOAmount">occupation</div>
-            <div className="UserDashboard-ItemHeaderSelectedOption">
-              location
+          <Header {...this.props} />
+          <div className="UserDashboard-Body">
+            <div className="UserDashboard-ListHeader">
+              <div className="UserDashboard-ItemHeaderAge">Name</div>
+              <div className="UserDashboard-ItemHeaderIdNumber">Id Number</div>
+              <div className="UserDashboard-ItemHeaderMobile">Mobile</div>
+              <div className="UserDashboard-ItemHeaderGender">Gender</div>
+              <div className="UserDashboard-ItemHeaderOAmount">occupation</div>
+              <div className="UserDashboard-ItemHeaderSelectedOption">
+                location
+              </div>
             </div>
+            {agents &&
+              agents.map((agent, index) => {
+                return this.renderUniqueAgents(agent, index);
+              })}
           </div>
-          {agents &&
-            agents.map((agent, index) => {
-              return this.renderUniqueAgents(agent, index);
-            })}
         </div>
       </div>
     );
