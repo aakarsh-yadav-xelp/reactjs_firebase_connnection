@@ -17,7 +17,10 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
+      <div
+        className="App"
+        style={{ minHeight: `${window.innerHeight - 40}px` }}
+      >
         <Route path="/login" component={LoginContainer} />
         <Route
           path="/signUp"

@@ -98,7 +98,7 @@ export default class PaymentsGraph extends React.Component {
                   Graph of transactions per client
                 </div>
                 <BarChart
-                  width={600}
+                  width={500}
                   height={300}
                   data={payments}
                   margin={{ top: 5, right: 30, left: 20, bottom: 5 }}

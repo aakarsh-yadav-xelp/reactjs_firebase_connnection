@@ -1,8 +1,7 @@
 .App {
   text-align: center;
   background-color: #ecedec;
-  height: -webkit-fill-available;
-  padding-bottom: 40px;
+  position: relative;
 }
 
 .App-logo {

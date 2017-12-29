@@ -32,6 +32,7 @@
   width: 100%;
   display: flex;
   margin-top: 20px;
+  margin-left: 10px;
   height: 120px;
   justify-content: space-between;
 }
@@ -110,10 +111,9 @@
 .PaymentGraph-graphsItem {
   background: #fff;
   height: auto;
-  padding: 10px;
   width: 72%;
   margin-top: 20px;
-  margin-left: 10px;
+  margin-left: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -126,13 +126,13 @@
   width: 100%;
   margin-top: 20px;
   margin-left: 10px;
+  padding-left: 10px;
   margin-bottom: 30px;
   display: flex;
 }
 .PaymentGraph-graphsItem-graph1 {
   background: #fff;
   width: 60%;
-  padding: 10px;
   height: 100%;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
@@ -141,7 +141,6 @@
   background: #fff;
   width: 40%;
   margin-left: 10px;
-  padding: 10px;
   height: 100%;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
