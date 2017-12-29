@@ -146,9 +146,10 @@
 .Footer {
   position: absolute;
   right: 0;
-  bottom: 0;
+  bottom: -50px;
   left: 0;
-  padding: 1rem;
+  padding-top: 10px;
+  height: 40px;
   background-color: #121511;
   color: #fff;
   text-align: center;

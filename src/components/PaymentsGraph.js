@@ -114,7 +114,10 @@ export default class PaymentsGraph extends React.Component {
                 </BarChart>
               </div>
               <div className="PaymentGraph-graphsItem-graph2">
-                Pie Graph for all clients Payable v/s Paid
+                <div className="PaymentGraph-header">
+                  Pie Graph for all clients Payable v/s Paid
+                </div>
+
                 <PieChart width={350} height={350}>
                   <Pie
                     data={nameAndPayable}
