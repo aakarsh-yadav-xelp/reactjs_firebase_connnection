@@ -19,7 +19,9 @@ class App extends Component {
     return (
       <div
         className="App"
-        style={{ minHeight: `${window.innerHeight - 40}px` }}
+        style={{
+          minHeight: `${window.innerHeight || document.body.clientHeight}px`
+        }}
       >
         <Route path="/login" component={LoginContainer} />
         <Route
