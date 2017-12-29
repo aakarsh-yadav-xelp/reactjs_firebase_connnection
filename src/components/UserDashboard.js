@@ -48,7 +48,7 @@ export default class UserDashboard extends React.Component {
       "UserDashboard-tabItem-active": pathname === "/paymentgraph"
     });
     let { agents, messages, payments } = this.props;
-
+    agents = _.orderBy(agents, agent => agent.idNumber);
     return (
       <div className="UserDashboard">
         <SideBar {...this.props} />
