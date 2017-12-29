@@ -8,8 +8,11 @@ import {
   Tooltip,
   Legend,
   LineChart,
-  Line
+  Line,
+  PieChart,
+  Pie
 } from "recharts";
+import moment from "moment";
 import Header from "./header";
 import _ from "lodash";
 import SideBar from "./sideBar";
@@ -20,13 +23,25 @@ import MoneyIcon from "./img/money.svg";
 import "./css/PaymentsGraph.css";
 export default class PaymentsGraph extends React.Component {
   render() {
+    let nameAndPayable = [],
+      nameAndPaid = [],
+      nameAndBalance = [];
     let { payments } = this.props;
     _.map(payments, payment => {
       return (
         (payment.amountPaid = parseInt(payment.amountPaid)),
         (payment.amountPayable = parseInt(payment.amountPayable)),
-        (payment.balance = parseInt(payment.balance))
+        (payment.balance = parseInt(payment.balance)),
+        (payment.name =
+          payment.name.length < 6
+            ? payment.name
+            : `${payment.name.substring(0, 3)}...`),
+        (payment.date = moment(payment.time).format("DD-MM-YYYY"))
       );
+    });
+    _.map(payments, payment => {
+      nameAndPayable.push({ name: payment.name, value: payment.amountPaid });
+      nameAndPaid.push({ name: payment.name, value: payment.amountPaid });
     });
 
     return (
@@ -55,7 +70,7 @@ export default class PaymentsGraph extends React.Component {
                 <div className="PaymentGraph-totalBal-value">
                   <div>
                     <div className="PaymentGraph-totalBal-value-label">
-                      Total Payable
+                      Total Paid
                     </div>
                     <div className="PaymentGraph-totalBal-value-labelMoney">
                       GHS {_.sumBy(payments, pay => pay.amountPaid)}
@@ -77,8 +92,8 @@ export default class PaymentsGraph extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="PaymentGraph-graphsItem">
-              <div>
+            <div className="PaymentGraph-graphsItems">
+              <div className="PaymentGraph-graphsItem-graph1">
                 <div className="PaymentGraph-header">
                   Graph of transactions per client
                 </div>
@@ -98,10 +113,99 @@ export default class PaymentsGraph extends React.Component {
                   <Bar dataKey="balance" fill="#2BC891" />
                 </BarChart>
               </div>
+              <div className="PaymentGraph-graphsItem-graph2">
+                helo
+                <PieChart width={350} height={350}>
+                  <Pie
+                    data={nameAndPayable}
+                    cx={175}
+                    cy={175}
+                    outerRadius={70}
+                    fill="#8884d8"
+                  />
+                  <Pie
+                    data={nameAndPaid}
+                    cx={175}
+                    cy={175}
+                    innerRadius={90}
+                    outerRadius={120}
+                    fill="#82ca9d"
+                    label
+                  />
+                </PieChart>
+              </div>
+            </div>
+            <div className="PaymentGraph-totalBal">
+              <div className="PaymentGraph-totalBal-item">
+                <div className="PaymentGraph-totalBal-label" />
+                <div className="PaymentGraph-totalBal-value">
+                  <div>
+                    <div className="PaymentGraph-totalBal-value-label">
+                      Total Payable(last week)
+                    </div>
+                    <div className="PaymentGraph-totalBal-value-labelMoney">
+                      GHS{" "}
+                      {_.sumBy(payments, payment => {
+                        if (
+                          payment.date >
+                          moment()
+                            .subtract(7, "d")
+                            .format("DD-MM-YYYY")
+                        )
+                          return payment.amountPayable;
+                      })}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="PaymentGraph-totalBal-item">
+                <div className="PaymentGraph-totalBal-label1" />
+                <div className="PaymentGraph-totalBal-value">
+                  <div>
+                    <div className="PaymentGraph-totalBal-value-label">
+                      Total Paid(last week)
+                    </div>
+                    <div className="PaymentGraph-totalBal-value-labelMoney">
+                      GHS{" "}
+                      {_.sumBy(payments, payment => {
+                        if (
+                          payment.date >
+                          moment()
+                            .subtract(7, "d")
+                            .format("DD-MM-YYYY")
+                        )
+                          return payment.amountPaid;
+                      })}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="PaymentGraph-totalBal-item">
+                <div className="PaymentGraph-totalBal-label2" />
+                <div className="PaymentGraph-totalBal-value">
+                  <div>
+                    <div className="PaymentGraph-totalBal-value-label">
+                      Total Balance(last week)
+                    </div>
+                    <div className="PaymentGraph-totalBal-value-labelMoney">
+                      GHS{" "}
+                      {_.sumBy(payments, payment => {
+                        if (
+                          payment.date >
+                          moment()
+                            .subtract(7, "d")
+                            .format("DD-MM-YYYY")
+                        )
+                          return payment.balance;
+                      })}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div className="PaymentGraph-graphsItem">
               <div>
-                <div className="PaymentGraph-header">Graph of transations</div>
+                <div className="PaymentGraph-header">Graph of transactions</div>
                 <LineChart
                   width={600}
                   height={300}
