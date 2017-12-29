@@ -17,14 +17,19 @@ export default class SideBar extends React.Component {
     let classForThird = classNames("SideBar-tabItem", {
       "SideBar-tabItem-active": pathname === "/paymentgraph"
     });
+    let classForFourth = classNames("SideBar-tabItem", {
+      "SideBar-tabItem-active": pathname === "/createagent"
+    });
     return [
       <div
         className="SideBar-tab"
         style={{ height: `${window.innerHeight}px` }}
       >
         <div className="SideBar-tabHeader">
-          <img src={require("./img/logo.png")} className="SideBar-ogo-Img" />Welcome
-          Buddy
+          <img
+            src={require("./img/logo.png")}
+            className="SideBar-ogo-Img"
+          />Welcome Buddy
         </div>
 
         <div
@@ -44,6 +49,12 @@ export default class SideBar extends React.Component {
           onClick={() => this.props.history.push("/payment")}
         >
           <Icon image={MoneyIcon} />Payment
+        </div>
+        <div
+          className={classForFourth}
+          onClick={() => this.props.history.push("/createagent")}
+        >
+          <Icon image={MoneyIcon} />Create Agent
         </div>
       </div>,
       <div className="SideBar-adjustwidth" />

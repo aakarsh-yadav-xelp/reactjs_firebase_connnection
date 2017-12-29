@@ -7,6 +7,7 @@ import UserDashboardContainer from "./containers/userDashboardContainer";
 import PaymentsContainer from "./containers/paymentsContainer";
 import AgentContainer from "./containers/agentContainer";
 import PaymentsGraphContainer from "./containers/paymentsGraphContainer";
+import CreateAgentContainer from "./containers/createAgentContainer";
 import "./App.css";
 
 class App extends Component {
@@ -32,6 +33,7 @@ class App extends Component {
         />
 
         <Route exact path="/" component={Home} />
+        <Route exact path="/createagent" component={CreateAgentContainer} />
         <Route exact path="/agents" component={UserDashboardContainer} />
         <Route exact path="/payment" component={PaymentsContainer} />
         <Route exact path="/paymentgraph" component={PaymentsGraphContainer} />

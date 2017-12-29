@@ -33,8 +33,7 @@ export default class Header extends React.Component {
                     <div
                       key={index}
                       onClick={() =>
-                        this.props.history.push(`/agents/${item.idNumber}`)
-                      }
+                        this.props.history.push(`/agents/${item.idNumber}`)}
                       className="Header-searchedItem"
                     >
                       {item.name}
@@ -48,7 +47,6 @@ export default class Header extends React.Component {
     );
   }
   render() {
-    console.log(this.props);
     return (
       <div className="Header">
         <div
