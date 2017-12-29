@@ -22,7 +22,10 @@ export default class SideBar extends React.Component {
         className="SideBar-tab"
         style={{ height: `${window.innerHeight}px` }}
       >
-        <div className="SideBar-tabHeader">Welcome Buddy</div>
+        <div className="SideBar-tabHeader">
+          <img src={require("./img/logo.png")} className="SideBar-ogo-Img" />Welcome
+          Buddy
+        </div>
 
         <div
           className={classForThird}

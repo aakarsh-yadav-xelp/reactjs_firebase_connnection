@@ -21,7 +21,7 @@ export default class Home extends React.Component {
         </div>
         <div className="Home-logo">
           <img
-            src={require("./img/logo.jpg")}
+            src={require("./img/logo.png")}
             width={100}
             height={100}
             alt={"home-loho"}
