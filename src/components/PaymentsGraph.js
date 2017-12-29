@@ -27,22 +27,26 @@ export default class PaymentsGraph extends React.Component {
       nameAndPaid = [],
       nameAndBalance = [];
     let { payments } = this.props;
-    _.map(payments, payment => {
-      return (
-        (payment.amountPaid = parseInt(payment.amountPaid)),
-        (payment.amountPayable = parseInt(payment.amountPayable)),
-        (payment.balance = parseInt(payment.balance)),
-        (payment.name =
-          payment.name.length < 6
-            ? payment.name
-            : `${payment.name.substring(0, 3)}...`),
-        (payment.date = moment(payment.time).format("DD-MM-YYYY"))
-      );
-    });
-    _.map(payments, payment => {
-      nameAndPayable.push({ name: payment.name, value: payment.amountPaid });
-      nameAndPaid.push({ name: payment.name, value: payment.amountPaid });
-    });
+
+    if (!_.isEmpty(payments)) {
+      _.map(payments, payment => {
+        return (
+          (payment.amountPaid = parseInt(payment.amountPaid)),
+          (payment.amountPayable = parseInt(payment.amountPayable)),
+          (payment.balance = parseInt(payment.balance)),
+          // (payment.name =
+          //   // payment.name.length < 6
+          //   //   ? payment.name
+          //   //   :
+          //   `${payment.name.substring(0, 3)}...`),
+          (payment.date = moment(payment.time).format("DD-MM-YYYY"))
+        );
+      });
+      _.map(payments, payment => {
+        nameAndPayable.push({ name: payment.name, value: payment.amountPaid });
+        nameAndPaid.push({ name: payment.name, value: payment.amountPaid });
+      });
+    }
 
     return (
       <div className="PaymentsGraph">
