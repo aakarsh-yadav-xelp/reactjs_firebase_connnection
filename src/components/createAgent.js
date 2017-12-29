@@ -9,7 +9,7 @@ export default class CreateAgent extends React.Component {
     super(props);
     this.state = {
       name: null,
-      location: null,
+      idNumber: null,
       email: null,
       mobileNUmber: null,
       password: null
@@ -40,9 +40,9 @@ export default class CreateAgent extends React.Component {
                 </div>
                 <div className="CreateAgent-formBody-input">
                   <Input
-                    placeholder="Location"
+                    placeholder="Agent Id"
                     width={250}
-                    onChange={val => this.setState({ location: val })}
+                    onChange={val => this.setState({ idNumber: val })}
                   />
                 </div>
                 <div className="CreateAgent-formBody-input">
@@ -73,14 +73,7 @@ export default class CreateAgent extends React.Component {
                   <div className="CreateAgent-formBody-buttonItem">
                     <Button
                       label="Go Back"
-                      onClick={() =>
-                        this.setState({
-                          name: null,
-                          location: null,
-                          email: null,
-                          mobileNUmber: null,
-                          password: null
-                        })}
+                      onClick={() => this.props.history.push("/paymentgraph")}
                     />
                   </div>
                 </div>
