@@ -42,7 +42,7 @@ export default class SideBar extends React.Component {
           className={classForFirst}
           onClick={() => this.props.history.push("/agents")}
         >
-          <Icon image={UserIcon} />Clients List
+          <Icon image={UserIcon} />Agents List
         </div>
         <div
           className={classForSecond}

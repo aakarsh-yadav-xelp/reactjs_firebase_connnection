@@ -29,7 +29,9 @@ export default class UserDashboard extends React.Component {
         <div className="UserDashboard-ItemIdNumber"> {agent.idNumber}</div>
         <div className="UserDashboard-ItemMobile">{agent.mobileNumber}</div>
         <div className="UserDashboard-ItemGender">{agent.email}</div>
-        <div className="UserDashboard-ItemOAmount">{agent.occupation}</div>
+        <div className="UserDashboard-ItemOAmount">
+          {agent.Clients ? agent.Clients.length : 0}
+        </div>
         <div className="UserDashboard-ItemSelectedOption">{agent.location}</div>
       </div>
     );
@@ -37,16 +39,7 @@ export default class UserDashboard extends React.Component {
 
   render() {
     let { pathname } = this.props.location;
-
-    let classForFirst = classNames("UserAgent-tabItem", {
-      "UserAgent-tabItem-active": pathname === "/agents"
-    });
-    let classForSecond = classNames("UserAgent-tabItem", {
-      "UserAgent-tabItem-active": pathname === "/payment"
-    });
-    let classForThird = classNames("UserDashboard-tabItem", {
-      "UserDashboard-tabItem-active": pathname === "/paymentgraph"
-    });
+    console.log(pathname);
     let { agents, messages, payments } = this.props;
     agents = _.orderBy(agents, agent => agent.idNumber);
     return (
@@ -60,7 +53,7 @@ export default class UserDashboard extends React.Component {
               <div className="UserDashboard-ItemHeaderIdNumber">Id Number</div>
               <div className="UserDashboard-ItemHeaderMobile">Mobile</div>
               <div className="UserDashboard-ItemHeaderGender">Mail</div>
-              <div className="UserDashboard-ItemHeaderOAmount">occupation</div>
+              <div className="UserDashboard-ItemHeaderOAmount">Clients</div>
               <div className="UserDashboard-ItemHeaderSelectedOption">
                 location
               </div>

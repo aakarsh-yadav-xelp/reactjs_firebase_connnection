@@ -103,7 +103,6 @@ export function createAgentRequest() {
   };
 }
 export function createAgentSuccess(agents) {
-  console.log(agents);
   return {
     type: CREATE_AGENTS_SUCCESS,
     status: SUCCESS,

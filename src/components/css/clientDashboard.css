@@ -1,0 +1,64 @@
+@font-face {
+  font-family: ragular;
+  src: url(../fonts/Adamina-Regular.ttf);
+}
+@font-face {
+  font-family: bolder;
+  src: url(../fonts/AlegreyaSans-Medium.ttf);
+}
+@font-face {
+  font-family: italic;
+  src: url(../fonts/AlegreyaSans-Italic.ttf);
+}
+.UserAgent {
+  width: 100%;
+  display: flex;
+}
+.UserAgent-info {
+  width: 80%;
+  padding: 0px 30px 30px 0px;
+}
+.UserAgent-Body {
+  margin-left: 20px;
+  margin-top: 20px;
+  background-color: #fff;
+
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+.UserAgent-Item {
+  width: 100%;
+}
+.UserAgent-ItemAge {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.UserAgent-ItemAgeLabel {
+  font-family: bolder;
+  font-size: 16px;
+  width: 50%;
+  text-align: -webkit-left;
+}
+.UserAgent-ItemAgeValue {
+  font-family: ragular;
+  font-size: 12px;
+  width: 50%;
+  text-align: -webkit-left;
+}
+.UserAgent-ItemHeader {
+  font-family: ragular;
+  font-size: 25px;
+  padding-bottom: 15px;
+  border-bottom: solid 1px #1c6d1c;
+  margin-bottom: 15px;
+}
+.UserAgent-button {
+  display: flex;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+}
+.UserAgent-buttonItem {
+  margin-left: 20px;
+}

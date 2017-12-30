@@ -11,6 +11,7 @@ const agents = (
   let currentAgents,
     tempAgents = [],
     indexToBeUpdate;
+
   switch (action.type) {
     case agentsActions.GET_AGENTS_REQUEST:
     case agentsActions.UPDATE_AGENTS_REQUEST:
@@ -34,6 +35,11 @@ const agents = (
     case agentsActions.CREATE_AGENTS_SUCCESS:
     case agentsActions.GET_AGENTS_SUCCESS:
       currentAgents = _.mapValues(action.agents, item => {
+        let tempClients = [];
+        if (!_.isUndefined(item.Clients)) {
+          _.mapValues(item.Clients, client => tempClients.push(client));
+          item.Clients = tempClients;
+        }
         tempAgents.push(item);
       });
       return Object.assign({}, state, {
