@@ -27,8 +27,8 @@ export default class UserDashboard extends React.Component {
       >
         <div className="UserDashboard-ItemAge">{agent.name}</div>
         <div className="UserDashboard-ItemIdNumber"> {agent.idNumber}</div>
-        <div className="UserDashboard-ItemMobile">{agent.mobile}</div>
-        <div className="UserDashboard-ItemGender">{agent.gender}</div>
+        <div className="UserDashboard-ItemMobile">{agent.mobileNumber}</div>
+        <div className="UserDashboard-ItemGender">{agent.email}</div>
         <div className="UserDashboard-ItemOAmount">{agent.occupation}</div>
         <div className="UserDashboard-ItemSelectedOption">{agent.location}</div>
       </div>
@@ -59,7 +59,7 @@ export default class UserDashboard extends React.Component {
               <div className="UserDashboard-ItemHeaderAge">Name</div>
               <div className="UserDashboard-ItemHeaderIdNumber">Id Number</div>
               <div className="UserDashboard-ItemHeaderMobile">Mobile</div>
-              <div className="UserDashboard-ItemHeaderGender">Gender</div>
+              <div className="UserDashboard-ItemHeaderGender">Mail</div>
               <div className="UserDashboard-ItemHeaderOAmount">occupation</div>
               <div className="UserDashboard-ItemHeaderSelectedOption">
                 location

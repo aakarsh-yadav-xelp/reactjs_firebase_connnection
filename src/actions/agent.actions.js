@@ -36,7 +36,7 @@ export function getAgents(userObj) {
   return async (dispatch, state) => {
     dispatch(getAgentsRequest());
     try {
-      let ref = await fire.database().ref("users");
+      let ref = await fire.database().ref("agents");
       await ref.on(
         "value",
         async function(snapshot) {
@@ -102,11 +102,12 @@ export function createAgentRequest() {
     status: REQUEST
   };
 }
-export function createAgentSuccess(agent) {
+export function createAgentSuccess(agents) {
+  console.log(agents);
   return {
     type: CREATE_AGENTS_SUCCESS,
     status: SUCCESS,
-    agent
+    agents
   };
 }
 export function createAgentFailure(error) {
