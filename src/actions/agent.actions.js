@@ -123,7 +123,7 @@ export function createAgent(agentObj) {
       let ref = await fire
         .database()
         .ref(`agents`)
-        .set(agentObj);
+        .push(agentObj);
       ref = await fire.database().ref(`agents`);
       await ref.on(
         "value",
