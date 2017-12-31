@@ -384,13 +384,16 @@ export default class ClientsDashboard extends React.Component {
       this.props.agents,
       agent => agent.idNumber === this.props.match.params.agentId
     );
-    console.log(agents);
+
     if (agents && agents.Clients) {
       client = _.find(
         agents.Clients,
         i => i.IdNumber === this.props.match.params.subAgentId
       );
-      client.Payments = Object.keys(client.Payments).length;
+
+      client.Payments = client.Payments
+        ? Object.keys(client.Payments).length
+        : 0;
     }
 
     return (

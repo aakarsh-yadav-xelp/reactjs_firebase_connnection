@@ -25,21 +25,20 @@ export default class UserDashboard extends React.Component {
         className="UserDashboard-Item"
         onClick={() => this.redirectToAgentInfo(agent.idNumber)}
       >
-        <div className="UserDashboard-ItemAge">{agent.name}</div>
+        <div className="UserDashboard-ItemSrNumber">{index + 1}</div>
+        <div className="UserDashboard-ItemName">{agent.name}</div>
         <div className="UserDashboard-ItemIdNumber"> {agent.idNumber}</div>
-        <div className="UserDashboard-ItemMobile">{agent.mobileNumber}</div>
-        <div className="UserDashboard-ItemGender">{agent.email}</div>
-        <div className="UserDashboard-ItemOAmount">
+        <div className="UserDashboard-ItemMobileNo">{agent.mobileNumber}</div>
+        <div className="UserDashboard-ItemMail">{agent.email}</div>
+        <div className="UserDashboard-ItemClients">
           {agent.Clients ? agent.Clients.length : 0}
         </div>
-        <div className="UserDashboard-ItemSelectedOption">{agent.location}</div>
       </div>
     );
   }
 
   render() {
     let { pathname } = this.props.location;
-    console.log(pathname);
     let { agents, messages, payments } = this.props;
     agents = _.orderBy(agents, agent => agent.idNumber);
     return (
@@ -49,14 +48,12 @@ export default class UserDashboard extends React.Component {
           <Header {...this.props} />
           <div className="UserDashboard-Body">
             <div className="UserDashboard-ListHeader">
-              <div className="UserDashboard-ItemHeaderAge">Name</div>
+              <div className="UserDashboard-ItemHeaderSrNumber">Sr No.</div>
+              <div className="UserDashboard-ItemHeaderName">Name</div>
               <div className="UserDashboard-ItemHeaderIdNumber">Id Number</div>
-              <div className="UserDashboard-ItemHeaderMobile">Mobile</div>
-              <div className="UserDashboard-ItemHeaderGender">Mail</div>
-              <div className="UserDashboard-ItemHeaderOAmount">Clients</div>
-              <div className="UserDashboard-ItemHeaderSelectedOption">
-                location
-              </div>
+              <div className="UserDashboard-ItemHeaderMobileNo">Mobile</div>
+              <div className="UserDashboard-ItemHeaderMail">Mail</div>
+              <div className="UserDashboard-ItemHeaderClients">Clients</div>
             </div>
             {agents &&
               agents.map((agent, index) => {

@@ -1,8 +1,8 @@
-.Payment {
+.ClientPaymentDashboard {
   width: 100%;
   display: flex;
 }
-.Payment-graphs-Body {
+.ClientPaymentDashboard-graphs-Body {
   margin-left: 20px;
   margin-top: 20px;
   background-color: #fff;
@@ -10,11 +10,19 @@
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
-.Payment-List {
+.ClientPaymentDashboard-clientInfo {
+  margin-left: 20px;
+  margin-top: 20px;
+  background-color: #fff;
+  padding: 10px;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+.ClientPaymentDashboard-List {
   width: 80%;
   padding: 0px 30px 30px 0px;
 }
-.Payment-Item {
+.ClientPaymentDashboard-Item {
   width: 100%;
   display: -ms-flexbox;
   display: flex;
@@ -27,10 +35,10 @@
   cursor: pointer;
   transition: 200ms;
 }
-.Payment-Item:hover {
+.ClientPaymentDashboard-Item:hover {
   background-color: rgb(206, 204, 204);
 }
-.Payment-ListHeader {
+.ClientPaymentDashboard-ListHeader {
   width: 100%;
   display: -ms-flexbox;
   display: flex;
@@ -41,52 +49,48 @@
   font-size: 15px;
   font-weight: 600;
 }
-.Payment-ItemName {
+.ClientPaymentDashboard-ItemName {
   width: 20%;
   text-align: initial;
   margin-left: 10px;
 }
-.Payment-ItemClientId {
+.ClientPaymentDashboard-ItemClientId {
   width: 20%;
   text-align: initial;
 }
-.Payment-ItemAgentId {
+.ClientPaymentDashboard-ItemAgentId {
   width: 15%;
   text-align: initial;
 }
-.Payment-ItemAmountPayable {
+.ClientPaymentDashboard-ItemAmountPayable {
   width: 15%;
   text-align: initial;
 }
-.Payment-ItemAmountPaid {
+.ClientPaymentDashboard-ItemAmountPaid {
   width: 15%;
   text-align: initial;
 }
-.Payment-ItemBalance {
+.ClientPaymentDashboard-ItemBalance {
   width: 15%;
   text-align: initial;
 }
-.Payment-ItemHeaderName {
+.ClientPaymentDashboard-ItemHeaderSrNumber {
   width: 20%;
   text-align: initial;
 }
-.Payment-ItemHeaderClientId {
+.ClientPaymentDashboard-ItemHeaderLastAmountPaid {
   width: 20%;
   text-align: initial;
 }
-.Payment-ItemHeaderAgentId {
+.ClientPaymentDashboard-ItemHeaderAmountPayable {
   width: 15%;
   text-align: initial;
 }
-.Payment-ItemHeaderAmountPayable {
+.ClientPaymentDashboard-ItemHeaderAmountPaid {
   width: 15%;
   text-align: initial;
 }
-.Payment-ItemHeaderAmountPaid {
-  width: 15%;
-  text-align: initial;
-}
-.Payment-ItemHeaderBalance {
+.ClientPaymentDashboard-ItemHeaderBalance {
   width: 15%;
   text-align: initial;
 }

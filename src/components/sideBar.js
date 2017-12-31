@@ -20,6 +20,10 @@ export default class SideBar extends React.Component {
     let classForFourth = classNames("SideBar-tabItem", {
       "SideBar-tabItem-active": pathname === "/createagent"
     });
+    let classForFifth = classNames("SideBar-tabItem", {
+      "SideBar-tabItem-active": pathname === "/allClients"
+    });
+
     return [
       <div
         className="SideBar-tab"
@@ -43,6 +47,12 @@ export default class SideBar extends React.Component {
           onClick={() => this.props.history.push("/agents")}
         >
           <Icon image={UserIcon} />Agents List
+        </div>
+        <div
+          className={classForFifth}
+          onClick={() => this.props.history.push("/allClients")}
+        >
+          <Icon image={UserIcon} />Clients List
         </div>
         <div
           className={classForSecond}

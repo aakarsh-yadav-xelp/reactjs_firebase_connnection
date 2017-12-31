@@ -4,16 +4,15 @@ import SideBar from "./sideBar";
 import Header from "./header";
 import "./css/agentDashboard.css";
 export default class AgentDashboard extends React.Component {
-  redirectToAgentInfo(id) {
-    this.props.history.push(`/agents/${this.props.match.params.agentId}/${id}`);
+  redirectToAgentInfo(agentId, id) {
+    this.props.history.push(`/agents/${agentId}/${id}`);
   }
   renderUniqueClients(agent, index) {
-    console.log(agent);
     return (
       <div
         key={index}
         className="AgentDashboard-Item"
-        onClick={() => this.redirectToAgentInfo(agent.IdNumber)}
+        onClick={() => this.redirectToAgentInfo(agent.agentId, agent.IdNumber)}
       >
         <div className="AgentDashboard-ItemAge">{agent.Name}</div>
         <div className="AgentDashboard-ItemIdNumber"> {agent.IdNumber}</div>
@@ -27,10 +26,23 @@ export default class AgentDashboard extends React.Component {
     );
   }
   render() {
-    let clients = _.find(
-      this.props.agents,
-      agent => agent.idNumber === this.props.match.params.agentId
-    );
+    console.log(this.props);
+    let clients,
+      clientsArr = [];
+    if (this.props.match.params.agentId) {
+      clients = _.find(
+        this.props.agents,
+        agent => agent.idNumber === this.props.match.params.agentId
+      );
+    } else {
+      _.map(this.props.agents, agent => {
+        if (agent.Clients) {
+          _.map(agent.Clients, client => {
+            clientsArr.push(client);
+          });
+        }
+      });
+    }
 
     return (
       <div className="AgentDashboard">
@@ -48,9 +60,15 @@ export default class AgentDashboard extends React.Component {
                 location
               </div>
             </div>
-            {clients &&
+            {this.props.match.params.agentId &&
+              clients &&
               clients.Clients &&
               clients.Clients.map((client, index) => {
+                return this.renderUniqueClients(client, index);
+              })}
+            {!this.props.match.params.agentId &&
+              clientsArr &&
+              clientsArr.map((client, index) => {
                 return this.renderUniqueClients(client, index);
               })}
           </div>
