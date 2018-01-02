@@ -20,9 +20,9 @@ export default class ClientsDashboard extends React.Component {
       age: null
     };
   }
-  onSave(agentId) {
+  onSave(agentId, IdNumber) {
     if (this.props.onEdit) {
-      this.props.onEdit(agentId, this.state);
+      this.props.onEdit(agentId, Object.assign({}, this.state, { IdNumber }));
       this.setState({ edit: false });
     }
   }
@@ -60,7 +60,7 @@ export default class ClientsDashboard extends React.Component {
     let agentId = `${this.props.match.params.agentId}/${this.props.match.params
       .subAgentId}`;
     return (
-      agent.idNumber === agentId && (
+      agent.IdNumber === this.props.match.params.subAgentId && (
         <div className="UserAgent-Item" key={agent.idNumber}>
           <div className="UserAgent-ItemHeader">Client Info</div>
 
@@ -368,7 +368,7 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-buttonItem">
               <Button
                 label="Save"
-                onClick={() => this.onSave(agent.idNumber)}
+                onClick={() => this.onSave(agent.AgentId, agent.IdNumber)}
               />
             </div>
           </div>
@@ -378,23 +378,18 @@ export default class ClientsDashboard extends React.Component {
   }
 
   render() {
-    console.log(this.props);
-    let client;
-    let agents = _.find(
-      this.props.agents,
-      agent => agent.idNumber === this.props.match.params.agentId
-    );
+    let client = {};
 
-    if (agents && agents.Clients) {
-      client = _.find(
-        agents.Clients,
-        i => i.IdNumber === this.props.match.params.subAgentId
-      );
-
-      client.Payments = client.Payments
-        ? Object.keys(client.Payments).length
-        : 0;
-    }
+    _.map(this.props.agents, agents => {
+      _.map(agents.Clients, i => {
+        if (i.IdNumber === this.props.match.params.subAgentId) {
+          i.AgentId = agents.idNumber;
+          client = i;
+        }
+      });
+    });
+    client.Payments =
+      client && client.Payments ? Object.keys(client.Payments).length : 0;
 
     return (
       <div className="UserAgent">

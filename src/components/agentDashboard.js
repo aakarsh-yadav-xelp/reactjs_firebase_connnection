@@ -5,7 +5,7 @@ import Header from "./header";
 import "./css/agentDashboard.css";
 export default class AgentDashboard extends React.Component {
   redirectToAgentInfo(agentId, id) {
-    this.props.history.push(`/agents/${agentId}/${id}`);
+    this.props.history.push(`/agents/client/${id}`);
   }
   renderUniqueClients(agent, index) {
     return (

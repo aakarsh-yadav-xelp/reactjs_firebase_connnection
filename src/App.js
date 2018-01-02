@@ -49,7 +49,7 @@ class App extends Component {
         <Route exact path="/agents/:agentId" component={AgentContainer} />
         <Route
           exact
-          path="/agents/:agentId/:subAgentId"
+          path="/agents/client/:subAgentId"
           component={ClientContainer}
         />
       </div>
