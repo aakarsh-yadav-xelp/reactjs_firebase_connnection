@@ -26,13 +26,12 @@ export default class PaymentsGraph extends React.Component {
     let nameAndPayable = [],
       nameAndPaid = [],
       nameAndBalance = [];
-    // let { payments } = this.props;
+
     let payments = [];
     _.map(this.props.agents, agents => {
       if (agents.Clients) {
         _.map(agents.Clients, client => {
           _.map(client.Payments && client.Payments, pay => {
-            console.log(pay);
             payments.push(pay);
           });
         });
@@ -61,7 +60,6 @@ export default class PaymentsGraph extends React.Component {
     return (
       <div className="PaymentsGraph">
         <SideBar {...this.props} />
-
         <div className="PaymentGraph-graphs">
           <Header {...this.props} />
           <div className="PaymentGraph-graphs-Body">

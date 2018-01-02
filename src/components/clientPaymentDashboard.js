@@ -67,7 +67,7 @@ export default class ClientPaymentDashboard extends React.Component {
                 Total Paid
               </div>
               <div className="ClientPaymentDashboard-ItemHeaderBalance">
-                Balance
+                Time
               </div>
             </div>
             {payments &&
