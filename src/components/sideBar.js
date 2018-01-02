@@ -3,7 +3,9 @@ import "./css/sideBar.css";
 import classNames from "classnames";
 import Icon from "./Icon";
 import UserIcon from "./img/user.svg";
-import MoneyIcon from "./img/money.svg";
+import MoneyIcon from "./img/mon.svg";
+import CalanderIcon from "./img/icon.svg";
+import HomeIcon from "./img/home.svg";
 export default class SideBar extends React.Component {
   render() {
     let { pathname } = this.props.location;
@@ -40,7 +42,7 @@ export default class SideBar extends React.Component {
           className={classForThird}
           onClick={() => this.props.history.push("/paymentgraph")}
         >
-          <Icon image={MoneyIcon} />Home
+          <Icon image={HomeIcon} />Home
         </div>
         <div
           className={classForFirst}

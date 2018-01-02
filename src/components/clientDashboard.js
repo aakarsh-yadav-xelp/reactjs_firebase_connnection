@@ -30,17 +30,54 @@ export default class ClientsDashboard extends React.Component {
     this.props.history.push("/agents");
   }
   renderUniqueAgents(agent) {
+    console.log(agent);
     return (
       <div className="UserAgent-Item" key={agent.idNumber}>
         <div className="UserAgent-ItemHeader">Client Info</div>
-        {_.toPairs(agent).map((item, index) => {
-          return (
-            <div className="UserAgent-ItemAge" key={index}>
-              <div className="UserAgent-ItemAgeLabel">{item[0]}</div>
-              <div className="UserAgent-ItemAgeValue">{item[1]}</div>
-            </div>
-          );
-        })}
+        <div className="UserAgent-ItemAge">
+          <div className="UserAgent-ItemAgeLabel">Name</div>
+          <div className="UserAgent-ItemAgeValue">{agent.Name}</div>
+        </div>
+        <div className="UserAgent-ItemAge">
+          <div className="UserAgent-ItemAgeLabel">Id Number</div>
+          <div className="UserAgent-ItemAgeValue">{agent.IdNumber}</div>
+        </div>
+        <div className="UserAgent-ItemAge">
+          <div className="UserAgent-ItemAgeLabel">Date Of Brth</div>
+          <div className="UserAgent-ItemAgeValue">{agent["Date Of Birth"]}</div>
+        </div>
+        <div className="UserAgent-ItemAge">
+          <div className="UserAgent-ItemAgeLabel">Age</div>
+          <div className="UserAgent-ItemAgeValue">{agent.Age}</div>
+        </div>
+        <div className="UserAgent-ItemAge">
+          <div className="UserAgent-ItemAgeLabel">Mobile</div>
+          <div className="UserAgent-ItemAgeValue">{agent.Mobile}</div>
+        </div>
+        <div className="UserAgent-ItemAge">
+          <div className="UserAgent-ItemAgeLabel">Occupation</div>
+          <div className="UserAgent-ItemAgeValue">{agent.Occupation}</div>
+        </div>
+        <div className="UserAgent-ItemAge">
+          <div className="UserAgent-ItemAgeLabel">Disability</div>
+          <div className="UserAgent-ItemAgeValue">{agent.Disability}</div>
+        </div>
+        <div className="UserAgent-ItemAge">
+          <div className="UserAgent-ItemAgeLabel">Total Payable</div>
+          <div className="UserAgent-ItemAgeValue">{agent.AmountPayable}</div>
+        </div>
+        <div className="UserAgent-ItemAge">
+          <div className="UserAgent-ItemAgeLabel">Tax Year</div>
+          <div className="UserAgent-ItemAgeValue">{agent.TaxYear}</div>
+        </div>{" "}
+        <div className="UserAgent-ItemAge">
+          <div className="UserAgent-ItemAgeLabel">Total Payable</div>
+          <div className="UserAgent-ItemAgeValue">{agent.AmountPayable}</div>
+        </div>{" "}
+        <div className="UserAgent-ItemAge">
+          <div className="UserAgent-ItemAgeLabel">Total Payable</div>
+          <div className="UserAgent-ItemAgeValue">{agent.AmountPayable}</div>
+        </div>
         <div className="UserAgent-button">
           <div className="UserAgent-buttonItem">
             <Button label="Go Back" onClick={() => this.redirectToBack()} />

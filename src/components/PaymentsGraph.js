@@ -32,7 +32,7 @@ export default class PaymentsGraph extends React.Component {
       if (agents.Clients) {
         _.map(agents.Clients, client => {
           _.map(client.Payments && client.Payments, pay => {
-            payments.push(pay);
+            payments.push({ ...pay, name: client.Name });
           });
         });
       }
@@ -43,11 +43,10 @@ export default class PaymentsGraph extends React.Component {
           (payment.amountPaid = parseInt(payment.lastAmountPaid)),
           (payment.amountPayable = parseInt(payment.totalPaid)),
           (payment.balance = parseInt(payment.balance)),
-          // (payment.name =
-          //   // payment.name.length < 6
-          //   //   ? payment.name
-          //   //   :
-          //   `${payment.name.substring(0, 3)}...`),
+          (payment.name =
+            payment.name.length < 6
+              ? payment.name
+              : `${payment.name.substring(0, 3)}...`),
           (payment.date = moment(payment.paymentTime).format("DD-MM-YYYY"))
         );
       });
