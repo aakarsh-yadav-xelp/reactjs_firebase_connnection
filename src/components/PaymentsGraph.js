@@ -27,41 +27,34 @@ export default class PaymentsGraph extends React.Component {
       nameAndPaid = [],
       nameAndBalance = [];
     // let { payments } = this.props;
-    // console.log(this.props.agents);
     let payments = [];
     _.map(this.props.agents, agents => {
       if (agents.Clients) {
         _.map(agents.Clients, client => {
           _.map(client.Payments && client.Payments, pay => {
             console.log(pay);
-            payments.push({
-              totalPaid: parseInt(pay.totalPaid),
-              balance: parseInt(pay.balance),
-              lastAmountPaid: parseInt(pay.lastAmountPaid),
-              time: pay.paymentTime
-            });
+            payments.push(pay);
           });
         });
       }
     });
-    console.log(payments);
     if (!_.isEmpty(payments)) {
       _.map(payments, payment => {
         return (
-          (payment.amountPaid = parseInt(payment.balance)),
-          (payment.amountPayable = parseInt(payment.lastAmountPaid)),
-          (payment.balance = parseInt(payment.totalPaid)),
+          (payment.amountPaid = parseInt(payment.lastAmountPaid)),
+          (payment.amountPayable = parseInt(payment.totalPaid)),
+          (payment.balance = parseInt(payment.balance)),
           // (payment.name =
           //   // payment.name.length < 6
           //   //   ? payment.name
           //   //   :
           //   `${payment.name.substring(0, 3)}...`),
-          (payment.date = moment(payment.time).format("DD-MM-YYYY"))
+          (payment.date = moment(payment.paymentTime).format("DD-MM-YYYY"))
         );
       });
       _.map(payments, payment => {
-        nameAndPayable.push({ name: payment.name, value: payment.balance });
-        nameAndPaid.push({ name: payment.name, value: payment.lastAmountPaid });
+        nameAndPayable.push({ name: payment.name, value: payment.amountPaid });
+        nameAndPaid.push({ name: payment.name, value: payment.amountPaid });
       });
     }
 
@@ -81,7 +74,7 @@ export default class PaymentsGraph extends React.Component {
                       Total Payable
                     </div>
                     <div className="PaymentGraph-totalBal-value-labelMoney">
-                      GHS {_.sumBy(payments, pay => pay.totalPaid)}
+                      GHS {_.sumBy(payments, pay => pay.amountPayable)}
                     </div>
                   </div>
                 </div>
@@ -94,7 +87,7 @@ export default class PaymentsGraph extends React.Component {
                       Total Paid
                     </div>
                     <div className="PaymentGraph-totalBal-value-labelMoney">
-                      GHS {_.sumBy(payments, pay => pay.lastAmountPaid)}
+                      GHS {_.sumBy(payments, pay => pay.amountPaid)}
                     </div>
                   </div>
                 </div>
@@ -129,8 +122,8 @@ export default class PaymentsGraph extends React.Component {
                   <CartesianGrid strokeDasharray="3 3" />
                   <Tooltip />
                   <Legend />
-                  <Bar dataKey="lastAmountPaid" fill="#F1785E" />
-                  <Bar dataKey="totalPaid" fill="#795EF1" />
+                  <Bar dataKey="amountPaid" fill="#F1785E" />
+                  <Bar dataKey="amountPayable" fill="#795EF1" />
                   <Bar dataKey="balance" fill="#2BC891" />
                 </BarChart>
               </div>
@@ -176,7 +169,7 @@ export default class PaymentsGraph extends React.Component {
                             .subtract(7, "d")
                             .format("DD-MM-YYYY")
                         )
-                          return payment.totalPaid;
+                          return payment.amountPayable;
                       })}
                     </div>
                   </div>
@@ -198,7 +191,7 @@ export default class PaymentsGraph extends React.Component {
                             .subtract(7, "d")
                             .format("DD-MM-YYYY")
                         )
-                          return payment.lastAmountPaid;
+                          return payment.amountPaid;
                       })}
                     </div>
                   </div>
@@ -244,19 +237,19 @@ export default class PaymentsGraph extends React.Component {
 
                   <Line
                     type="monotone"
-                    dataKey="balance"
+                    dataKey="amountPaid"
                     stroke="#F1785E"
                     strokeDasharray="5 5"
                   />
                   <Line
                     type="monotone"
-                    dataKey="totalPaid"
+                    dataKey="amountPayable"
                     stroke="#82ca9d"
                     strokeDasharray="3 4 5 2"
                   />
                   <Line
                     type="monotone"
-                    dataKey="lastAmountPaid"
+                    dataKey="balance"
                     stroke="#2BC891"
                     strokeDasharray="3 4 5 2"
                   />
