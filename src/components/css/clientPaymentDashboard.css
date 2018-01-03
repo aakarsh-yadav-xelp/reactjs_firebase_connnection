@@ -1,3 +1,15 @@
+@font-face {
+  font-family: ragular;
+  src: url(../fonts/Adamina-Regular.ttf);
+}
+@font-face {
+  font-family: bolder;
+  src: url(../fonts/AlegreyaSans-Medium.ttf);
+}
+@font-face {
+  font-family: italic;
+  src: url(../fonts/AlegreyaSans-Italic.ttf);
+}
 .ClientPaymentDashboard {
   width: 100%;
   display: flex;
@@ -11,12 +23,10 @@
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 .ClientPaymentDashboard-clientInfo {
+  width: 100%;
   margin-left: 20px;
   margin-top: 20px;
-  background-color: #fff;
-  padding: 10px;
-  background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  text-align: -webkit-center;
 }
 .ClientPaymentDashboard-List {
   width: 80%;
@@ -93,4 +103,24 @@
 .ClientPaymentDashboard-ItemHeaderBalance {
   width: 15%;
   text-align: initial;
+}
+.ClientPaymentDashboard-clientInfoHolder {
+  background-color: #fff;
+  width: 150px;
+  height: 150px;
+  border-radius: 100px;
+  padding: 10px;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+.ClientPaymentDashboard-clientInfo-icon {
+  background-image: url("../img/userInfo.svg");
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 100px;
+  background-size: 100%;
+  margin-bottom: 10px;
+}
+.ClientPaymentDashboard-clientInfo-Info {
+  font-family: regular;
 }

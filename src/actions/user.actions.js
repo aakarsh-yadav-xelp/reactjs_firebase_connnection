@@ -6,43 +6,39 @@ export const USER_LOGIN_FAILURE = "user_login_failure";
 
 export function userLoginRequest() {
   return {
+    type: USER_LOGIN_REQUEST,
     status: REQUEST
   };
 }
 export function userLoginSuccess(user) {
   return {
+    type: USER_LOGIN_SUCCESS,
     status: SUCCESS,
     user
   };
 }
 export function userLoginFailure(error) {
   return {
+    type: USER_LOGIN_FAILURE,
     status: FAILURE,
     error
   };
 }
 export function userLogin(userObj) {
-  return async dispatch => {
+  console.log(userObj);
+  return async (dispatch, state) => {
     dispatch(userLoginRequest());
     try {
       let user = await fire
         .auth()
-        .createUserWithEmailAndPassword(userObj.email, userObj.password);
-      let firebaseUserPath = "/user/" + user.uid;
-      await fire
-        .database()
-        .ref(firebaseUserPath)
-        .update({
-          FirstName: userObj.firstName,
-          LastName: userObj.lastName,
-          Email: userObj.email,
-          PhoneNumber: userObj.phoneNumber,
-          UID: user.uid
-        });
+        .signInWithEmailAndPassword(userObj.email, userObj.password);
+      console.log(user);
+      let userRef = "/admin/" + user.uid;
       const userSnapshot = await fire
         .database()
-        .ref(firebaseUserPath)
+        .ref(userRef)
         .once("value");
+
       dispatch(userLoginSuccess(userSnapshot.val()));
     } catch (e) {
       dispatch(userLoginFailure("Error in logging in user"));

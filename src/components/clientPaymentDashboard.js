@@ -49,8 +49,13 @@ export default class ClientPaymentDashboard extends React.Component {
         <div className="ClientPaymentDashboard-List">
           <Header {...this.props} />
           <div className="ClientPaymentDashboard-clientInfo">
-            {clientInfo && clientInfo.Name}
-            {clientInfo && clientInfo.AgentId}
+            <div className="ClientPaymentDashboard-clientInfoHolder">
+              <div className="ClientPaymentDashboard-clientInfo-icon" />
+              <div className="ClientPaymentDashboard-clientInfo-Info">
+                {clientInfo && clientInfo.Name}
+                {clientInfo && clientInfo.AgentId}
+              </div>
+            </div>
           </div>
           <div className="ClientPaymentDashboard-graphs-Body">
             <div className="ClientPaymentDashboard-ListHeader">

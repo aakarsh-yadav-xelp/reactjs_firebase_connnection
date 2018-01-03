@@ -22,10 +22,14 @@ import UserIcon from "./img/user.svg";
 import MoneyIcon from "./img/money.svg";
 import "./css/PaymentsGraph.css";
 export default class PaymentsGraph extends React.Component {
+  filter(payments) {
+    return payments.slice(0, 5);
+  }
   render() {
     let nameAndPayable = [],
       nameAndPaid = [],
-      nameAndBalance = [];
+      nameAndBalance = [],
+      graphPayments;
 
     let payments = [];
     _.map(this.props.agents, agents => {
@@ -38,6 +42,7 @@ export default class PaymentsGraph extends React.Component {
       }
     });
     if (!_.isEmpty(payments)) {
+      graphPayments = this.filter(payments);
       _.map(payments, payment => {
         return (
           (payment.amountPaid = parseInt(payment.lastAmountPaid)),
@@ -50,7 +55,7 @@ export default class PaymentsGraph extends React.Component {
           (payment.date = moment(payment.paymentTime).format("DD-MM-YYYY"))
         );
       });
-      _.map(payments, payment => {
+      _.map(graphPayments, payment => {
         nameAndPayable.push({ name: payment.name, value: payment.amountPaid });
         nameAndPaid.push({ name: payment.name, value: payment.amountPaid });
       });
@@ -111,7 +116,7 @@ export default class PaymentsGraph extends React.Component {
                 <BarChart
                   width={500}
                   height={300}
-                  data={payments}
+                  data={graphPayments}
                   margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
                 >
                   <XAxis dataKey="name" />
@@ -223,7 +228,7 @@ export default class PaymentsGraph extends React.Component {
                 <LineChart
                   width={600}
                   height={300}
-                  data={payments}
+                  data={graphPayments}
                   margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
                 >
                   <XAxis dataKey="name" />

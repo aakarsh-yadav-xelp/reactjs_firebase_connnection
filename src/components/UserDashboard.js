@@ -8,35 +8,14 @@ import UserIcon from "./img/user.svg";
 import MoneyIcon from "./img/money.svg";
 import { convertDateStringToTimeAgoFromNow } from "../dbUtils/timeUtils";
 import "./css/userDashboard.css";
+import AgentsItem from "./agentsItem";
 export default class UserDashboard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedTab: 1
-    };
-  }
   redirectToAgentInfo(id) {
     this.props.history.push(`/agents/${id}`);
   }
-  renderUniqueAgents(agent, index) {
-    return (
-      <div
-        key={index}
-        className="UserDashboard-Item"
-        onClick={() => this.redirectToAgentInfo(agent.idNumber)}
-      >
-        <div className="UserDashboard-ItemSrNumber">{index + 1}</div>
-        <div className="UserDashboard-ItemName">{agent.name}</div>
-        <div className="UserDashboard-ItemIdNumber"> {agent.idNumber}</div>
-        <div className="UserDashboard-ItemMobileNo">{agent.mobileNumber}</div>
-        <div className="UserDashboard-ItemMail">{agent.email}</div>
-        <div className="UserDashboard-ItemClients">
-          {agent.Clients ? agent.Clients.length : 0}
-        </div>
-      </div>
-    );
+  onDelete(id) {
+    console.log("delete");
   }
-
   render() {
     let { pathname } = this.props.location;
     let { agents, messages, payments } = this.props;
@@ -57,7 +36,15 @@ export default class UserDashboard extends React.Component {
             </div>
             {agents &&
               agents.map((agent, index) => {
-                return this.renderUniqueAgents(agent, index);
+                return (
+                  <AgentsItem
+                    agent={agent}
+                    key={index}
+                    index={index}
+                    onDelete={val => this.onDelete(val)}
+                    redirectToAgentInfo={val => this.redirectToAgentInfo(val)}
+                  />
+                );
               })}
           </div>
         </div>

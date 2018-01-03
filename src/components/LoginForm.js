@@ -29,6 +29,7 @@ export default class LoginForm extends React.Component {
           <div className="LoginForm-containerItem">
             <Input
               placeholder="Email"
+              value={this.state.email}
               width={250}
               height={45}
               onChange={email => this.setState({ email })}
@@ -37,6 +38,7 @@ export default class LoginForm extends React.Component {
           <div className="LoginForm-containerItem">
             <Input
               placeholder="password"
+              value={this.state.password}
               width={250}
               height={45}
               onChange={password => this.setState({ password })}
