@@ -14,6 +14,7 @@ const user = (
         status: action.status
       });
     case userActions.USER_LOGIN_SUCCESS:
+    case userActions.USER_VERIFY_SUCCESS:
       return Object.assign({}, state, {
         isLoggedIn: true,
         user: action.user,
@@ -21,7 +22,10 @@ const user = (
       });
 
     case userActions.USER_LOGIN_FAILURE:
+    case userActions.USER_VERIFY_FAILURE:
+    case userActions.USER_LOGOUT_SUCCESS:
       return Object.assign({}, state, {
+        isLoggedIn: false,
         status: action.status,
         error: action.error
       });

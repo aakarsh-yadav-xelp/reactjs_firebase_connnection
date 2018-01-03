@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import Header from "./components/header";
 import Home from "./components/home";
+import IsLoggedIn from "./components/IsLoggedIn";
 import LoginContainer from "./containers/loginContainer";
 import UserDashboardContainer from "./containers/userDashboardContainer";
 import PaymentsContainer from "./containers/paymentsContainer";
@@ -52,6 +53,7 @@ class App extends Component {
           path="/agents/client/:subAgentId"
           component={ClientContainer}
         />
+        <IsLoggedIn />
       </div>
     );
   }
