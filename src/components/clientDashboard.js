@@ -78,6 +78,10 @@ export default class ClientsDashboard extends React.Component {
           <div className="UserAgent-ItemAgeLabel">Total Payable</div>
           <div className="UserAgent-ItemAgeValue">{agent.AmountPayable}</div>
         </div>
+        <div className="UserAgent-ItemAge">
+          <div className="UserAgent-ItemAgeLabel">Total </div>
+          <div className="UserAgent-ItemAgeValue">{agent.AmountPayable}</div>
+        </div>
         <div className="UserAgent-button">
           <div className="UserAgent-buttonItem">
             <Button label="Go Back" onClick={() => this.redirectToBack()} />
