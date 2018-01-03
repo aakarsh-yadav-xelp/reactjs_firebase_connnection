@@ -1,64 +1,174 @@
-@font-face {
-  font-family: ragular;
-  src: url(../fonts/Adamina-Regular.ttf);
-}
-@font-face {
-  font-family: bolder;
-  src: url(../fonts/AlegreyaSans-Medium.ttf);
-}
-@font-face {
-  font-family: italic;
-  src: url(../fonts/AlegreyaSans-Italic.ttf);
-}
-.UserAgent {
+.AgentDashboard {
   width: 100%;
   display: flex;
 }
-.UserAgent-info {
+.AgentDashboard-info {
   width: 80%;
   padding: 0px 30px 30px 0px;
 }
-.UserAgent-Body {
+.AgentDashboard-Body {
   margin-left: 20px;
   margin-top: 20px;
   background-color: #fff;
-
+  padding: 10px;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
-.UserAgent-Item {
+.AgentDashboard-Item {
+  align-items: center;
+  display: flex;
+  width: 98%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  border-bottom: solid 1px rgb(206, 204, 204);
+  border-radius: 3px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 200ms;
+}
+.AgentDashboard-Item:hover {
+  background-color: rgb(206, 204, 204);
+}
+.AgentDashboard-ListHeader {
   width: 100%;
-}
-.UserAgent-ItemAge {
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  padding: 10px;
-}
-.UserAgent-ItemAgeLabel {
+  padding-left: 20px;
+  margin-top: 30px;
+  margin-bottom: 10px;
   font-family: bolder;
-  font-size: 16px;
-  width: 50%;
-  text-align: -webkit-left;
+  font-size: 15px;
+  font-weight: 600;
 }
-.UserAgent-ItemAgeValue {
-  font-family: ragular;
+.AgentDashboard-ItemAge {
+  width: 20%;
+  text-align: initial;
   font-size: 12px;
-  width: 50%;
-  text-align: -webkit-left;
 }
-.UserAgent-ItemHeader {
-  font-family: ragular;
-  font-size: 25px;
-  padding-bottom: 15px;
-  border-bottom: solid 1px #1c6d1c;
-  margin-bottom: 15px;
+.AgentDashboard-ItemIdNumber {
+  width: 25%;
+  text-align: initial;
+  font-size: 12px;
 }
-.UserAgent-button {
-  display: flex;
-  height: 60px;
-  justify-content: center;
-  align-items: center;
+.AgentDashboard-ItemMobile {
+  width: 15%;
+  text-align: initial;
+  font-size: 12px;
 }
-.UserAgent-buttonItem {
-  margin-left: 20px;
+.AgentDashboard-ItemGender {
+  width: 15%;
+  text-align: initial;
+}
+.AgentDashboard-ItemOAmount {
+  width: 10%;
+  text-align: initial;
+  font-size: 12px;
+}
+.AgentDashboard-ItemSelectedOption {
+  width: 15%;
+  text-align: initial;
+  font-size: 12px;
+}
+.AgentDashboard-ItemHeaderAge {
+  width: 20%;
+  text-align: initial;
+  position: relative;
+  color: #da3131;
+  font-weight: 600;
+}
+.AgentDashboard-ItemHeaderAge::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  height: 1em;
+  width: 36px;
+  border-bottom: 1px solid #da3131;
+  margin-top: 5px;
+}
+.AgentDashboard-ItemHeaderIdNumber {
+  width: 24%;
+  position: relative;
+  text-align: initial;
+  color: #08a1ff;
+  font-weight: 600;
+}
+.AgentDashboard-ItemHeaderIdNumber::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  height: 1em;
+  width: 63px;
+  border-bottom: 1px solid #08a1ff;
+  margin-top: 5px;
+}
+.AgentDashboard-ItemHeaderMobile {
+  width: 15%;
+  position: relative;
+  text-align: initial;
+  color: #237c23;
+  font-weight: 600;
+}
+.AgentDashboard-ItemHeaderMobile::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  height: 1em;
+  width: 40px;
+  border-bottom: 1px solid #237c23;
+  margin-top: 5px;
+}
+.AgentDashboard-ItemHeaderGender {
+  width: 15%;
+  position: relative;
+  text-align: initial;
+  color: #ff7261;
+  font-weight: 600;
+}
+.AgentDashboard-ItemHeaderGender::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  height: 1em;
+  width: 42px;
+  border-bottom: 1px solid #ff7261;
+  margin-top: 5px;
+}
+.AgentDashboard-ItemHeaderOAmount {
+  width: 10%;
+  position: relative;
+  text-align: initial;
+  color: #1e358c;
+  font-weight: 600;
+}
+.AgentDashboard-ItemHeaderOAmount::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  height: 1em;
+  width: 64px;
+  border-bottom: 1px solid #1e358c;
+  margin-top: 5px;
+}
+.AgentDashboard-ItemHeaderSelectedOption {
+  width: 15%;
+  position: relative;
+  text-align: initial;
+  color: #1895c8;
+  font-weight: 600;
+}
+.AgentDashboard-ItemHeaderSelectedOption::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  height: 1em;
+  width: 48px;
+  border-bottom: 1px solid #1895c8;
+  margin-top: 5px;
 }

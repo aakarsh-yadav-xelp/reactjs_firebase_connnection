@@ -22,27 +22,40 @@ import UserIcon from "./img/user.svg";
 import MoneyIcon from "./img/money.svg";
 import "./css/PaymentsGraph.css";
 export default class PaymentsGraph extends React.Component {
+  filter(payments) {
+    return payments.slice(0, 5);
+  }
   render() {
     let nameAndPayable = [],
       nameAndPaid = [],
-      nameAndBalance = [];
-    let { payments } = this.props;
+      nameAndBalance = [],
+      graphPayments;
 
+    let payments = [];
+    _.map(this.props.agents, agents => {
+      if (agents.Clients) {
+        _.map(agents.Clients, client => {
+          _.map(client.Payments && client.Payments, pay => {
+            payments.push({ ...pay, name: client.Name });
+          });
+        });
+      }
+    });
     if (!_.isEmpty(payments)) {
+      graphPayments = this.filter(payments);
       _.map(payments, payment => {
         return (
-          (payment.amountPaid = parseInt(payment.amountPaid)),
-          (payment.amountPayable = parseInt(payment.amountPayable)),
+          (payment.amountPaid = parseInt(payment.lastAmountPaid)),
+          (payment.amountPayable = parseInt(payment.totalPaid)),
           (payment.balance = parseInt(payment.balance)),
-          // (payment.name =
-          //   // payment.name.length < 6
-          //   //   ? payment.name
-          //   //   :
-          //   `${payment.name.substring(0, 3)}...`),
-          (payment.date = moment(payment.time).format("DD-MM-YYYY"))
+          (payment.name =
+            payment.name.length < 6
+              ? payment.name
+              : `${payment.name.substring(0, 3)}...`),
+          (payment.date = moment(payment.paymentTime).format("DD-MM-YYYY"))
         );
       });
-      _.map(payments, payment => {
+      _.map(graphPayments, payment => {
         nameAndPayable.push({ name: payment.name, value: payment.amountPaid });
         nameAndPaid.push({ name: payment.name, value: payment.amountPaid });
       });
@@ -51,7 +64,6 @@ export default class PaymentsGraph extends React.Component {
     return (
       <div className="PaymentsGraph">
         <SideBar {...this.props} />
-
         <div className="PaymentGraph-graphs">
           <Header {...this.props} />
           <div className="PaymentGraph-graphs-Body">
@@ -104,7 +116,7 @@ export default class PaymentsGraph extends React.Component {
                 <BarChart
                   width={500}
                   height={300}
-                  data={payments}
+                  data={graphPayments}
                   margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
                 >
                   <XAxis dataKey="name" />
@@ -216,7 +228,7 @@ export default class PaymentsGraph extends React.Component {
                 <LineChart
                   width={600}
                   height={300}
-                  data={payments}
+                  data={graphPayments}
                   margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
                 >
                   <XAxis dataKey="name" />

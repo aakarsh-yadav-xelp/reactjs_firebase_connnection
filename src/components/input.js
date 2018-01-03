@@ -27,7 +27,7 @@ export default class Input extends React.Component {
           color: this.props.color,
           fontSize: `${this.props.fontSize}px`
         }}
-        value={this.state.value}
+        value={this.props.value ? this.props.value : ""}
         onChange={val => this.onChange(val.target.value)}
       />
     );

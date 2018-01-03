@@ -101,8 +101,8 @@
   -ms-flex-pack: center;
   justify-content: center;
   -ms-flex-align: center;
-  background-image: url("../img/balance.svg");
-  background-size: 60px;
+  background-image: url("../img/currency.png");
+  background-size: 30px;
   background-repeat: no-repeat;
   opacity: 0.6;
   align-items: center;

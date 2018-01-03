@@ -11,23 +11,15 @@ const agents = (
   let currentAgents,
     tempAgents = [],
     indexToBeUpdate;
+
   switch (action.type) {
     case agentsActions.GET_AGENTS_REQUEST:
     case agentsActions.UPDATE_AGENTS_REQUEST:
+    case agentsActions.CREATE_AGENTS_REQUEST:
       return Object.assign({}, state, {
         status: action.status
       });
-    case agentsActions.GET_AGENTS_SUCCESS:
-      currentAgents = _.mapValues(action.agents, item => {
-        _.mapValues(item, i => {
-          tempAgents.push(i);
-          return i;
-        });
-      });
-      return Object.assign({}, state, {
-        agents: tempAgents,
-        status: action.status
-      });
+
     case agentsActions.UPDATE_AGENTS_SUCCESS:
       currentAgents = _.cloneDeep(state.agents);
       indexToBeUpdate = _.findIndex(
@@ -40,8 +32,23 @@ const agents = (
         agents: currentAgents,
         status: action.status
       });
+    case agentsActions.CREATE_AGENTS_SUCCESS:
+    case agentsActions.GET_AGENTS_SUCCESS:
+      currentAgents = _.mapValues(action.agents, item => {
+        let tempClients = [];
+        if (!_.isUndefined(item.Clients)) {
+          _.mapValues(item.Clients, client => tempClients.push(client));
+          item.Clients = tempClients;
+        }
+        tempAgents.push(item);
+      });
+      return Object.assign({}, state, {
+        agents: tempAgents,
+        status: action.status
+      });
     case agentsActions.GET_AGENTS_FAILURE:
     case agentsActions.UPDATE_AGENTS_FAILURE:
+    case agentsActions.CREATE_AGENTS_FAILURE:
       return Object.assign({}, state, {
         status: action.status,
         error: action.error

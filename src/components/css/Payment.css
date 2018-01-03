@@ -15,12 +15,12 @@
   padding: 0px 30px 30px 0px;
 }
 .Payment-Item {
-  align-items: center;
+  width: 100%;
+  display: -ms-flexbox;
   display: flex;
-  width: 98%;
   padding-top: 20px;
+  margin-bottom: 10px;
   padding-bottom: 20px;
-  padding-left: 20px;
   border-bottom: solid 1px rgb(206, 204, 204);
   border-radius: 3px;
   font-size: 13px;
@@ -41,130 +41,52 @@
   font-size: 15px;
   font-weight: 600;
 }
-.Payment-ItemAge {
+.Payment-ItemName {
+  width: 20%;
+  text-align: initial;
+  margin-left: 10px;
+}
+.Payment-ItemClientId {
   width: 20%;
   text-align: initial;
 }
-.Payment-ItemIdNumber {
-  width: 25%;
-  text-align: initial;
-}
-.Payment-ItemMobile {
+.Payment-ItemAgentId {
   width: 15%;
   text-align: initial;
 }
-.Payment-ItemGender {
+.Payment-ItemAmountPayable {
   width: 15%;
   text-align: initial;
 }
-.Payment-ItemOAmount {
-  width: 10%;
-  text-align: initial;
-}
-.Payment-ItemSelectedOption {
+.Payment-ItemAmountPaid {
   width: 15%;
   text-align: initial;
 }
-
-.Payment-ItemHeaderAge {
+.Payment-ItemBalance {
+  width: 15%;
+  text-align: initial;
+}
+.Payment-ItemHeaderName {
   width: 20%;
   text-align: initial;
-  position: relative;
-  color: #da3131;
-  font-weight: 600;
 }
-.Payment-ItemHeaderAge::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  display: inline-block;
-  height: 1em;
-  width: 36px;
-  border-bottom: 1px solid #da3131;
-  margin-top: 5px;
-}
-.Payment-ItemHeaderIdNumber {
-  width: 24%;
-  position: relative;
+.Payment-ItemHeaderClientId {
+  width: 20%;
   text-align: initial;
-  color: #08a1ff;
-  font-weight: 600;
 }
-.Payment-ItemHeaderIdNumber::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  display: inline-block;
-  height: 1em;
-  width: 63px;
-  border-bottom: 1px solid #08a1ff;
-  margin-top: 5px;
-}
-.Payment-ItemHeaderMobile {
+.Payment-ItemHeaderAgentId {
   width: 15%;
-  position: relative;
   text-align: initial;
-  color: #237c23;
-  font-weight: 600;
 }
-.Payment-ItemHeaderMobile::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  display: inline-block;
-  height: 1em;
-  width: 40px;
-  border-bottom: 1px solid #237c23;
-  margin-top: 5px;
-}
-.Payment-ItemHeaderGender {
+.Payment-ItemHeaderAmountPayable {
   width: 15%;
-  position: relative;
   text-align: initial;
-  color: #ff7261;
-  font-weight: 600;
 }
-.Payment-ItemHeaderGender::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  display: inline-block;
-  height: 1em;
-  width: 42px;
-  border-bottom: 1px solid #ff7261;
-  margin-top: 5px;
-}
-.Payment-ItemHeaderOAmount {
-  width: 10%;
-  position: relative;
-  text-align: initial;
-  color: #1e358c;
-  font-weight: 600;
-}
-.Payment-ItemHeaderOAmount::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  display: inline-block;
-  height: 1em;
-  width: 64px;
-  border-bottom: 1px solid #1e358c;
-  margin-top: 5px;
-}
-.Payment-ItemHeaderSelectedOption {
+.Payment-ItemHeaderAmountPaid {
   width: 15%;
-  position: relative;
   text-align: initial;
-  color: #1895c8;
-  font-weight: 600;
 }
-.Payment-ItemHeaderSelectedOption::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  display: inline-block;
-  height: 1em;
-  width: 48px;
-  border-bottom: 1px solid #1895c8;
-  margin-top: 5px;
+.Payment-ItemHeaderBalance {
+  width: 15%;
+  text-align: initial;
 }

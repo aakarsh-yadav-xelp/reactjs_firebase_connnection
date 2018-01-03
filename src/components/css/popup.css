@@ -1,0 +1,30 @@
+@font-face {
+  font-family: ragular;
+  src: url(../fonts/Adamina-Regular.ttf);
+}
+@font-face {
+  font-family: bolder;
+  src: url(../fonts/AlegreyaSans-Medium.ttf);
+}
+@font-face {
+  font-family: italic;
+  src: url(../fonts/AlegreyaSans-Italic.ttf);
+}
+.Popup {
+  font-family: ragular;
+  position: fixed;
+  left: 45%;
+  top: 60px;
+  width: 200px;
+  height: auto;
+  padding: 10px;
+  border-radius: 3px;
+}
+.Popup-danger {
+  color: #fff;
+  background-color: rgba(212, 62, 62, 0.7);
+}
+.Popup-success {
+  color: #fff;
+  background-color: rgba(39, 175, 26, 0.7);
+}

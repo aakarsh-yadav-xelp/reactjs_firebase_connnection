@@ -36,7 +36,7 @@ export function getAgents(userObj) {
   return async (dispatch, state) => {
     dispatch(getAgentsRequest());
     try {
-      let ref = await fire.database().ref("users");
+      let ref = await fire.database().ref("agents");
       await ref.on(
         "value",
         async function(snapshot) {
@@ -73,20 +73,28 @@ export function updateAgentFailure(error) {
   };
 }
 export function updateAgent(agentId, userObj) {
+  console.log(agentId, userObj);
   return async (dispatch, state) => {
     dispatch(updateAgentRequest());
     try {
       let ref = await fire
         .database()
-        .ref(`users/${agentId}`)
-        .update(userObj);
-      ref = await fire.database().ref(`users/${agentId}`);
+        .ref.child(`agents`)
+        .where("agents.idNumber", "==", agentId)
+        .on("value", data => {
+          console.log(data.val());
+        });
+      // .child("Clients")
+      // .where("Clients.IdNumber", "==", userObj.IdNumber)
+      // .update(userObj);
+      ref = await fire.database().ref(`agents`);
       await ref.on(
         "value",
         async function(snapshot) {
           dispatch(updateAgentSuccess(snapshot.val()));
         },
         function(errorObject) {
+          console.log(errorObject);
           throw new Error("Error");
         }
       );
@@ -102,11 +110,11 @@ export function createAgentRequest() {
     status: REQUEST
   };
 }
-export function createAgentSuccess(agent) {
+export function createAgentSuccess(agents) {
   return {
     type: CREATE_AGENTS_SUCCESS,
     status: SUCCESS,
-    agent
+    agents
   };
 }
 export function createAgentFailure(error) {

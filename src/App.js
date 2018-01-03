@@ -6,6 +6,9 @@ import LoginContainer from "./containers/loginContainer";
 import UserDashboardContainer from "./containers/userDashboardContainer";
 import PaymentsContainer from "./containers/paymentsContainer";
 import AgentContainer from "./containers/agentContainer";
+import ClientContainer from "./containers/clientContainer";
+import ClientPaymentContainer from "./containers/clientPaymentContainer";
+import AllClientsContainer from "./containers/allClientsContainer";
 import PaymentsGraphContainer from "./containers/paymentsGraphContainer";
 import CreateAgentContainer from "./containers/createAgentContainer";
 import "./App.css";
@@ -35,9 +38,20 @@ class App extends Component {
         <Route exact path="/" component={Home} />
         <Route exact path="/createagent" component={CreateAgentContainer} />
         <Route exact path="/agents" component={UserDashboardContainer} />
+        <Route exact path="/allClients" component={AllClientsContainer} />
         <Route exact path="/payment" component={PaymentsContainer} />
+        <Route
+          exact
+          path="/payment/:clientId"
+          component={ClientPaymentContainer}
+        />
         <Route exact path="/paymentgraph" component={PaymentsGraphContainer} />
-        <Route path="/agents/:agentId/:subAgentId" component={AgentContainer} />
+        <Route exact path="/agents/:agentId" component={AgentContainer} />
+        <Route
+          exact
+          path="/agents/client/:subAgentId"
+          component={ClientContainer}
+        />
       </div>
     );
   }

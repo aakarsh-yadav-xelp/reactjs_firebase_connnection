@@ -1,0 +1,126 @@
+@font-face {
+  font-family: ragular;
+  src: url(../fonts/Adamina-Regular.ttf);
+}
+@font-face {
+  font-family: bolder;
+  src: url(../fonts/AlegreyaSans-Medium.ttf);
+}
+@font-face {
+  font-family: italic;
+  src: url(../fonts/AlegreyaSans-Italic.ttf);
+}
+.ClientPaymentDashboard {
+  width: 100%;
+  display: flex;
+}
+.ClientPaymentDashboard-graphs-Body {
+  margin-left: 20px;
+  margin-top: 20px;
+  background-color: #fff;
+  padding: 10px;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+.ClientPaymentDashboard-clientInfo {
+  width: 100%;
+  margin-left: 20px;
+  margin-top: 20px;
+  text-align: -webkit-center;
+}
+.ClientPaymentDashboard-List {
+  width: 80%;
+  padding: 0px 30px 30px 0px;
+}
+.ClientPaymentDashboard-Item {
+  width: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 20px;
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  border-bottom: solid 1px rgb(206, 204, 204);
+  border-radius: 3px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 200ms;
+}
+.ClientPaymentDashboard-Item:hover {
+  background-color: rgb(206, 204, 204);
+}
+.ClientPaymentDashboard-ListHeader {
+  width: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 20px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-family: bolder;
+  font-size: 15px;
+  font-weight: 600;
+}
+.ClientPaymentDashboard-ItemName {
+  width: 20%;
+  text-align: initial;
+  margin-left: 10px;
+}
+.ClientPaymentDashboard-ItemClientId {
+  width: 20%;
+  text-align: initial;
+}
+.ClientPaymentDashboard-ItemAgentId {
+  width: 15%;
+  text-align: initial;
+}
+.ClientPaymentDashboard-ItemAmountPayable {
+  width: 15%;
+  text-align: initial;
+}
+.ClientPaymentDashboard-ItemAmountPaid {
+  width: 15%;
+  text-align: initial;
+}
+.ClientPaymentDashboard-ItemBalance {
+  width: 15%;
+  text-align: initial;
+}
+.ClientPaymentDashboard-ItemHeaderSrNumber {
+  width: 20%;
+  text-align: initial;
+}
+.ClientPaymentDashboard-ItemHeaderLastAmountPaid {
+  width: 20%;
+  text-align: initial;
+}
+.ClientPaymentDashboard-ItemHeaderAmountPayable {
+  width: 15%;
+  text-align: initial;
+}
+.ClientPaymentDashboard-ItemHeaderAmountPaid {
+  width: 15%;
+  text-align: initial;
+}
+.ClientPaymentDashboard-ItemHeaderBalance {
+  width: 15%;
+  text-align: initial;
+}
+.ClientPaymentDashboard-clientInfoHolder {
+  background-color: #fff;
+  width: 150px;
+  height: 150px;
+  border-radius: 100px;
+  padding: 10px;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+.ClientPaymentDashboard-clientInfo-icon {
+  background-image: url("../img/userInfo.svg");
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 100px;
+  background-size: 100%;
+  margin-bottom: 10px;
+}
+.ClientPaymentDashboard-clientInfo-Info {
+  font-family: regular;
+}

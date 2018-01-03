@@ -1,11 +1,11 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import CreateAgent from "../components/createAgent";
-import { createAgent } from "../actions/agent.actions";
+import ClientPaymentDashboard from "../components/clientPaymentDashboard";
+import { updateAgent } from "../actions/agent.actions";
 const mapDispatchToProps = dispatch => {
   return {
-    createAgent: agent => {
-      dispatch(createAgent(agent));
+    onEdit: (agentId, agent) => {
+      dispatch(updateAgent(agentId, agent));
     }
   };
 };
@@ -16,6 +16,6 @@ const mapStateToProps = state => {
 };
 
 const agentContainer = withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(CreateAgent)
+  connect(mapStateToProps, mapDispatchToProps)(ClientPaymentDashboard)
 );
 export default agentContainer;
