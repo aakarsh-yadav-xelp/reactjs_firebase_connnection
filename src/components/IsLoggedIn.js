@@ -26,7 +26,7 @@ export class IsLoggedIn extends React.Component {
   }
   render() {
     return this.props.isLoggedIn ? (
-      <Redirect to="/agents" />
+      <Redirect to="/paymentgraph" />
     ) : (
       <Redirect to="/login" />
     );
