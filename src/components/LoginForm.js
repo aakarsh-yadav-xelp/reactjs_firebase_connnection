@@ -37,6 +37,7 @@ export default class LoginForm extends React.Component {
           </div>
           <div className="LoginForm-containerItem">
             <Input
+              type="password"
               placeholder="password"
               value={this.state.password}
               width={250}
