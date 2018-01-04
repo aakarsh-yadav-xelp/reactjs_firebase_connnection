@@ -62,3 +62,24 @@
 .UserAgent-buttonItem {
   margin-left: 20px;
 }
+.Modal {
+  width: 100%;
+  text-align: center;
+}
+.Modal-heading {
+  font-size: 17px;
+}
+.Modal-input {
+  margin: 10px 0px;
+}
+.Modal-buttonWraper {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Modal-button {
+  margin: 10px 5px;
+  justify-content: space-between;
+}

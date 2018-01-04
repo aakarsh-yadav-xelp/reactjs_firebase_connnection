@@ -46,14 +46,6 @@ export default class LoginForm extends React.Component {
             />
           </div>
           <Button label="Login" onClick={() => this.loginUser()} />
-          <div className="LoginForm-signUp">
-            <div className="LoginForm-signUpHeader">
-              already have an account
-            </div>
-            <div className="">
-              <Button label="SignUp" onClick={() => this.redirectToSignUp()} />
-            </div>
-          </div>
         </div>
       </div>
     );

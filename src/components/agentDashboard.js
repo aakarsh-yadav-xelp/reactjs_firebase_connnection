@@ -26,7 +26,6 @@ export default class AgentDashboard extends React.Component {
     );
   }
   render() {
-    console.log(this.props);
     let clients,
       clientsArr = [];
     if (this.props.match.params.agentId) {

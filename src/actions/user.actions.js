@@ -6,8 +6,11 @@ export const USER_VERIFY_FAILURE = "USER_VERIFY_FAILURE";
 export const USER_LOGIN_REQUEST = "user_login_request";
 export const USER_LOGIN_SUCCESS = "user_login_success";
 export const USER_LOGIN_FAILURE = "user_login_failure";
+export const PASSWORD_VERIFY_REQUEST = "PASSWORD_VERIFY_request";
+export const PASSWORD_VERIFY_SUCCESS = "PASSWORD_VERIFY_success";
+export const PASSWORD_VERIFY_FAILURE = "PASSWORD_VERIFY_failure";
 export const USER_LOGOUT_SUCCESS = "USER_LOGOUT_SUCCESS";
-
+export const ON_EDIT_CLOSE = "ON_EDIT_CLOSE";
 export function verifyUser() {
   let token = localStorage.getItem("asdaJwtToken");
   if (token) {
@@ -19,6 +22,11 @@ export function verifyUser() {
       type: USER_VERIFY_FAILURE
     };
   }
+}
+export function onCloseEdit() {
+  return {
+    type: ON_EDIT_CLOSE
+  };
 }
 export function logOutUser() {
   localStorage.setItem("asdaJwtToken", null);
@@ -68,6 +76,43 @@ export function userLogin(userObj) {
       }
     } catch (e) {
       dispatch(userLoginFailure("Error in logging in user"));
+    }
+  };
+}
+export function verifyPasswordRequest() {
+  return {
+    type: PASSWORD_VERIFY_REQUEST,
+    status: REQUEST
+  };
+}
+export function verifyPasswordSuccess() {
+  return {
+    type: PASSWORD_VERIFY_SUCCESS,
+    status: SUCCESS
+  };
+}
+export function verifyPasswordFailure(error) {
+  return {
+    type: PASSWORD_VERIFY_FAILURE,
+    status: FAILURE,
+    error
+  };
+}
+export function verifyPassword(password) {
+  return async (dispatch, state) => {
+    dispatch(verifyPasswordRequest());
+    try {
+      const userSnapshot = await fire
+        .database()
+        .ref("admin")
+        .once("value");
+      if (password == userSnapshot.val().password) {
+        dispatch(verifyPasswordSuccess(password));
+      } else {
+        throw new Error("error in login");
+      }
+    } catch (e) {
+      dispatch(verifyPasswordFailure("Error in logging in user"));
     }
   };
 }

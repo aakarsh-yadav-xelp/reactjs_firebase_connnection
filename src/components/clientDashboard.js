@@ -1,5 +1,6 @@
 import React from "react";
 import _ from "lodash";
+import Modal from "react-modal";
 import "./css/clientDashboard.css";
 import Button from "./button";
 import SideBar from "./sideBar";
@@ -29,8 +30,15 @@ export default class ClientsDashboard extends React.Component {
   redirectToBack() {
     this.props.history.push("/agents");
   }
+  renderModal() {
+    return (
+      <Modal isOpen={this.state.edit} closeTimeoutMS={3} contentLabel="Modal">
+        <h1>Modal Content</h1>
+        <p>Etc.</p>
+      </Modal>
+    );
+  }
   renderUniqueAgents(agent) {
-    console.log(agent);
     return (
       <div className="UserAgent-Item" key={agent.idNumber}>
         <div className="UserAgent-ItemHeader">Client Info</div>
@@ -156,9 +164,9 @@ export default class ClientsDashboard extends React.Component {
   }
 
   renderUniqueAgentEdit(agent) {
-    let agentId = `${this.props.match.params.agentId}/${
-      this.props.match.params.subAgentId
-    }`;
+    console.log(agent);
+    let agentId = `${this.props.match.params.agentId}/${this.props.match.params
+      .subAgentId}`;
     return (
       agent.IdNumber === this.props.match.params.subAgentId && (
         <div className="UserAgent-Item" key={agent.idNumber}>
@@ -168,7 +176,7 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeLabel">Name</div>
             <div className="UserAgent-ItemAgeValue">
               <Input
-                value={this.state.name ? this.state.name : agent.name}
+                value={this.state.name ? this.state.name : agent.Name}
                 onChange={val => this.setState({ name: val })}
               />
             </div>
@@ -179,8 +187,12 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeValue">
               <Input
                 type="date"
-                value={this.state.dob ? this.state.dob : agent.dob}
-                onChange={val => this.setState({ dob: val })}
+                value={
+                  this.state["Date Of Birth"]
+                    ? this.state["Date Of Birth"]
+                    : agent["Date Of Birth"]
+                }
+                onChange={val => this.setState({ "Date Of Birth": val })}
               />
             </div>
           </div>
@@ -190,8 +202,8 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeValue">
               <Input
                 type="number"
-                value={this.state.age ? this.state.age : agent.age}
-                onChange={val => this.setState({ age: val })}
+                value={this.state.Age ? this.state.Age : agent.Age}
+                onChange={val => this.setState({ Age: val })}
               />
             </div>
           </div>
@@ -200,8 +212,8 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeLabel">Gender</div>
             <div className="UserAgent-ItemAgeValue">
               <Input
-                value={this.state.gender ? this.state.gender : agent.gender}
-                onChange={val => this.setState({ gender: val })}
+                value={this.state.Gender ? this.state.Gender : agent.Gender}
+                onChange={val => this.setState({ Gender: val })}
               />
             </div>
           </div>
@@ -211,9 +223,9 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeValue">
               <Input
                 value={
-                  this.state.location ? this.state.location : agent.location
+                  this.state.Location ? this.state.Location : agent.Location
                 }
-                onChange={val => this.setState({ location: val })}
+                onChange={val => this.setState({ Location: val })}
               />
             </div>
           </div>
@@ -223,8 +235,8 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeValue">
               <Input
                 type="number"
-                value={this.state.mobile ? this.state.mobile : agent.mobile}
-                onChange={val => this.setState({ mobile: val })}
+                value={this.state.Mobile ? this.state.Mobile : agent.Mobile}
+                onChange={val => this.setState({ Mobile: val })}
               />
             </div>
           </div>
@@ -234,11 +246,11 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeValue">
               <Input
                 value={
-                  this.state.occupation
-                    ? this.state.occupation
-                    : agent.occupation
+                  this.state.Occupation
+                    ? this.state.Occupation
+                    : agent.Occupation
                 }
-                onChange={val => this.setState({ occupation: val })}
+                onChange={val => this.setState({ Occupation: val })}
               />
             </div>
           </div>
@@ -248,11 +260,11 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeValue">
               <Input
                 value={
-                  this.state.disability
-                    ? this.state.disability
-                    : agent.disability
+                  this.state.Disability
+                    ? this.state.Disability
+                    : agent.Disability
                 }
-                onChange={val => this.setState({ disability: val })}
+                onChange={val => this.setState({ Disability: val })}
               />
             </div>
           </div>
@@ -263,11 +275,11 @@ export default class ClientsDashboard extends React.Component {
               <Input
                 type="number"
                 value={
-                  this.state.amountPayable
-                    ? this.state.amountPayable
-                    : agent.amountPayable
+                  this.state.AmountPayable
+                    ? this.state.AmountPayable
+                    : agent.AmountPayable
                 }
-                onChange={val => this.setState({ amountPayable: val })}
+                onChange={val => this.setState({ AmountPayable: val })}
               />
             </div>
           </div>
@@ -277,8 +289,8 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeValue">
               <Input
                 type="number"
-                value={this.state.taxYear ? this.state.taxYear : agent.taxYear}
-                onChange={val => this.setState({ taxYear: val })}
+                value={this.state.TaxYear ? this.state.TaxYear : agent.TaxYear}
+                onChange={val => this.setState({ TaxYear: val })}
               />
             </div>
           </div>
@@ -288,9 +300,11 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeValue">
               <Input
                 value={
-                  this.state.pLocation ? this.state.pLocation : agent.pLocation
+                  this.state.PropertyAddress
+                    ? this.state.PropertyAddress
+                    : agent.PropertyAddress
                 }
-                onChange={val => this.setState({ pLocation: val })}
+                onChange={val => this.setState({ PropertyAddress: val })}
               />
             </div>
           </div>
@@ -300,8 +314,12 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeValue">
               <Input
                 type="number"
-                value={this.state.pAmount ? this.state.pAmount : agent.pAmount}
-                onChange={val => this.setState({ pAmount: val })}
+                value={
+                  this.state.PropertyAmount
+                    ? this.state.PropertyAmount
+                    : agent.PropertyAmount
+                }
+                onChange={val => this.setState({ PropertyAmount: val })}
               />
             </div>
           </div>
@@ -311,8 +329,12 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeValue">
               <Input
                 type="number"
-                value={this.state.pNumber ? this.state.pNumber : agent.pNumber}
-                onChange={val => this.setState({ pNumber: val })}
+                value={
+                  this.state.PropertyNumber
+                    ? this.state.PropertyNumber
+                    : agent.PropertyNumber
+                }
+                onChange={val => this.setState({ PropertyNumber: val })}
               />
             </div>
           </div>
@@ -322,8 +344,12 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeValue">
               <Input
                 type="number"
-                value={this.state.cAmount ? this.state.cAmount : agent.cAmount}
-                onChange={val => this.setState({ cAmount: val })}
+                value={
+                  this.state.CouncilAmount
+                    ? this.state.CouncilAmount
+                    : agent.CouncilAmount
+                }
+                onChange={val => this.setState({ CouncilAmount: val })}
               />
             </div>
           </div>
@@ -333,9 +359,11 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeValue">
               <Input
                 value={
-                  this.state.cLocation ? this.state.cLocation : agent.cLocation
+                  this.state.CouncilLocation
+                    ? this.state.CouncilLocation
+                    : agent.CouncilLocation
                 }
-                onChange={val => this.setState({ cLocation: val })}
+                onChange={val => this.setState({ CouncilLocation: val })}
               />
             </div>
           </div>
@@ -344,8 +372,12 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeLabel">Council Type</div>
             <div className="UserAgent-ItemAgeValue">
               <Input
-                value={this.state.cType ? this.state.cType : agent.cType}
-                onChange={val => this.setState({ cType: val })}
+                value={
+                  this.state.CouncilType
+                    ? this.state.CouncilType
+                    : agent.CouncilType
+                }
+                onChange={val => this.setState({ CouncilType: val })}
               />
             </div>
           </div>
@@ -355,8 +387,12 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeValue">
               <Input
                 type="number"
-                value={this.state.oAmount ? this.state.oAmount : agent.oAmount}
-                onChange={val => this.setState({ oAmount: val })}
+                value={
+                  this.state.OtherAmount
+                    ? this.state.OtherAmount
+                    : agent.OtherAmount
+                }
+                onChange={val => this.setState({ OtherAmount: val })}
               />
             </div>
           </div>
@@ -366,9 +402,11 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeValue">
               <Input
                 value={
-                  this.state.oPurpose ? this.state.oPurpose : agent.oPurpose
+                  this.state.OtherPurpose
+                    ? this.state.OtherPurpose
+                    : agent.OtherPurpose
                 }
-                onChange={val => this.setState({ oPurpose: val })}
+                onChange={val => this.setState({ OtherPurpose: val })}
               />
             </div>
           </div>
@@ -377,18 +415,17 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeLabel">Other Type</div>
             <div className="UserAgent-ItemAgeValue">
               <Input
-                value={this.state.oType ? this.state.oType : agent.oType}
-                onChange={val => this.setState({ oType: val })}
+                value={
+                  this.state.OtherType ? this.state.OtherType : agent.OtherType
+                }
+                onChange={val => this.setState({ OtherType: val })}
               />
             </div>
           </div>
 
           <div className="UserAgent-button">
             <div className="UserAgent-buttonItem">
-              <Button
-                label="Cancel"
-                onClick={() => this.setState({ edit: false })}
-              />
+              <Button label="Cancel" onClick={() => this.props.onCloseEdit()} />
             </div>
             <div className="UserAgent-buttonItem">
               <Button
@@ -401,10 +438,12 @@ export default class ClientsDashboard extends React.Component {
       )
     );
   }
-
+  onEditRequest() {
+    this.setState({ edit: false });
+    this.props.onVerifyPassword(this.state.password);
+  }
   render() {
     let client = {};
-
     _.map(this.props.agents, agents => {
       _.map(agents.Clients, i => {
         if (i.IdNumber === this.props.match.params.subAgentId) {
@@ -423,11 +462,65 @@ export default class ClientsDashboard extends React.Component {
           <Header {...this.props} />
           <div className="UserAgent-Body">
             {client
-              ? this.state.edit
+              ? this.props.user && this.props.user.isPassWordVerify
                 ? this.renderUniqueAgentEdit(client)
                 : this.renderUniqueAgents(client)
               : ""}
           </div>
+          <Modal
+            isOpen={this.state.edit}
+            style={{
+              overlay: {
+                position: "fixed",
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                backgroundColor: "rgba(0, 0, 0, 0.75)"
+              },
+              content: {
+                position: "absolute",
+                top: "25%",
+                left: "30%",
+                right: "30%",
+                bottom: "25%",
+                border: "1px solid #ccc",
+                background: "#fff",
+                overflow: "auto",
+                WebkitOverflowScrolling: "touch",
+                borderRadius: "4px",
+                outline: "none",
+                display: "flex",
+                alignItems: "center",
+                padding: "20px"
+              }
+            }}
+            closeTimeoutMS={3}
+            contentLabel="Modal"
+          >
+            <div className="Modal">
+              <p className="Modal-heading">Please Enter Password Again</p>
+              <div className="Modal-input">
+                <Input
+                  type="password"
+                  value={this.state.password ? this.state.password : ""}
+                  onChange={password => this.setState({ password })}
+                />
+              </div>
+              <div className="Modal-buttonWraper">
+                <div className="Modal-button">
+                  <Button label="Submit" onClick={() => this.onEditRequest()} />
+                </div>
+                <div className="Modal-button">
+                  <Button
+                    label="Cancel"
+                    backgroundColor="#f44336"
+                    onClick={() => this.setState({ edit: false })}
+                  />
+                </div>
+              </div>
+            </div>
+          </Modal>
         </div>
       </div>
     );
