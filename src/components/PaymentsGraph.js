@@ -29,14 +29,24 @@ export default class PaymentsGraph extends React.Component {
     let nameAndPayable = [],
       nameAndPaid = [],
       nameAndBalance = [],
-      graphPayments;
+      graphPayments,
+      allPayment = [];
 
     let payments = [];
     _.map(this.props.agents, agents => {
       if (agents.Clients) {
         _.map(agents.Clients, client => {
+          allPayment.push({
+            name: client.Name,
+            AmountPayable: client.AmountPayable,
+            amountPaid: client.Payments
+          });
           _.map(client.Payments && client.Payments, pay => {
-            payments.push({ ...pay, name: client.Name });
+            payments.push({
+              ...pay,
+              name: client.Name,
+              AmountPayable: client.AmountPayable
+            });
           });
         });
       }
@@ -46,13 +56,16 @@ export default class PaymentsGraph extends React.Component {
       _.map(payments, payment => {
         return (
           (payment.amountPaid = parseInt(payment.lastAmountPaid)),
-          (payment.amountPayable = parseInt(payment.totalPaid)),
-          (payment.balance = parseInt(payment.balance)),
+          (payment.amountPayable = parseInt(payment.AmountPayable)),
+          (payment.balance =
+            parseInt(payment.totalPaid) - parseInt(payment.lastAmountPaid)),
           (payment.name =
             payment.name.length < 6
               ? payment.name
               : `${payment.name.substring(0, 3)}...`),
-          (payment.date = moment(payment.paymentTime).format("DD-MM-YYYY"))
+          (payment.date = moment(moment(payment.paymentTime).format()).format(
+            "DD-MM-YYYY"
+          ))
         );
       });
       _.map(graphPayments, payment => {
@@ -60,6 +73,45 @@ export default class PaymentsGraph extends React.Component {
         nameAndPaid.push({ name: payment.name, value: payment.amountPaid });
       });
     }
+
+    let totalPayable = _.sumBy(allPayment, pay => parseInt(pay.AmountPayable));
+    let totlaPaidArr = [];
+    _.map(allPayment, pay => {
+      _.map(_.toArray(pay.amountPaid), item => totlaPaidArr.push(item));
+    });
+    let totalPaid = _.sumBy(totlaPaidArr, pay => parseInt(pay.lastAmountPaid));
+    let totalPaidLastDay = _.sumBy(totlaPaidArr, pay => {
+      if (
+        moment(pay.paymentTime).format() >
+        moment()
+          .subtract(1, "days")
+          .format()
+      )
+        return parseInt(pay.lastAmountPaid);
+      else return 0;
+    });
+
+    let totalPaidLastWeek = _.sumBy(totlaPaidArr, pay => {
+      if (
+        moment(pay.paymentTime).format() >
+        moment()
+          .subtract(7, "days")
+          .format()
+      )
+        return parseInt(pay.lastAmountPaid);
+      else return 0;
+    });
+
+    let totalPaidLastMonth = _.sumBy(totlaPaidArr, pay => {
+      if (
+        moment(pay.paymentTime).format() >
+        moment()
+          .subtract(30, "days")
+          .format()
+      )
+        return parseInt(pay.lastAmountPaid);
+      else return 0;
+    });
 
     return (
       <div className="PaymentsGraph">
@@ -76,7 +128,7 @@ export default class PaymentsGraph extends React.Component {
                       Total Payable
                     </div>
                     <div className="PaymentGraph-totalBal-value-labelMoney">
-                      GHS {_.sumBy(payments, pay => pay.amountPayable)}
+                      GHS {totalPayable}
                     </div>
                   </div>
                 </div>
@@ -89,7 +141,7 @@ export default class PaymentsGraph extends React.Component {
                       Total Paid
                     </div>
                     <div className="PaymentGraph-totalBal-value-labelMoney">
-                      GHS {_.sumBy(payments, pay => pay.amountPaid)}
+                      GHS {totalPaid}
                     </div>
                   </div>
                 </div>
@@ -102,7 +154,7 @@ export default class PaymentsGraph extends React.Component {
                       Total Balance
                     </div>
                     <div className="PaymentGraph-totalBal-value-labelMoney">
-                      GHS {_.sumBy(payments, pay => pay.balance)}
+                      GHS {totalPayable - totalPaid}
                     </div>
                   </div>
                 </div>
@@ -160,19 +212,51 @@ export default class PaymentsGraph extends React.Component {
                 <div className="PaymentGraph-totalBal-value">
                   <div>
                     <div className="PaymentGraph-totalBal-value-label">
+                      Total Payable(last day)
+                    </div>
+                    <div className="PaymentGraph-totalBal-value-labelMoney">
+                      GHS {totalPayable}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="PaymentGraph-totalBal-item">
+                <div className="PaymentGraph-totalBal-label1" />
+                <div className="PaymentGraph-totalBal-value">
+                  <div>
+                    <div className="PaymentGraph-totalBal-value-label">
+                      Total Paid(last day)
+                    </div>
+                    <div className="PaymentGraph-totalBal-value-labelMoney">
+                      GHS {totalPaidLastDay}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="PaymentGraph-totalBal-item">
+                <div className="PaymentGraph-totalBal-label2" />
+                <div className="PaymentGraph-totalBal-value">
+                  <div>
+                    <div className="PaymentGraph-totalBal-value-label">
+                      Total Balance(last day)
+                    </div>
+                    <div className="PaymentGraph-totalBal-value-labelMoney">
+                      GHS {totalPayable - totalPaidLastDay}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="PaymentGraph-totalBal">
+              <div className="PaymentGraph-totalBal-item">
+                <div className="PaymentGraph-totalBal-label" />
+                <div className="PaymentGraph-totalBal-value">
+                  <div>
+                    <div className="PaymentGraph-totalBal-value-label">
                       Total Payable(last week)
                     </div>
                     <div className="PaymentGraph-totalBal-value-labelMoney">
-                      GHS{" "}
-                      {_.sumBy(payments, payment => {
-                        if (
-                          payment.date >
-                          moment()
-                            .subtract(7, "d")
-                            .format("DD-MM-YYYY")
-                        )
-                          return payment.amountPayable;
-                      })}
+                      GHS {totalPayable}
                     </div>
                   </div>
                 </div>
@@ -185,16 +269,7 @@ export default class PaymentsGraph extends React.Component {
                       Total Paid(last week)
                     </div>
                     <div className="PaymentGraph-totalBal-value-labelMoney">
-                      GHS{" "}
-                      {_.sumBy(payments, payment => {
-                        if (
-                          payment.date >
-                          moment()
-                            .subtract(7, "d")
-                            .format("DD-MM-YYYY")
-                        )
-                          return payment.amountPaid;
-                      })}
+                      GHS {totalPaidLastWeek}
                     </div>
                   </div>
                 </div>
@@ -207,16 +282,48 @@ export default class PaymentsGraph extends React.Component {
                       Total Balance(last week)
                     </div>
                     <div className="PaymentGraph-totalBal-value-labelMoney">
-                      GHS{" "}
-                      {_.sumBy(payments, payment => {
-                        if (
-                          payment.date >
-                          moment()
-                            .subtract(7, "d")
-                            .format("DD-MM-YYYY")
-                        )
-                          return payment.balance;
-                      })}
+                      GHS {totalPayable - totalPaidLastWeek}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="PaymentGraph-totalBal">
+              <div className="PaymentGraph-totalBal-item">
+                <div className="PaymentGraph-totalBal-label" />
+                <div className="PaymentGraph-totalBal-value">
+                  <div>
+                    <div className="PaymentGraph-totalBal-value-label">
+                      Total Payable(last month)
+                    </div>
+                    <div className="PaymentGraph-totalBal-value-labelMoney">
+                      GHS {totalPayable}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="PaymentGraph-totalBal-item">
+                <div className="PaymentGraph-totalBal-label1" />
+                <div className="PaymentGraph-totalBal-value">
+                  <div>
+                    <div className="PaymentGraph-totalBal-value-label">
+                      Total Paid(last month)
+                    </div>
+                    <div className="PaymentGraph-totalBal-value-labelMoney">
+                      GHS {totalPaidLastMonth}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="PaymentGraph-totalBal-item">
+                <div className="PaymentGraph-totalBal-label2" />
+                <div className="PaymentGraph-totalBal-value">
+                  <div>
+                    <div className="PaymentGraph-totalBal-value-label">
+                      Total Balance(last month)
+                    </div>
+                    <div className="PaymentGraph-totalBal-value-labelMoney">
+                      GHS {totalPayable - totalPaidLastMonth}
                     </div>
                   </div>
                 </div>
