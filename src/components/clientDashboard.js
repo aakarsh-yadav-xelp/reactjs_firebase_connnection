@@ -51,6 +51,14 @@ export default class ClientsDashboard extends React.Component {
           <div className="UserAgent-ItemAgeValue">{agent.Age}</div>
         </div>
         <div className="UserAgent-ItemAge">
+          <div className="UserAgent-ItemAgeLabel">Gender</div>
+          <div className="UserAgent-ItemAgeValue">{agent.Gender}</div>
+        </div>
+        <div className="UserAgent-ItemAge">
+          <div className="UserAgent-ItemAgeLabel">Location</div>
+          <div className="UserAgent-ItemAgeValue">{agent.Location}</div>
+        </div>
+        <div className="UserAgent-ItemAge">
           <div className="UserAgent-ItemAgeLabel">Mobile</div>
           <div className="UserAgent-ItemAgeValue">{agent.Mobile}</div>
         </div>
@@ -75,8 +83,62 @@ export default class ClientsDashboard extends React.Component {
           <div className="UserAgent-ItemAgeValue">{agent.AmountPayable}</div>
         </div>{" "}
         <div className="UserAgent-ItemAge">
-          <div className="UserAgent-ItemAgeLabel">Total Payable</div>
-          <div className="UserAgent-ItemAgeValue">{agent.AmountPayable}</div>
+          <div className="UserAgent-ItemAgeLabel">Property Address </div>
+          <div className="UserAgent-ItemAgeValue">{agent.PropertyAddress}</div>
+        </div>
+        <div className="UserAgent-ItemAge">
+          <div className="UserAgent-ItemAgeLabel">Property Amount </div>
+          <div className="UserAgent-ItemAgeValue">{agent.PropertyAmount}</div>
+        </div>
+        <div className="UserAgent-ItemAge">
+          <div className="UserAgent-ItemAgeLabel">Property Number </div>
+          <div className="UserAgent-ItemAgeValue">{agent.PropertyNumber}</div>
+        </div>
+        <div className="UserAgent-ItemAge">
+          <div className="UserAgent-ItemAgeLabel">Property Payment Option </div>
+          <div className="UserAgent-ItemAgeValue">
+            {agent.PropertPaymentOption}
+          </div>
+        </div>
+        <div className="UserAgent-ItemAge">
+          <div className="UserAgent-ItemAgeLabel">Council Amount </div>
+          <div className="UserAgent-ItemAgeValue">{agent.CouncilAmount}</div>
+        </div>
+        <div className="UserAgent-ItemAge">
+          <div className="UserAgent-ItemAgeLabel">Council Location </div>
+          <div className="UserAgent-ItemAgeValue">{agent.CouncilLocation}</div>
+        </div>
+        <div className="UserAgent-ItemAge">
+          <div className="UserAgent-ItemAgeLabel">Council Type </div>
+          <div className="UserAgent-ItemAgeValue">{agent.CouncilType}</div>
+        </div>
+        <div className="UserAgent-ItemAge">
+          <div className="UserAgent-ItemAgeLabel">Council Payment Option </div>
+          <div className="UserAgent-ItemAgeValue">
+            {agent.CouncilPaymentOption}
+          </div>
+        </div>
+        <div className="UserAgent-ItemAge">
+          <div className="UserAgent-ItemAgeLabel">Other Amount </div>
+          <div className="UserAgent-ItemAgeValue">{agent.OtherAmount}</div>
+        </div>
+        <div className="UserAgent-ItemAge">
+          <div className="UserAgent-ItemAgeLabel">Other Purpose </div>
+          <div className="UserAgent-ItemAgeValue">{agent.OtherPurpose}</div>
+        </div>
+        <div className="UserAgent-ItemAge">
+          <div className="UserAgent-ItemAgeLabel">Other Type </div>
+          <div className="UserAgent-ItemAgeValue">{agent.OtherType}</div>
+        </div>
+        <div className="UserAgent-ItemAge">
+          <div className="UserAgent-ItemAgeLabel">Other Payment Option </div>
+          <div className="UserAgent-ItemAgeValue">
+            {agent.OtherPaymentOption}
+          </div>
+        </div>
+        <div className="UserAgent-ItemAge">
+          <div className="UserAgent-ItemAgeLabel">Agent Id </div>
+          <div className="UserAgent-ItemAgeValue">{agent.AgentId}</div>
         </div>
         <div className="UserAgent-button">
           <div className="UserAgent-buttonItem">
@@ -94,12 +156,34 @@ export default class ClientsDashboard extends React.Component {
   }
 
   renderUniqueAgentEdit(agent) {
-    let agentId = `${this.props.match.params.agentId}/${this.props.match.params
-      .subAgentId}`;
+    let agentId = `${this.props.match.params.agentId}/${
+      this.props.match.params.subAgentId
+    }`;
     return (
       agent.IdNumber === this.props.match.params.subAgentId && (
         <div className="UserAgent-Item" key={agent.idNumber}>
           <div className="UserAgent-ItemHeader">Client Info</div>
+
+          <div className="UserAgent-ItemAge">
+            <div className="UserAgent-ItemAgeLabel">Name</div>
+            <div className="UserAgent-ItemAgeValue">
+              <Input
+                value={this.state.name ? this.state.name : agent.name}
+                onChange={val => this.setState({ name: val })}
+              />
+            </div>
+          </div>
+
+          <div className="UserAgent-ItemAge">
+            <div className="UserAgent-ItemAgeLabel">Date Of Birth</div>
+            <div className="UserAgent-ItemAgeValue">
+              <Input
+                type="date"
+                value={this.state.dob ? this.state.dob : agent.dob}
+                onChange={val => this.setState({ dob: val })}
+              />
+            </div>
+          </div>
 
           <div className="UserAgent-ItemAge">
             <div className="UserAgent-ItemAgeLabel">Age</div>
@@ -111,17 +195,70 @@ export default class ClientsDashboard extends React.Component {
               />
             </div>
           </div>
+
           <div className="UserAgent-ItemAge">
-            <div className="UserAgent-ItemAgeLabel">name</div>
+            <div className="UserAgent-ItemAgeLabel">Gender</div>
             <div className="UserAgent-ItemAgeValue">
               <Input
-                value={this.state.name ? this.state.name : agent.name}
-                onChange={val => this.setState({ name: val })}
+                value={this.state.gender ? this.state.gender : agent.gender}
+                onChange={val => this.setState({ gender: val })}
               />
             </div>
           </div>
+
           <div className="UserAgent-ItemAge">
-            <div className="UserAgent-ItemAgeLabel">amountPayable</div>
+            <div className="UserAgent-ItemAgeLabel">Location</div>
+            <div className="UserAgent-ItemAgeValue">
+              <Input
+                value={
+                  this.state.location ? this.state.location : agent.location
+                }
+                onChange={val => this.setState({ location: val })}
+              />
+            </div>
+          </div>
+
+          <div className="UserAgent-ItemAge">
+            <div className="UserAgent-ItemAgeLabel">Mobile</div>
+            <div className="UserAgent-ItemAgeValue">
+              <Input
+                type="number"
+                value={this.state.mobile ? this.state.mobile : agent.mobile}
+                onChange={val => this.setState({ mobile: val })}
+              />
+            </div>
+          </div>
+
+          <div className="UserAgent-ItemAge">
+            <div className="UserAgent-ItemAgeLabel">Occupation</div>
+            <div className="UserAgent-ItemAgeValue">
+              <Input
+                value={
+                  this.state.occupation
+                    ? this.state.occupation
+                    : agent.occupation
+                }
+                onChange={val => this.setState({ occupation: val })}
+              />
+            </div>
+          </div>
+
+          <div className="UserAgent-ItemAge">
+            <div className="UserAgent-ItemAgeLabel">Disability</div>
+            <div className="UserAgent-ItemAgeValue">
+              <Input
+                value={
+                  this.state.disability
+                    ? this.state.disability
+                    : agent.disability
+                }
+                onChange={val => this.setState({ disability: val })}
+              />
+            </div>
+          </div>
+
+          <div className="UserAgent-ItemAge">
+            <div className="UserAgent-ItemAgeLabel">Amount Payable</div>
             <div className="UserAgent-ItemAgeValue">
               <Input
                 type="number"
@@ -134,190 +271,20 @@ export default class ClientsDashboard extends React.Component {
               />
             </div>
           </div>
+
           <div className="UserAgent-ItemAge">
-            <div className="UserAgent-ItemAgeLabel">balance</div>
+            <div className="UserAgent-ItemAgeLabel">Tax Year</div>
             <div className="UserAgent-ItemAgeValue">
               <Input
                 type="number"
-                value={this.state.balance ? this.state.balance : agent.balance}
-                onChange={val => this.setState({ balance: val })}
-              />
-            </div>
-          </div>
-          <div className="UserAgent-ItemAge">
-            <div className="UserAgent-ItemAgeLabel">cAmount</div>
-            <div className="UserAgent-ItemAgeValue">
-              <Input
-                type="number"
-                value={this.state.cAmount ? this.state.cAmount : agent.cAmount}
-                onChange={val => this.setState({ cAmount: val })}
-              />
-            </div>
-          </div>
-          <div className="UserAgent-ItemAge">
-            <div className="UserAgent-ItemAgeLabel">cLocation</div>
-            <div className="UserAgent-ItemAgeValue">
-              <Input
-                value={
-                  this.state.cLocation ? this.state.cLocation : agent.cLocation
-                }
-                onChange={val => this.setState({ cLocation: val })}
-              />
-            </div>
-          </div>
-          <div className="UserAgent-ItemAge">
-            <div className="UserAgent-ItemAgeLabel">cType</div>
-            <div className="UserAgent-ItemAgeValue">
-              <Input
-                value={this.state.cType ? this.state.cType : agent.cType}
-                onChange={val => this.setState({ cType: val })}
-              />
-            </div>
-          </div>
-          <div className="UserAgent-ItemAge">
-            <div className="UserAgent-ItemAgeLabel">date</div>
-            <div className="UserAgent-ItemAgeValue">
-              <Input
-                type="date"
-                value={this.state.date ? this.state.date : agent.date}
-                onChange={val => this.setState({ date: val })}
-              />
-            </div>
-          </div>
-          <div className="UserAgent-ItemAge">
-            <div className="UserAgent-ItemAgeLabel">disability</div>
-            <div className="UserAgent-ItemAgeValue">
-              <Input
-                value={
-                  this.state.disability
-                    ? this.state.disability
-                    : agent.disability
-                }
-                onChange={val => this.setState({ disability: val })}
-              />
-            </div>
-          </div>
-          <div className="UserAgent-ItemAge">
-            <div className="UserAgent-ItemAgeLabel">discount</div>
-            <div className="UserAgent-ItemAgeValue">
-              <Input
-                value={
-                  this.state.discount ? this.state.discount : agent.discount
-                }
-                onChange={val => this.setState({ discount: val })}
-              />
-            </div>
-          </div>
-          <div className="UserAgent-ItemAge">
-            <div className="UserAgent-ItemAgeLabel">dob</div>
-            <div className="UserAgent-ItemAgeValue">
-              <Input
-                type="date"
-                value={this.state.dob ? this.state.dob : agent.dob}
-                onChange={val => this.setState({ dob: val })}
-              />
-            </div>
-          </div>
-          <div className="UserAgent-ItemAge">
-            <div className="UserAgent-ItemAgeLabel">gender</div>
-            <div className="UserAgent-ItemAgeValue">
-              <Input
-                value={this.state.gender ? this.state.gender : agent.gender}
-                onChange={val => this.setState({ gender: val })}
-              />
-            </div>
-          </div>
-          <div className="UserAgent-ItemAge">
-            <div className="UserAgent-ItemAgeLabel">lastAmountPaid</div>
-            <div className="UserAgent-ItemAgeValue">
-              <Input
-                type="number"
-                value={
-                  this.state.lastAmountPaid
-                    ? this.state.lastAmountPaid
-                    : agent.lastAmountPaid
-                }
-                onChange={val => this.setState({ lastAmountPaid: val })}
-              />
-            </div>
-          </div>
-          <div className="UserAgent-ItemAge">
-            <div className="UserAgent-ItemAgeLabel">location</div>
-            <div className="UserAgent-ItemAgeValue">
-              <Input
-                value={
-                  this.state.location ? this.state.location : agent.location
-                }
-                onChange={val => this.setState({ location: val })}
-              />
-            </div>
-          </div>
-          <div className="UserAgent-ItemAge">
-            <div className="UserAgent-ItemAgeLabel">mobile</div>
-            <div className="UserAgent-ItemAgeValue">
-              <Input
-                type="number"
-                value={this.state.mobile ? this.state.mobile : agent.mobile}
-                onChange={val => this.setState({ mobile: val })}
+                value={this.state.taxYear ? this.state.taxYear : agent.taxYear}
+                onChange={val => this.setState({ taxYear: val })}
               />
             </div>
           </div>
 
           <div className="UserAgent-ItemAge">
-            <div className="UserAgent-ItemAgeLabel">oAmount</div>
-            <div className="UserAgent-ItemAgeValue">
-              <Input
-                type="number"
-                value={this.state.oAmount ? this.state.oAmount : agent.oAmount}
-                onChange={val => this.setState({ oAmount: val })}
-              />
-            </div>
-          </div>
-          <div className="UserAgent-ItemAge">
-            <div className="UserAgent-ItemAgeLabel">oPurpose</div>
-            <div className="UserAgent-ItemAgeValue">
-              <Input
-                value={
-                  this.state.oPurpose ? this.state.oPurpose : agent.oPurpose
-                }
-                onChange={val => this.setState({ oPurpose: val })}
-              />
-            </div>
-          </div>
-          <div className="UserAgent-ItemAge">
-            <div className="UserAgent-ItemAgeLabel">oType</div>
-            <div className="UserAgent-ItemAgeValue">
-              <Input
-                value={this.state.oType ? this.state.oType : agent.oType}
-                onChange={val => this.setState({ oType: val })}
-              />
-            </div>
-          </div>
-          <div className="UserAgent-ItemAge">
-            <div className="UserAgent-ItemAgeLabel">occupation</div>
-            <div className="UserAgent-ItemAgeValue">
-              <Input
-                value={
-                  this.state.occupation
-                    ? this.state.occupation
-                    : agent.occupation
-                }
-                onChange={val => this.setState({ occupation: val })}
-              />
-            </div>
-          </div>
-          <div className="UserAgent-ItemAge">
-            <div className="UserAgent-ItemAgeLabel">pAmount</div>
-            <div className="UserAgent-ItemAgeValue">
-              <Input
-                type="number"
-                value={this.state.pAmount ? this.state.pAmount : agent.pAmount}
-                onChange={val => this.setState({ pAmount: val })}
-              />
-            </div>
-          </div>
-          <div className="UserAgent-ItemAge">
-            <div className="UserAgent-ItemAgeLabel">pLocation</div>
+            <div className="UserAgent-ItemAgeLabel">Property Address</div>
             <div className="UserAgent-ItemAgeValue">
               <Input
                 value={
@@ -327,8 +294,20 @@ export default class ClientsDashboard extends React.Component {
               />
             </div>
           </div>
+
           <div className="UserAgent-ItemAge">
-            <div className="UserAgent-ItemAgeLabel">pNumber</div>
+            <div className="UserAgent-ItemAgeLabel">Property Amount</div>
+            <div className="UserAgent-ItemAgeValue">
+              <Input
+                type="number"
+                value={this.state.pAmount ? this.state.pAmount : agent.pAmount}
+                onChange={val => this.setState({ pAmount: val })}
+              />
+            </div>
+          </div>
+
+          <div className="UserAgent-ItemAge">
+            <div className="UserAgent-ItemAgeLabel">Property Number</div>
             <div className="UserAgent-ItemAgeValue">
               <Input
                 type="number"
@@ -337,64 +316,73 @@ export default class ClientsDashboard extends React.Component {
               />
             </div>
           </div>
+
           <div className="UserAgent-ItemAge">
-            <div className="UserAgent-ItemAgeLabel">pType</div>
-            <div className="UserAgent-ItemAgeValue">
-              <Input
-                value={this.state.pType ? this.state.pType : agent.pType}
-                onChange={val => this.setState({ pType: val })}
-              />
-            </div>
-          </div>
-          <div className="UserAgent-ItemAge">
-            <div className="UserAgent-ItemAgeLabel">paymentTime</div>
-            <div className="UserAgent-ItemAgeValue">
-              <Input
-                type="date"
-                value={
-                  this.state.paymentTime
-                    ? this.state.paymentTime
-                    : agent.paymentTime
-                }
-                onChange={val => this.setState({ paymentTime: val })}
-              />
-            </div>
-          </div>
-          <div className="UserAgent-ItemAge">
-            <div className="UserAgent-ItemAgeLabel">selectedOOption</div>
-            <div className="UserAgent-ItemAgeValue">
-              <Input
-                value={
-                  this.state.selectedOOption
-                    ? this.state.selectedOOption
-                    : agent.selectedOOption
-                }
-                onChange={val => this.setState({ selectedOOption: val })}
-              />
-            </div>
-          </div>
-          <div className="UserAgent-ItemAge">
-            <div className="UserAgent-ItemAgeLabel">taxYear</div>
+            <div className="UserAgent-ItemAgeLabel">Council Amount</div>
             <div className="UserAgent-ItemAgeValue">
               <Input
                 type="number"
-                value={this.state.taxYear ? this.state.taxYear : agent.taxYear}
-                onChange={val => this.setState({ taxYear: val })}
+                value={this.state.cAmount ? this.state.cAmount : agent.cAmount}
+                onChange={val => this.setState({ cAmount: val })}
               />
             </div>
           </div>
+
           <div className="UserAgent-ItemAge">
-            <div className="UserAgent-ItemAgeLabel">totalPaid</div>
+            <div className="UserAgent-ItemAgeLabel">Council Location</div>
+            <div className="UserAgent-ItemAgeValue">
+              <Input
+                value={
+                  this.state.cLocation ? this.state.cLocation : agent.cLocation
+                }
+                onChange={val => this.setState({ cLocation: val })}
+              />
+            </div>
+          </div>
+
+          <div className="UserAgent-ItemAge">
+            <div className="UserAgent-ItemAgeLabel">Council Type</div>
+            <div className="UserAgent-ItemAgeValue">
+              <Input
+                value={this.state.cType ? this.state.cType : agent.cType}
+                onChange={val => this.setState({ cType: val })}
+              />
+            </div>
+          </div>
+
+          <div className="UserAgent-ItemAge">
+            <div className="UserAgent-ItemAgeLabel">Other Amount</div>
             <div className="UserAgent-ItemAgeValue">
               <Input
                 type="number"
-                value={
-                  this.state.totalPaid ? this.state.totalPaid : agent.totalPaid
-                }
-                onChange={val => this.setState({ totalPaid: val })}
+                value={this.state.oAmount ? this.state.oAmount : agent.oAmount}
+                onChange={val => this.setState({ oAmount: val })}
               />
             </div>
           </div>
+
+          <div className="UserAgent-ItemAge">
+            <div className="UserAgent-ItemAgeLabel">Other Purpose</div>
+            <div className="UserAgent-ItemAgeValue">
+              <Input
+                value={
+                  this.state.oPurpose ? this.state.oPurpose : agent.oPurpose
+                }
+                onChange={val => this.setState({ oPurpose: val })}
+              />
+            </div>
+          </div>
+
+          <div className="UserAgent-ItemAge">
+            <div className="UserAgent-ItemAgeLabel">Other Type</div>
+            <div className="UserAgent-ItemAgeValue">
+              <Input
+                value={this.state.oType ? this.state.oType : agent.oType}
+                onChange={val => this.setState({ oType: val })}
+              />
+            </div>
+          </div>
+
           <div className="UserAgent-button">
             <div className="UserAgent-buttonItem">
               <Button
