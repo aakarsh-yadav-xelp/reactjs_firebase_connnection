@@ -27,14 +27,7 @@ export default class ClientsDashboard extends React.Component {
   redirectToBack() {
     this.props.history.push("/agents");
   }
-  renderModal() {
-    return (
-      <Modal isOpen={this.state.edit} closeTimeoutMS={3} contentLabel="Modal">
-        <h1>Modal Content</h1>
-        <p>Etc.</p>
-      </Modal>
-    );
-  }
+
   renderUniqueAgents(agent) {
     return (
       <div className="UserAgent-Item" key={agent.idNumber}>

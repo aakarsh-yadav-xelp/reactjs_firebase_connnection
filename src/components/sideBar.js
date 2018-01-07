@@ -31,6 +31,7 @@ export default class SideBar extends React.Component {
       <div
         className="SideBar-tab"
         style={{ height: `${window.innerHeight}px` }}
+        key={111}
       >
         <div className="SideBar-tabHeader" key={1}>
           <img
@@ -75,7 +76,7 @@ export default class SideBar extends React.Component {
           <Icon image={MoneyIcon} />Create Agent
         </div>
       </div>,
-      <div className="SideBar-adjustwidth" />
+      <div className="SideBar-adjustwidth" key={10} />
     ];
   }
 }

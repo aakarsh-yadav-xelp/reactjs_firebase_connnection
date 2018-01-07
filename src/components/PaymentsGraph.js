@@ -7,8 +7,8 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  LineChart,
-  Line,
+  // LineChart,
+  // Line,
   PieChart,
   Pie
 } from "recharts";
@@ -16,10 +16,6 @@ import moment from "moment";
 import HeaderContainer from "../containers/headerContainer";
 import _ from "lodash";
 import SideBar from "./sideBar";
-import classNames from "classnames";
-import Icon from "./Icon";
-import UserIcon from "./img/user.svg";
-import MoneyIcon from "./img/money.svg";
 import "./css/PaymentsGraph.css";
 export default class PaymentsGraph extends React.Component {
   filter(payments) {
@@ -28,7 +24,6 @@ export default class PaymentsGraph extends React.Component {
   render() {
     let nameAndPayable = [],
       nameAndPaid = [],
-      nameAndBalance = [],
       graphPayments,
       allPayment = [];
 
@@ -188,6 +183,7 @@ export default class PaymentsGraph extends React.Component {
 
                 <PieChart width={350} height={350}>
                   <Pie
+                    dataKey={12}
                     data={nameAndPayable}
                     cx={175}
                     cy={175}
@@ -195,6 +191,7 @@ export default class PaymentsGraph extends React.Component {
                     fill="#8884d8"
                   />
                   <Pie
+                    dataKey={11}
                     data={nameAndPaid}
                     cx={175}
                     cy={175}
