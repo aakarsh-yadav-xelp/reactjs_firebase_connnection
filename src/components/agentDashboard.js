@@ -2,6 +2,7 @@ import React from "react";
 import _ from "lodash";
 import SideBar from "./sideBar";
 import HeaderContainer from "../containers/headerContainer";
+import ChatBox from "./ChatBox";
 import "./css/agentDashboard.css";
 export default class AgentDashboard extends React.Component {
   redirectToAgentInfo(agentId, id) {
@@ -27,12 +28,17 @@ export default class AgentDashboard extends React.Component {
   }
   render() {
     let clients,
+      messages = [],
       clientsArr = [];
     if (this.props.match.params.agentId) {
       clients = _.find(
         this.props.agents,
         agent => agent.idNumber === this.props.match.params.agentId
       );
+      let tempMessages = _.toArray(clients && clients.messages);
+      _.forEach(tempMessages, msg => {
+        messages.push({ message: msg.Message });
+      });
     } else {
       _.map(this.props.agents, agent => {
         if (agent.Clients) {
@@ -42,7 +48,6 @@ export default class AgentDashboard extends React.Component {
         }
       });
     }
-
     return (
       <div className="AgentDashboard">
         <SideBar {...this.props} />
@@ -71,6 +76,7 @@ export default class AgentDashboard extends React.Component {
                 return this.renderUniqueClients(client, index);
               })}
           </div>
+          {this.props.match.params.agentId && <ChatBox messages={messages} />}
         </div>
       </div>
     );

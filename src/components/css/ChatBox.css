@@ -67,3 +67,15 @@
   width: 15px;
   height: 15px;
 }
+.ChatBox-noMessageWraper {
+  width: 100%;
+  margin-top: 50px;
+}
+.ChatBox-noMessage {
+  background-image: url("../img/msg.svg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 100px;
+  height: 100px;
+  margin-left: 30%;
+}

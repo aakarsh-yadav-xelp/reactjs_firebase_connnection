@@ -1,4 +1,5 @@
 import React from "react";
+import _ from "lodash";
 import PropTypes from "prop-types";
 import "./css/ChatBox.css";
 export default class ChatBox extends React.Component {
@@ -9,14 +10,20 @@ export default class ChatBox extends React.Component {
     };
   }
   renderMessageContainer() {
+    console.log(this.props.messages);
     return (
       <div className="ChatBox-messageContainer">
-        {this.props.messages &&
+        {!_.isEmpty(this.props.messages) ? (
           this.props.messages.map((message, index) => (
             <div className="ChatBox-message" key={index}>
               {message.message}
             </div>
-          ))}
+          ))
+        ) : (
+          <div className="ChatBox-noMessageWraper">
+            <div className="ChatBox-noMessage" />No Messages
+          </div>
+        )}
       </div>
     );
   }
