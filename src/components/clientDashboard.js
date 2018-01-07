@@ -165,7 +165,11 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeLabel">Name</div>
             <div className="UserAgent-ItemAgeValue">
               <Input
-                value={this.state.Name ? this.state.Name : agent.Name}
+                value={
+                  (this.state.Name !== undefined) !== undefined
+                    ? this.state.Name
+                    : agent.Name
+                }
                 onChange={val => this.setState({ Name: val })}
               />
             </div>
@@ -177,7 +181,7 @@ export default class ClientsDashboard extends React.Component {
               <Input
                 type="date"
                 value={
-                  this.state["Date Of Birth"]
+                  this.state["Date Of Birth"] !== undefined
                     ? this.state["Date Of Birth"]
                     : agent["Date Of Birth"]
                 }
@@ -191,7 +195,9 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeValue">
               <Input
                 type="number"
-                value={this.state.Age ? this.state.Age : agent.Age}
+                value={
+                  this.state.Age !== undefined ? this.state.Age : agent.Age
+                }
                 onChange={val => this.setState({ Age: val })}
               />
             </div>
@@ -201,7 +207,11 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeLabel">Gender</div>
             <div className="UserAgent-ItemAgeValue">
               <Input
-                value={this.state.Gender ? this.state.Gender : agent.Gender}
+                value={
+                  this.state.Gender !== undefined
+                    ? this.state.Gender
+                    : agent.Gender
+                }
                 onChange={val => this.setState({ Gender: val })}
               />
             </div>
@@ -212,7 +222,9 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeValue">
               <Input
                 value={
-                  this.state.Location ? this.state.Location : agent.Location
+                  this.state.Location !== undefined
+                    ? this.state.Location
+                    : agent.Location
                 }
                 onChange={val => this.setState({ Location: val })}
               />
@@ -224,7 +236,11 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeValue">
               <Input
                 type="number"
-                value={this.state.Mobile ? this.state.Mobile : agent.Mobile}
+                value={
+                  this.state.Mobile !== undefined
+                    ? this.state.Mobile
+                    : agent.Mobile
+                }
                 onChange={val => this.setState({ Mobile: val })}
               />
             </div>
@@ -235,7 +251,7 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeValue">
               <Input
                 value={
-                  this.state.Occupation
+                  this.state.Occupation !== undefined
                     ? this.state.Occupation
                     : agent.Occupation
                 }
@@ -249,7 +265,7 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeValue">
               <Input
                 value={
-                  this.state.Disability
+                  this.state.Disability !== undefined
                     ? this.state.Disability
                     : agent.Disability
                 }
@@ -264,7 +280,7 @@ export default class ClientsDashboard extends React.Component {
               <Input
                 type="number"
                 value={
-                  this.state.AmountPayable
+                  this.state.AmountPayable !== undefined
                     ? this.state.AmountPayable
                     : agent.AmountPayable
                 }
@@ -278,7 +294,11 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeValue">
               <Input
                 type="number"
-                value={this.state.TaxYear ? this.state.TaxYear : agent.TaxYear}
+                value={
+                  this.state.TaxYear !== undefined
+                    ? this.state.TaxYear
+                    : agent.TaxYear
+                }
                 onChange={val => this.setState({ TaxYear: val })}
               />
             </div>
@@ -289,7 +309,7 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeValue">
               <Input
                 value={
-                  this.state.PropertyAddress
+                  this.state.PropertyAddress !== undefined
                     ? this.state.PropertyAddress
                     : agent.PropertyAddress
                 }
@@ -304,7 +324,7 @@ export default class ClientsDashboard extends React.Component {
               <Input
                 type="number"
                 value={
-                  this.state.PropertyAmount
+                  this.state.PropertyAmount !== undefined
                     ? this.state.PropertyAmount
                     : agent.PropertyAmount
                 }
@@ -319,7 +339,7 @@ export default class ClientsDashboard extends React.Component {
               <Input
                 type="number"
                 value={
-                  this.state.PropertyNumber
+                  this.state.PropertyNumber !== undefined
                     ? this.state.PropertyNumber
                     : agent.PropertyNumber
                 }
@@ -334,7 +354,7 @@ export default class ClientsDashboard extends React.Component {
               <Input
                 type="number"
                 value={
-                  this.state.CouncilAmount
+                  this.state.CouncilAmount !== undefined
                     ? this.state.CouncilAmount
                     : agent.CouncilAmount
                 }
@@ -348,7 +368,7 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeValue">
               <Input
                 value={
-                  this.state.CouncilLocation
+                  this.state.CouncilLocation !== undefined
                     ? this.state.CouncilLocation
                     : agent.CouncilLocation
                 }
@@ -362,7 +382,7 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeValue">
               <Input
                 value={
-                  this.state.CouncilType
+                  this.state.CouncilType !== undefined
                     ? this.state.CouncilType
                     : agent.CouncilType
                 }
@@ -377,7 +397,7 @@ export default class ClientsDashboard extends React.Component {
               <Input
                 type="number"
                 value={
-                  this.state.OtherAmount
+                  this.state.OtherAmount !== undefined
                     ? this.state.OtherAmount
                     : agent.OtherAmount
                 }
@@ -391,7 +411,7 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeValue">
               <Input
                 value={
-                  this.state.OtherPurpose
+                  this.state.OtherPurpose !== undefined
                     ? this.state.OtherPurpose
                     : agent.OtherPurpose
                 }
@@ -405,7 +425,9 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeValue">
               <Input
                 value={
-                  this.state.OtherType ? this.state.OtherType : agent.OtherType
+                  this.state.OtherType !== undefined
+                    ? this.state.OtherType
+                    : agent.OtherType
                 }
                 onChange={val => this.setState({ OtherType: val })}
               />
@@ -492,7 +514,9 @@ export default class ClientsDashboard extends React.Component {
               <div className="Modal-input">
                 <Input
                   type="password"
-                  value={this.state.password ? this.state.password : ""}
+                  value={
+                    this.state.password !== undefined ? this.state.password : ""
+                  }
                   onChange={password => this.setState({ password })}
                 />
               </div>
