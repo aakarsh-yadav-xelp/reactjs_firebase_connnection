@@ -25,27 +25,53 @@ export default class LoginForm extends React.Component {
   render() {
     return (
       <div className="LoginForm">
-        <div className="LoginForm-container">
-          <div className="LoginForm-containerItem">
-            <Input
-              placeholder="Email"
-              value={this.state.email}
-              width={250}
-              height={45}
-              onChange={email => this.setState({ email })}
-            />
+        <div className="LoginForm-login">
+          <div className="LoginForm-container">
+            <div className="LoginForm-containerTitle">Welcome to ASDA</div>
+            <div className="LoginForm-containerItem">
+              <img
+                src={require("./img/logo.png")}
+                width={100}
+                height={100}
+                alt={"home-loho"}
+                className="Home-logo-image"
+              />
+            </div>
+            <div className="LoginForm-containerItem">
+              <Input
+                placeholder="Email"
+                value={this.state.email}
+                width={250}
+                height={45}
+                onChange={email => this.setState({ email })}
+              />
+            </div>
+            <div className="LoginForm-containerItem">
+              <Input
+                type="password"
+                placeholder="Password"
+                value={this.state.password}
+                width={250}
+                height={45}
+                onChange={password => this.setState({ password })}
+              />
+            </div>
+            <Button label="Login" onClick={() => this.loginUser()} />
           </div>
-          <div className="LoginForm-containerItem">
-            <Input
-              type="password"
-              placeholder="password"
-              value={this.state.password}
-              width={250}
-              height={45}
-              onChange={password => this.setState({ password })}
-            />
+        </div>
+        <div className="LoginForm-image">
+          <div className="LoginForm-imageItem">
+            <div className="LoginForm-imageItem-image" />
           </div>
-          <Button label="Login" onClick={() => this.loginUser()} />
+          <div className="LoginForm-imageItem1">
+            <div className="LoginForm-imageItem-image" />
+          </div>
+          <div className="LoginForm-imageItem2">
+            <div className="LoginForm-imageItem-image" />
+          </div>
+          <div className="LoginForm-imageItem3">
+            <div className="LoginForm-imageItem-image" />
+          </div>
         </div>
       </div>
     );

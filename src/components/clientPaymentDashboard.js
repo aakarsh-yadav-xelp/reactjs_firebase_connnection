@@ -1,7 +1,7 @@
 import React from "react";
 import _ from "lodash";
 import SideBar from "./sideBar";
-import Header from "./header";
+import HeaderContainer from "../containers/headerContainer";
 import { convertDateStringToTimeAgoFromNow } from "../dbUtils/timeUtils";
 import "./css/clientPaymentDashboard.css";
 export default class ClientPaymentDashboard extends React.Component {
@@ -47,7 +47,7 @@ export default class ClientPaymentDashboard extends React.Component {
       <div className="ClientPaymentDashboard">
         <SideBar {...this.props} />
         <div className="ClientPaymentDashboard-List">
-          <Header {...this.props} />
+          <HeaderContainer />
           <div className="ClientPaymentDashboard-clientInfo">
             <div className="ClientPaymentDashboard-clientInfoHolder">
               <div className="ClientPaymentDashboard-clientInfo-icon" />

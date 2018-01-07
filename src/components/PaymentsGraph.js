@@ -13,7 +13,7 @@ import {
   Pie
 } from "recharts";
 import moment from "moment";
-import Header from "./header";
+import HeaderContainer from "../containers/headerContainer";
 import _ from "lodash";
 import SideBar from "./sideBar";
 import classNames from "classnames";
@@ -58,7 +58,7 @@ export default class PaymentsGraph extends React.Component {
           (payment.amountPaid = parseInt(payment.lastAmountPaid)),
           (payment.amountPayable = parseInt(payment.AmountPayable)),
           (payment.balance =
-            parseInt(payment.totalPaid) - parseInt(payment.lastAmountPaid)),
+            parseInt(payment.AmountPayable) - parseInt(payment.lastAmountPaid)),
           (payment.name =
             payment.name.length < 6
               ? payment.name
@@ -117,7 +117,7 @@ export default class PaymentsGraph extends React.Component {
       <div className="PaymentsGraph">
         <SideBar {...this.props} />
         <div className="PaymentGraph-graphs">
-          <Header {...this.props} />
+          <HeaderContainer />
           <div className="PaymentGraph-graphs-Body">
             <div className="PaymentGraph-totalBal">
               <div className="PaymentGraph-totalBal-item">
@@ -329,7 +329,7 @@ export default class PaymentsGraph extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="PaymentGraph-graphsItem">
+            {/* <div className="PaymentGraph-graphsItem">
               <div>
                 <div className="PaymentGraph-header">Graph of transactions</div>
                 <LineChart
@@ -364,7 +364,7 @@ export default class PaymentsGraph extends React.Component {
                   />
                 </LineChart>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

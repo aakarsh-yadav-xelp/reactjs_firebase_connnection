@@ -30,7 +30,10 @@
   color: gray;
   font-size: 25px;
   font-family: bolder;
+  cursor: pointer;
+  color: rgb(61, 177, 67);
 }
+
 .Header-searchBox {
   border: none;
   background-color: rgba(237, 236, 237, 1);
@@ -38,16 +41,18 @@
   outline: none;
   padding-left: 10px;
   font-family: italic;
-  width: 200px;
+  border-radius: 5px;
+  width: 300px;
   transition: 300ms;
+  position: relative;
 }
 .Header-searchBox:focus {
   background-color: rgba(237, 236, 237, 0.7);
 }
 .Header-searchBoxWrapper {
   position: absolute;
-  right: 20px;
   top: 10px;
+  z-index: 10;
 }
 .Header-searchedBoxItem {
   position: relative;
@@ -69,4 +74,35 @@
 }
 .Header-searchedItem:hover {
   background-color: rgba(237, 236, 237, 0.7);
+}
+.Header-icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 12%;
+  padding-right: 20px;
+}
+.header-iconHome {
+  background-image: url("../img/headerHome.svg");
+  background-repeat: no-repeat;
+  background-size: 30px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.header-iconAgents {
+  background-image: url("../img/statistics.svg");
+  background-repeat: no-repeat;
+  background-size: 30px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.header-iconLogout {
+  background-image: url("../img/exit.svg");
+  background-repeat: no-repeat;
+  background-size: 30px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }

@@ -5,7 +5,7 @@ import "./css/clientDashboard.css";
 import Button from "./button";
 import SideBar from "./sideBar";
 import classNames from "classnames";
-import Header from "./header";
+import HeaderContainer from "../containers/headerContainer";
 import Icon from "./Icon";
 import Input from "./input";
 import UserIcon from "./img/user.svg";
@@ -165,8 +165,9 @@ export default class ClientsDashboard extends React.Component {
 
   renderUniqueAgentEdit(agent) {
     console.log(agent);
-    let agentId = `${this.props.match.params.agentId}/${this.props.match.params
-      .subAgentId}`;
+    let agentId = `${this.props.match.params.agentId}/${
+      this.props.match.params.subAgentId
+    }`;
     return (
       agent.IdNumber === this.props.match.params.subAgentId && (
         <div className="UserAgent-Item" key={agent.idNumber}>
@@ -459,7 +460,7 @@ export default class ClientsDashboard extends React.Component {
       <div className="UserAgent">
         <SideBar {...this.props} />
         <div className="UserAgent-info">
-          <Header {...this.props} />
+          <HeaderContainer />
           <div className="UserAgent-Body">
             {client
               ? this.props.user && this.props.user.isPassWordVerify

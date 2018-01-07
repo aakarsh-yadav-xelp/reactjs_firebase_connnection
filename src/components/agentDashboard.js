@@ -1,7 +1,7 @@
 import React from "react";
 import _ from "lodash";
 import SideBar from "./sideBar";
-import Header from "./header";
+import HeaderContainer from "../containers/headerContainer";
 import "./css/agentDashboard.css";
 export default class AgentDashboard extends React.Component {
   redirectToAgentInfo(agentId, id) {
@@ -47,7 +47,7 @@ export default class AgentDashboard extends React.Component {
       <div className="AgentDashboard">
         <SideBar {...this.props} />
         <div className="AgentDashboard-info">
-          <Header {...this.props} />
+          <HeaderContainer />
           <div className="AgentDashboard-Body">
             <div className="AgentDashboard-ListHeader">
               <div className="AgentDashboard-ItemHeaderAge">Name</div>

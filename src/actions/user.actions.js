@@ -29,7 +29,7 @@ export function onCloseEdit() {
   };
 }
 export function logOutUser() {
-  localStorage.setItem("asdaJwtToken", null);
+  localStorage.setItem("asdaJwtToken", "");
   return {
     type: USER_LOGOUT_SUCCESS
   };

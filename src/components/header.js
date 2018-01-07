@@ -33,7 +33,8 @@ export default class Header extends React.Component {
                     <div
                       key={index}
                       onClick={() =>
-                        this.props.history.push(`/agents/${item.idNumber}`)}
+                        this.props.history.push(`/agents/${item.idNumber}`)
+                      }
                       className="Header-searchedItem"
                     >
                       {item.name}
@@ -53,10 +54,24 @@ export default class Header extends React.Component {
           className="Header-text"
           onClick={() => this.props.history.push("/")}
         >
-          Welcome Buddy
+          Admin Dashboard
         </div>
         <div className="Header-search">
           {this.BasicAutocomplete({ items: this.props.agents })}
+        </div>
+        <div className="Header-icons">
+          <div
+            className="header-iconHome"
+            onClick={() => this.props.history.push("/paymentgraph")}
+          />
+          <div
+            className="header-iconAgents"
+            onClick={() => this.props.history.push("/agents")}
+          />
+          <div
+            className="header-iconLogout"
+            onClick={() => this.props.logOutUser()}
+          />
         </div>
       </div>
     );

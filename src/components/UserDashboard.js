@@ -2,7 +2,7 @@ import React from "react";
 import _ from "lodash";
 import classNames from "classnames";
 import SideBar from "./sideBar";
-import Header from "./header";
+import HeaderContainer from "../containers/headerContainer";
 import Icon from "./Icon";
 import UserIcon from "./img/user.svg";
 import MoneyIcon from "./img/money.svg";
@@ -24,7 +24,7 @@ export default class UserDashboard extends React.Component {
       <div className="UserDashboard">
         <SideBar {...this.props} />
         <div className="UserDashboard-List">
-          <Header {...this.props} />
+          <HeaderContainer />
           <div className="UserDashboard-Body">
             <div className="UserDashboard-ListHeader">
               <div className="UserDashboard-ItemHeaderSrNumber">Sr No.</div>

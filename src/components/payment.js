@@ -2,7 +2,7 @@ import React from "react";
 import "./css/Payment.css";
 import _ from "lodash";
 import SideBar from "./sideBar";
-import Header from "./header";
+import HeaderContainer from "../containers/headerContainer";
 import { convertDateStringToTimeAgoFromNow } from "../dbUtils/timeUtils";
 
 export default class Payment extends React.Component {
@@ -55,7 +55,7 @@ export default class Payment extends React.Component {
       <div className="Payment">
         <SideBar {...this.props} />
         <div className="Payment-List">
-          <Header {...this.props} />
+          <HeaderContainer />
           <div className="Payment-graphs-Body">
             <div className="Payment-ListHeader">
               <div className="Payment-ItemHeaderName">Name</div>

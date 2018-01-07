@@ -5,7 +5,7 @@ import Button from "./button";
 import { SUCCESS, FAILURE } from "../actions/constant.actions";
 import Popup from "./popup";
 import SideBar from "./sideBar";
-import Header from "./header";
+import HeaderContainer from "../containers/headerContainer";
 import "./css/createAgent.css";
 export default class CreateAgent extends React.Component {
   constructor(props) {
@@ -87,7 +87,7 @@ export default class CreateAgent extends React.Component {
       <div className="CreateAgent">
         <SideBar {...this.props} />
         <div className="CreateAgent-List">
-          <Header {...this.props} />
+          <HeaderContainer />
           {this.state.popup.show && (
             <Popup
               message={this.state.popup.message}
