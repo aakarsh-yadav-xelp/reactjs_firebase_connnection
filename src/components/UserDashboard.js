@@ -14,7 +14,7 @@ export default class UserDashboard extends React.Component {
     this.props.history.push(`/agents/${id}`);
   }
   onDelete(id) {
-    console.log("delete");
+    this.props.onDelete(id);
   }
   render() {
     let { pathname } = this.props.location;

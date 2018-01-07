@@ -36,11 +36,13 @@ const agents = (
     case agentsActions.GET_AGENTS_SUCCESS:
       currentAgents = _.mapValues(action.agents, item => {
         let tempClients = [];
-        if (!_.isUndefined(item.Clients)) {
-          _.mapValues(item.Clients, client => tempClients.push(client));
-          item.Clients = tempClients;
+        if (item.status === 1) {
+          if (!_.isUndefined(item.Clients)) {
+            _.mapValues(item.Clients, client => tempClients.push(client));
+            item.Clients = tempClients;
+          }
+          tempAgents.push(item);
         }
-        tempAgents.push(item);
       });
       return Object.assign({}, state, {
         agents: tempAgents,

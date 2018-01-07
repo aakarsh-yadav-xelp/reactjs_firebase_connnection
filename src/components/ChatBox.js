@@ -10,7 +10,6 @@ export default class ChatBox extends React.Component {
     };
   }
   renderMessageContainer() {
-    console.log(this.props.messages);
     return (
       <div className="ChatBox-messageContainer">
         {!_.isEmpty(this.props.messages) ? (

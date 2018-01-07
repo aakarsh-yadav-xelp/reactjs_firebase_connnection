@@ -2,7 +2,14 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import UserDashboard from "../components/UserDashboard";
 import { getAgents } from "../actions/user.actions";
-
+import { updateAgent } from "../actions/agent.actions";
+const mapDispatchToProps = dispatch => {
+  return {
+    onDelete: agentId => {
+      dispatch(updateAgent(agentId));
+    }
+  };
+};
 const mapStateToProps = state => {
   return {
     agents: state.agents.agents,
@@ -11,6 +18,6 @@ const mapStateToProps = state => {
 };
 
 const UserDashboardContainer = withRouter(
-  connect(mapStateToProps)(UserDashboard)
+  connect(mapStateToProps, mapDispatchToProps)(UserDashboard)
 );
 export default UserDashboardContainer;

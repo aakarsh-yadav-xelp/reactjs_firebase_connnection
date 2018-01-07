@@ -145,3 +145,11 @@
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
+.PaymentGraph-totalOther {
+  font-family: bolder;
+  font-size: 20px;
+  margin-top: 30px;
+  color: #1a2f28;
+  display: flex;
+  padding-left: 30px;
+}

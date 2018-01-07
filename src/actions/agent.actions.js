@@ -73,7 +73,7 @@ export function updateAgentFailure(error) {
     error
   };
 }
-export function updateAgent(agentId, userObj) {
+export function updateAgent(agentId, userObj = null) {
   console.log(agentId, userObj);
   let agentUpdateKey, clientUpdateKey;
   return async (dispatch, state) => {
@@ -87,31 +87,51 @@ export function updateAgent(agentId, userObj) {
         .once("value", data => {
           agentUpdateKey = Object.keys(data.val())[0];
         });
-      await fire
-        .database()
-        .ref(`agents/${agentUpdateKey}/Clients`)
-        .orderByChild("IdNumber")
-        .equalTo(userObj.IdNumber)
-        .once("value", data => {
-          clientUpdateKey = Object.keys(data.val())[0];
-        });
-      await fire
-        .database()
-        .ref(`agents/${agentUpdateKey}/Clients/${clientUpdateKey}`)
-        .update(userObj);
-      await fire
-        .database()
-        .ref(`agents`)
-        .on(
-          "value",
-          async function(snapshot) {
-            dispatch(verifyPasswordFailure());
-            dispatch(updateAgentSuccess(snapshot.val()));
-          },
-          function(errorObject) {
-            throw new Error("Error");
-          }
-        );
+      if (userObj !== null) {
+        await fire
+          .database()
+          .ref(`agents/${agentUpdateKey}/Clients`)
+          .orderByChild("IdNumber")
+          .equalTo(userObj.IdNumber)
+          .once("value", data => {
+            clientUpdateKey = Object.keys(data.val())[0];
+          });
+        await fire
+          .database()
+          .ref(`agents/${agentUpdateKey}/Clients/${clientUpdateKey}`)
+          .update(userObj);
+        await fire
+          .database()
+          .ref(`agents`)
+          .on(
+            "value",
+            async function(snapshot) {
+              dispatch(verifyPasswordFailure());
+              dispatch(updateAgentSuccess(snapshot.val()));
+            },
+            function(errorObject) {
+              throw new Error("Error");
+            }
+          );
+      } else {
+        await fire
+          .database()
+          .ref(`agents/${agentUpdateKey}`)
+          .update({ status: 0 });
+        await fire
+          .database()
+          .ref(`agents`)
+          .on(
+            "value",
+            async function(snapshot) {
+              dispatch(verifyPasswordFailure());
+              dispatch(updateAgentSuccess(snapshot.val()));
+            },
+            function(errorObject) {
+              throw new Error("Error");
+            }
+          );
+      }
     } catch (e) {
       dispatch(updateAgentFailure("Error in logging in user"));
     }

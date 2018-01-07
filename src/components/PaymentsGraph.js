@@ -28,21 +28,29 @@ export default class PaymentsGraph extends React.Component {
       allPayment = [];
 
     let payments = [];
+    console.log(this.props.agents);
     _.map(this.props.agents, agents => {
       if (agents.Clients) {
         _.map(agents.Clients, client => {
           allPayment.push({
             name: client.Name,
             AmountPayable: client.AmountPayable,
-            amountPaid: client.Payments
+            amountPaid: client.Payments,
+            CouncilAmount: client.CouncilAmount,
+            PropertyAmount: client.PropertyAmount,
+            OtherAmount: client.OtherAmount
           });
-          _.map(client.Payments && client.Payments, pay => {
+          if (client.Payments) {
+            let totalPaidByClient = 0;
+            _.map(client.Payments, pay => {
+              totalPaidByClient = +pay.lastAmountPaid;
+            });
             payments.push({
-              ...pay,
+              lastAmountPaid: totalPaidByClient,
               name: client.Name,
               AmountPayable: client.AmountPayable
             });
-          });
+          }
         });
       }
     });
@@ -57,7 +65,7 @@ export default class PaymentsGraph extends React.Component {
           (payment.name =
             payment.name.length < 6
               ? payment.name
-              : `${payment.name.substring(0, 3)}...`),
+              : `${payment.name.substring(0, 5)}...`),
           (payment.date = moment(moment(payment.paymentTime).format()).format(
             "DD-MM-YYYY"
           ))
@@ -68,7 +76,15 @@ export default class PaymentsGraph extends React.Component {
         nameAndPaid.push({ name: payment.name, value: payment.amountPaid });
       });
     }
-
+    let totalCouncilAmount = _.sumBy(allPayment, pay =>
+      parseInt(pay.CouncilAmount)
+    );
+    let totalPropertyAmount = _.sumBy(allPayment, pay =>
+      parseInt(pay.PropertyAmount)
+    );
+    let totalOtherAmount = _.sumBy(allPayment, pay =>
+      parseInt(pay.OtherAmount)
+    );
     let totalPayable = _.sumBy(allPayment, pay => parseInt(pay.AmountPayable));
     let totlaPaidArr = [];
     _.map(allPayment, pay => {
@@ -319,6 +335,51 @@ export default class PaymentsGraph extends React.Component {
                     </div>
                     <div className="PaymentGraph-totalBal-value-labelMoney">
                       GHS {totalPayable - totalPaidLastMonth}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="PaymentGraph-totalOther">
+              Other Total Payments -:
+            </div>
+            <div className="PaymentGraph-totalBal">
+              <div className="PaymentGraph-totalBal-item">
+                <div className="PaymentGraph-totalBal-label" />
+                <div className="PaymentGraph-totalBal-value">
+                  <div>
+                    <div className="PaymentGraph-totalBal-value-label">
+                      Total Council Amount
+                    </div>
+                    <div className="PaymentGraph-totalBal-value-labelMoney">
+                      GHS {totalCouncilAmount}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="PaymentGraph-totalBal-item">
+                <div className="PaymentGraph-totalBal-label1" />
+                <div className="PaymentGraph-totalBal-value">
+                  <div>
+                    <div className="PaymentGraph-totalBal-value-label">
+                      Total Property Amount
+                    </div>
+                    <div className="PaymentGraph-totalBal-value-labelMoney">
+                      GHS {totalPropertyAmount}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="PaymentGraph-totalBal-item">
+                <div className="PaymentGraph-totalBal-label2" />
+                <div className="PaymentGraph-totalBal-value">
+                  <div>
+                    <div className="PaymentGraph-totalBal-value-label">
+                      Total Other Amount
+                    </div>
+                    <div className="PaymentGraph-totalBal-value-labelMoney">
+                      GHS {totalOtherAmount}
                     </div>
                   </div>
                 </div>
