@@ -183,7 +183,6 @@ export default class PaymentsGraph extends React.Component {
 
                 <PieChart width={350} height={350}>
                   <Pie
-                    dataKey={12}
                     data={nameAndPayable}
                     cx={175}
                     cy={175}
@@ -191,7 +190,6 @@ export default class PaymentsGraph extends React.Component {
                     fill="#8884d8"
                   />
                   <Pie
-                    dataKey={11}
                     data={nameAndPaid}
                     cx={175}
                     cy={175}
