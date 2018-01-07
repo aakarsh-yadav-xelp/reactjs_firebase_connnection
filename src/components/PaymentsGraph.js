@@ -407,9 +407,7 @@ export default class PaymentsGraph extends React.Component {
               </div>
             </div>
 
-            <div className="PaymentGraph-totalOther">
-              Text Category Summary -:
-            </div>
+            <div className="PaymentGraph-totalOther">Tax Category Summary</div>
             <div className="PaymentGraph-totalOther">
               <div className="PaymentGraph-totalOtherAmount">
                 <div className="PaymentGraph-totalBal-Otheritem">
