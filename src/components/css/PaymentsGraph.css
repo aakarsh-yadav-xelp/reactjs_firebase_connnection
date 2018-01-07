@@ -153,3 +153,94 @@
   display: flex;
   padding-left: 30px;
 }
+.PaymentGraph-totalOther {
+  display: flex;
+}
+.PaymentGraph-totalOtherAmount {
+  width: 40%;
+  height: 100%;
+}
+.PaymentGraph-totalOtherGraphs {
+  background: #fff;
+  width: 60%;
+  height: 100%;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  margin-top: 10px;
+}
+.PaymentGraph-totalBal-Otheritem {
+  margin: 10px;
+  padding: 10px;
+  background-color: #fff;
+  display: flex;
+  min-width: 0;
+  height: 70px;
+  word-wrap: break-word;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+.PaymentGraph-graphWraper {
+  display: flex;
+  width: 100%;
+}
+.PaymentGraph-graph {
+  width: 60%;
+}
+.PaymentGraph-graphWraperIndicatore {
+  width: 40%;
+}
+.PaymentGraph-graphWraperIndicatore-1 {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+.PaymentGraph-graphWraperIndicatore-1:before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-color: #0088fe;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+
+.PaymentGraph-graphWraperIndicatore-2 {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+.PaymentGraph-graphWraperIndicatore-2:before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-color: #00c49f;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+.PaymentGraph-graphWraperIndicatore-3 {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+.PaymentGraph-graphWraperIndicatore-3:before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-color: #ffbb28;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+.PaymentGraph-totalBal-labelOut {
+  display: -ms-flexbox;
+  display: flex;
+  width: 40%;
+  height: 100%;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  background-image: url("../img/payable.svg");
+  background-size: 60px;
+  background-repeat: no-repeat;
+  opacity: 0.6;
+  align-items: center;
+  background-position: center;
+}

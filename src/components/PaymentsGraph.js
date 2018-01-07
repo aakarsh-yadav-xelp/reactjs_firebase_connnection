@@ -7,6 +7,7 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  Cell,
   // LineChart,
   // Line,
   PieChart,
@@ -20,6 +21,71 @@ import "./css/PaymentsGraph.css";
 export default class PaymentsGraph extends React.Component {
   filter(payments) {
     return payments.slice(0, 5);
+  }
+  renderPieChart(totalCouncilAmount, totalPropertyAmount, totalOtherAmount) {
+    const RADIAN = Math.PI / 180;
+    const renderCustomizedLabel = ({
+      cx,
+      cy,
+      midAngle,
+      innerRadius,
+      outerRadius,
+      percent,
+      index
+    }) => {
+      const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+      const x = cx + radius * Math.cos(-midAngle * RADIAN);
+      const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+      return (
+        <text
+          x={x}
+          y={y}
+          fill="white"
+          textAnchor={x > cx ? "start" : "end"}
+          dominantBaseline="central"
+        >
+          {`${(percent * 100).toFixed(0)}%`}
+        </text>
+      );
+    };
+    let data = [
+      { name: "Group A", value: totalCouncilAmount },
+      { name: "Group B", value: totalPropertyAmount },
+      { name: "Group C", value: totalOtherAmount }
+    ];
+    const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+    return (
+      <div className="PaymentGraph-graphWraper">
+        <div className="PaymentGraph-graph">
+          <PieChart width={300} height={235} onMouseEnter={this.onPieEnter}>
+            <Pie
+              data={data}
+              cx={150}
+              cy={100}
+              labelLine={false}
+              outerRadius={80}
+              fill="#8884d8"
+            >
+              {data.map((entry, index) => (
+                <Cell fill={COLORS[index % COLORS.length]} />
+              ))}
+            </Pie>
+          </PieChart>
+        </div>
+        <div className="PaymentGraph-graphWraperIndicatore">
+          <div className="PaymentGraph-graphWraperIndicatore-1">
+            Council Amount
+          </div>
+          <div className="PaymentGraph-graphWraperIndicatore-2">
+            Property Amount
+          </div>
+          <div className="PaymentGraph-graphWraperIndicatore-3">
+            Other Amount
+          </div>
+        </div>
+      </div>
+    );
   }
   render() {
     let nameAndPayable = [],
@@ -342,49 +408,60 @@ export default class PaymentsGraph extends React.Component {
             </div>
 
             <div className="PaymentGraph-totalOther">
-              Other Total Payments -:
+              Text Category Summary -:
             </div>
-            <div className="PaymentGraph-totalBal">
-              <div className="PaymentGraph-totalBal-item">
-                <div className="PaymentGraph-totalBal-label" />
-                <div className="PaymentGraph-totalBal-value">
-                  <div>
-                    <div className="PaymentGraph-totalBal-value-label">
-                      Total Council Amount
+            <div className="PaymentGraph-totalOther">
+              <div className="PaymentGraph-totalOtherAmount">
+                <div className="PaymentGraph-totalBal-Otheritem">
+                  <div className="PaymentGraph-totalBal-label" />
+                  <div className="PaymentGraph-totalBal-value">
+                    <div>
+                      <div className="PaymentGraph-totalBal-value-label">
+                        Total Council Amount
+                      </div>
+                      <div className="PaymentGraph-totalBal-value-labelMoney">
+                        GHS {totalCouncilAmount}
+                      </div>
                     </div>
-                    <div className="PaymentGraph-totalBal-value-labelMoney">
-                      GHS {totalCouncilAmount}
+                  </div>
+                </div>
+                <div className="PaymentGraph-totalBal-Otheritem">
+                  <div className="PaymentGraph-totalBal-labelOut" />
+                  <div className="PaymentGraph-totalBal-value">
+                    <div>
+                      <div className="PaymentGraph-totalBal-value-label">
+                        Total Property Amount
+                      </div>
+                      <div className="PaymentGraph-totalBal-value-labelMoney">
+                        GHS {totalPropertyAmount}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="PaymentGraph-totalBal-Otheritem">
+                  <div className="PaymentGraph-totalBal-label" />
+                  <div className="PaymentGraph-totalBal-value">
+                    <div>
+                      <div className="PaymentGraph-totalBal-value-label">
+                        Total Other Amount
+                      </div>
+                      <div className="PaymentGraph-totalBal-value-labelMoney">
+                        GHS {totalOtherAmount}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="PaymentGraph-totalBal-item">
-                <div className="PaymentGraph-totalBal-label1" />
-                <div className="PaymentGraph-totalBal-value">
-                  <div>
-                    <div className="PaymentGraph-totalBal-value-label">
-                      Total Property Amount
-                    </div>
-                    <div className="PaymentGraph-totalBal-value-labelMoney">
-                      GHS {totalPropertyAmount}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="PaymentGraph-totalBal-item">
-                <div className="PaymentGraph-totalBal-label2" />
-                <div className="PaymentGraph-totalBal-value">
-                  <div>
-                    <div className="PaymentGraph-totalBal-value-label">
-                      Total Other Amount
-                    </div>
-                    <div className="PaymentGraph-totalBal-value-labelMoney">
-                      GHS {totalOtherAmount}
-                    </div>
-                  </div>
-                </div>
+              <div className="PaymentGraph-totalOtherGraphs">
+                <div className="PaymentGraph-header">Graph of transactions</div>
+                {this.renderPieChart(
+                  totalCouncilAmount,
+                  totalPropertyAmount,
+                  totalOtherAmount
+                )}
               </div>
             </div>
+
             {/* <div className="PaymentGraph-graphsItem">
               <div>
                 <div className="PaymentGraph-header">Graph of transactions</div>
