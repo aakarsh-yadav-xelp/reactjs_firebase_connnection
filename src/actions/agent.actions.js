@@ -1,5 +1,6 @@
 import { SUCCESS, REQUEST, FAILURE } from "./constant.actions.js";
 import fire from "../dbUtils/db_fire";
+import { verifyPasswordFailure } from "./user.actions";
 export const GET_AGENTS_REQUEST = "GET_AGENTS_request";
 export const GET_AGENTS_SUCCESS = "GET_AGENTS_success";
 export const GET_AGENTS_FAILURE = "GET_AGENTS_failure";
@@ -74,30 +75,43 @@ export function updateAgentFailure(error) {
 }
 export function updateAgent(agentId, userObj) {
   console.log(agentId, userObj);
+  let agentUpdateKey, clientUpdateKey;
   return async (dispatch, state) => {
     dispatch(updateAgentRequest());
     try {
-      let ref = await fire
+      await fire
         .database()
-        .ref.child(`agents`)
-        .where("agents.idNumber", "==", agentId)
-        .on("value", data => {
-          console.log(data.val());
+        .ref(`agents`)
+        .orderByChild("idNumber")
+        .equalTo(agentId)
+        .once("value", data => {
+          agentUpdateKey = Object.keys(data.val())[0];
         });
-      // .child("Clients")
-      // .where("Clients.IdNumber", "==", userObj.IdNumber)
-      // .update(userObj);
-      ref = await fire.database().ref(`agents`);
-      await ref.on(
-        "value",
-        async function(snapshot) {
-          dispatch(updateAgentSuccess(snapshot.val()));
-        },
-        function(errorObject) {
-          console.log(errorObject);
-          throw new Error("Error");
-        }
-      );
+      await fire
+        .database()
+        .ref(`agents/${agentUpdateKey}/Clients`)
+        .orderByChild("IdNumber")
+        .equalTo(userObj.IdNumber)
+        .once("value", data => {
+          clientUpdateKey = Object.keys(data.val())[0];
+        });
+      await fire
+        .database()
+        .ref(`agents/${agentUpdateKey}/Clients/${clientUpdateKey}`)
+        .update(userObj);
+      await fire
+        .database()
+        .ref(`agents`)
+        .on(
+          "value",
+          async function(snapshot) {
+            dispatch(verifyPasswordFailure());
+            dispatch(updateAgentSuccess(snapshot.val()));
+          },
+          function(errorObject) {
+            throw new Error("Error");
+          }
+        );
     } catch (e) {
       dispatch(updateAgentFailure("Error in logging in user"));
     }

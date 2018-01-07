@@ -16,15 +16,12 @@ export default class ClientsDashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      edit: false,
-      value: {},
-      age: null
+      edit: false
     };
   }
   onSave(agentId, IdNumber) {
     if (this.props.onEdit) {
       this.props.onEdit(agentId, Object.assign({}, this.state, { IdNumber }));
-      this.setState({ edit: false });
     }
   }
   redirectToBack() {
@@ -164,10 +161,8 @@ export default class ClientsDashboard extends React.Component {
   }
 
   renderUniqueAgentEdit(agent) {
-    console.log(agent);
-    let agentId = `${this.props.match.params.agentId}/${
-      this.props.match.params.subAgentId
-    }`;
+    let agentId = `${this.props.match.params.agentId}/${this.props.match.params
+      .subAgentId}`;
     return (
       agent.IdNumber === this.props.match.params.subAgentId && (
         <div className="UserAgent-Item" key={agent.idNumber}>
@@ -177,8 +172,8 @@ export default class ClientsDashboard extends React.Component {
             <div className="UserAgent-ItemAgeLabel">Name</div>
             <div className="UserAgent-ItemAgeValue">
               <Input
-                value={this.state.name ? this.state.name : agent.Name}
-                onChange={val => this.setState({ name: val })}
+                value={this.state.Name ? this.state.Name : agent.Name}
+                onChange={val => this.setState({ Name: val })}
               />
             </div>
           </div>

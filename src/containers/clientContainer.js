@@ -6,6 +6,8 @@ import { verifyPassword, onCloseEdit } from "../actions/user.actions";
 const mapDispatchToProps = dispatch => {
   return {
     onEdit: (agentId, agent) => {
+      delete agent.edit;
+      delete agent.password;
       dispatch(updateAgent(agentId, agent));
     },
     onVerifyPassword: password => {
