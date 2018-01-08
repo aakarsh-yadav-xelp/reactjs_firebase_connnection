@@ -32,6 +32,7 @@
   height: 250px;
   padding: 5px;
   overflow-y: scroll;
+  background-color: #fff;
 }
 .ChatBox-message {
   display: flex;

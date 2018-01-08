@@ -7,6 +7,7 @@ import UserSetting from "./img/settings.svg";
 import MoneyIcon from "./img/mon.svg";
 import CalanderIcon from "./img/icon.svg";
 import HomeIcon from "./img/home.svg";
+import Logout from "./img/logout.svg";
 export default class SideBar extends React.Component {
   render() {
     let { pathname } = this.props.location;
@@ -26,7 +27,9 @@ export default class SideBar extends React.Component {
     let classForFifth = classNames("SideBar-tabItem", {
       "SideBar-tabItem-active": pathname === "/allClients"
     });
-
+    let classForSixeth = classNames("SideBar-tabItem", {
+      "SideBar-tabItem-active": pathname === "/logouts"
+    });
     return [
       <div
         className="SideBar-tab"
@@ -40,13 +43,6 @@ export default class SideBar extends React.Component {
           />Welcome Buddy
         </div>
 
-        <div
-          className={classForThird}
-          onClick={() => this.props.history.push("/paymentgraph")}
-          key={2}
-        >
-          <Icon image={HomeIcon} />Home
-        </div>
         <div
           className={classForFirst}
           onClick={() => this.props.history.push("/agents")}
@@ -74,6 +70,20 @@ export default class SideBar extends React.Component {
           key={7}
         >
           <Icon image={MoneyIcon} />Create Agent
+        </div>
+        <div
+          className={classForThird}
+          onClick={() => this.props.history.push("/paymentgraph")}
+          key={2}
+        >
+          <Icon image={HomeIcon} />Summary Analysis
+        </div>
+        <div
+          className={classForSixeth}
+          onClick={() => this.props.history.push("/logout")}
+          key={2}
+        >
+          <Icon image={Logout} />Logout
         </div>
       </div>,
       <div className="SideBar-adjustwidth" key={10} />

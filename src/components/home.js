@@ -14,7 +14,9 @@ export default class Home extends React.Component {
   render() {
     return (
       <div className="Home">
-        <div className="Home-title">Welcome to ASDA</div>
+        <div className="Home-title">
+          WELCOME TO <br /> AKWAPIM SOUTH DISTRICT ASSEMBLY
+        </div>
         <div className="Home-titleCaption">
           "The most technologically efficient machine that man has ever invented
           is the book."
@@ -28,6 +30,7 @@ export default class Home extends React.Component {
             className="Home-logo-image"
           />
         </div>
+        Electronic Tax Collection Dashboard
         <div className="Home-container">
           <div className="Home-containerSignUp">
             <div className="Home-containerSignUpBody">

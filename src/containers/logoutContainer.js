@@ -1,12 +1,12 @@
 import { connect } from "react-redux";
 import { Redirect } from "react-router";
 import React from "react";
-import { verifyUser } from "../actions/user.actions.js";
+import { logOutUser } from "../actions/user.actions.js";
 
 const mapDispatchToProps = dispatch => {
   return {
-    verifyUserIsLoggedIn: () => {
-      dispatch(verifyUser());
+    logOutUser: () => {
+      dispatch(logOutUser());
     }
   };
 };
@@ -18,10 +18,10 @@ const mapStateToProps = state => {
   };
 };
 
-export class IsLoggedIn extends React.Component {
-  componentWillMount() {
-    if (!this.props.isLoggedIn) {
-      this.props.verifyUserIsLoggedIn();
+export class LogOut extends React.Component {
+  componentDidMount() {
+    if (this.props.isLoggedIn) {
+      this.props.logOutUser();
     }
   }
   render() {
@@ -33,7 +33,5 @@ export class IsLoggedIn extends React.Component {
   }
 }
 
-const IsLoggedInContainer = connect(mapStateToProps, mapDispatchToProps)(
-  IsLoggedIn
-);
-export default IsLoggedInContainer;
+const LogoutContainer = connect(mapStateToProps, mapDispatchToProps)(LogOut);
+export default LogoutContainer;

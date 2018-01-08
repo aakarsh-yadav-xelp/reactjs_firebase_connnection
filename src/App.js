@@ -12,6 +12,7 @@ import ClientPaymentContainer from "./containers/clientPaymentContainer";
 import AllClientsContainer from "./containers/allClientsContainer";
 import PaymentsGraphContainer from "./containers/paymentsGraphContainer";
 import CreateAgentContainer from "./containers/createAgentContainer";
+import LogoutContainer from "./containers/logoutContainer";
 import "./App.css";
 
 class App extends Component {
@@ -29,6 +30,7 @@ class App extends Component {
         }}
       >
         <Route path="/login" component={LoginContainer} />
+        <Route path="/logout" component={LogoutContainer} />
         <Route
           path="/signUp"
           render={() => {
