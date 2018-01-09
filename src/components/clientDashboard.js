@@ -28,6 +28,28 @@ export default class ClientsDashboard extends React.Component {
     this.props.history.push("/agents");
   }
 
+  handleChange = value => {
+    this.setState({ OtherAmount: value }, () => {
+      this.setState({ AmountPayable: value });
+    });
+  };
+
+  handleCouncilChange = value => {
+    let total;
+    let amount;
+    this.setState({ CouncilAmount: value }, () => {
+      this.setState({ AmountPayable: value });
+    });
+  };
+
+  handlePropertyChange = value => {
+    let total;
+    let amount;
+    this.setState({ PropertyAmount: value }, () => {
+      this.setState({ AmountPayable: value });
+    });
+  };
+
   renderUniqueAgents(agent) {
     return (
       <div className="UserAgent-Item" key={agent.idNumber}>
@@ -154,8 +176,9 @@ export default class ClientsDashboard extends React.Component {
   }
 
   renderUniqueAgentEdit(agent) {
-    let agentId = `${this.props.match.params.agentId}/${this.props.match.params
-      .subAgentId}`;
+    let agentId = `${this.props.match.params.agentId}/${
+      this.props.match.params.subAgentId
+    }`;
     return (
       agent.IdNumber === this.props.match.params.subAgentId && (
         <div className="UserAgent-Item" key={agent.idNumber}>
@@ -328,7 +351,7 @@ export default class ClientsDashboard extends React.Component {
                     ? this.state.PropertyAmount
                     : agent.PropertyAmount
                 }
-                onChange={val => this.setState({ PropertyAmount: val })}
+                onChange={val => this.handlePropertyChange(val)}
               />
             </div>
           </div>
@@ -358,7 +381,7 @@ export default class ClientsDashboard extends React.Component {
                     ? this.state.CouncilAmount
                     : agent.CouncilAmount
                 }
-                onChange={val => this.setState({ CouncilAmount: val })}
+                onChange={val => this.handleCouncilChange(val)}
               />
             </div>
           </div>
@@ -401,7 +424,7 @@ export default class ClientsDashboard extends React.Component {
                     ? this.state.OtherAmount
                     : agent.OtherAmount
                 }
-                onChange={val => this.setState({ OtherAmount: val })}
+                onChange={val => this.handleChange(val)}
               />
             </div>
           </div>
@@ -415,7 +438,7 @@ export default class ClientsDashboard extends React.Component {
                     ? this.state.OtherPurpose
                     : agent.OtherPurpose
                 }
-                onChange={val => this.setState({ OtherPurpose: val })}
+                onChange={this.handleChange}
               />
             </div>
           </div>

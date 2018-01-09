@@ -48,6 +48,7 @@ class App extends Component {
           path="/payment/:clientId"
           component={ClientPaymentContainer}
         />
+        <Route exact path="/home" component={Home} />
         <Route exact path="/paymentgraph" component={PaymentsGraphContainer} />
         <Route exact path="/agents/:agentId" component={AgentContainer} />
         <Route

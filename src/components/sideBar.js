@@ -8,6 +8,8 @@ import MoneyIcon from "./img/mon.svg";
 import CalanderIcon from "./img/icon.svg";
 import HomeIcon from "./img/home.svg";
 import Logout from "./img/logout.svg";
+import Calc from "./img/calculator.svg";
+
 export default class SideBar extends React.Component {
   render() {
     let { pathname } = this.props.location;
@@ -30,6 +32,10 @@ export default class SideBar extends React.Component {
     let classForSixeth = classNames("SideBar-tabItem", {
       "SideBar-tabItem-active": pathname === "/logouts"
     });
+    let classForSeventh = classNames("SideBar-tabItem", {
+      "SideBar-tabItem-active": pathname === "/home"
+    });
+
     return [
       <div
         className="SideBar-tab"
@@ -37,10 +43,16 @@ export default class SideBar extends React.Component {
         key={111}
       >
         <div className="SideBar-tabHeader" key={1}>
-          <img
-            src={require("./img/logo.png")}
-            className="SideBar-ogo-Img"
-          />Welcome Buddy
+          <img src={require("./img/logo.png")} className="SideBar-ogo-Img" />Welcome
+          Buddy
+        </div>
+
+        <div
+          className={classForSeventh}
+          onClick={() => this.props.history.push("/home")}
+          key={8}
+        >
+          <Icon image={HomeIcon} />Home
         </div>
 
         <div
@@ -76,12 +88,12 @@ export default class SideBar extends React.Component {
           onClick={() => this.props.history.push("/paymentgraph")}
           key={2}
         >
-          <Icon image={HomeIcon} />Summary Analysis
+          <Icon image={Calc} />Summary Analysis
         </div>
         <div
           className={classForSixeth}
           onClick={() => this.props.history.push("/logout")}
-          key={2}
+          key={9}
         >
           <Icon image={Logout} />Logout
         </div>
