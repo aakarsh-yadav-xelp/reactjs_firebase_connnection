@@ -45,7 +45,8 @@ export default class CreateAgent extends React.Component {
           idNumber,
           email,
           mobileNumber,
-          password
+          password,
+          status: 1
         });
         let popup = {
           show: true,
@@ -72,16 +73,7 @@ export default class CreateAgent extends React.Component {
       this.closePopup();
     }
   }
-  componentDidMount() {
-    if (
-      _.findIndex(
-        this.props.agents,
-        agent => agent.idNumber === this.state.idNumber
-      ) >= 0
-    ) {
-      alert(1);
-    }
-  }
+
   render() {
     return (
       <div className="CreateAgent">

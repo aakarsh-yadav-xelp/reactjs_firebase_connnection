@@ -30,6 +30,8 @@ export function onCloseEdit() {
 }
 export function logOutUser() {
   localStorage.setItem("asdaJwtToken", "");
+  localStorage.setItem("firebase:host:asda-c340d.firebaseio.com", "");
+
   return {
     type: USER_LOGOUT_SUCCESS
   };
