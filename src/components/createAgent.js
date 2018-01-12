@@ -37,7 +37,9 @@ export default class CreateAgent extends React.Component {
       !_.isEmpty(email) &&
       !_.isEmpty(mobileNumber) &&
       !_.isEmpty(password) &&
-      _.findIndex(this.props.agents, agent => agent.idNumber === idNumber) < 0
+      _.findIndex(this.props.agents, agent => agent.idNumber === idNumber) <
+        0 &&
+      idNumber.startsWith("ASDA_")
     ) {
       if (this.props.createAgent) {
         this.props.createAgent({
@@ -64,13 +66,23 @@ export default class CreateAgent extends React.Component {
         this.closePopup();
       }
     } else {
-      let popup = {
-        show: true,
-        type: FAILURE,
-        message: "Please Fill all details"
-      };
-      this.setState({ popup });
-      this.closePopup();
+      if (!idNumber.startsWith("ASDA_")) {
+        let popup = {
+          show: true,
+          type: FAILURE,
+          message: "Enter a valid Agent Id"
+        };
+        this.setState({ popup });
+        this.closePopup();
+      } else {
+        let popup = {
+          show: true,
+          type: FAILURE,
+          message: "Please Fill all details"
+        };
+        this.setState({ popup });
+        this.closePopup();
+      }
     }
   }
 

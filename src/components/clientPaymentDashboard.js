@@ -20,7 +20,9 @@ export default class ClientPaymentDashboard extends React.Component {
           {payment.balance}
         </div>
         <div className="ClientPaymentDashboard-ItemBalance">
-          {convertDateStringToTimeAgoFromNow(payment.paymentTime)}
+          {payment.paymentTime}
+
+          {/* {convertDateStringToTimeAgoFromNow(payment.paymentTime)} */}
         </div>
       </div>
     );

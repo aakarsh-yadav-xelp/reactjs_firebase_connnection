@@ -159,6 +159,7 @@ export function createAgentFailure(error) {
   };
 }
 export function createAgent(agentObj) {
+  let isUnique = true;
   return async (dispatch, state) => {
     dispatch(createAgentRequest());
     try {
