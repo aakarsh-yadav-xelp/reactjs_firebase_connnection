@@ -9,12 +9,21 @@ import MoneyIcon from "./img/money.svg";
 import { convertDateStringToTimeAgoFromNow } from "../dbUtils/timeUtils";
 import "./css/userDashboard.css";
 import AgentsItem from "./agentsItem";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
+
 export default class UserDashboard extends React.Component {
   redirectToAgentInfo(id) {
     this.props.history.push(`/agents/${id}`);
   }
   onDelete(id) {
-    this.props.onDelete(id);
+    confirmAlert({
+      title: "Alert",
+      message: `Are you Sure want to delete this agent -: ${id}`,
+      confirmLabel: "Yes",
+      cancelLabel: "Cancel",
+      onConfirm: () => this.props.onDelete(id)
+    });
   }
   render() {
     let { pathname } = this.props.location;

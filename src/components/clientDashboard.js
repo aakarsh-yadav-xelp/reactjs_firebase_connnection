@@ -28,26 +28,16 @@ export default class ClientsDashboard extends React.Component {
     this.props.history.push("/agents");
   }
 
-  handleChange = value => {
-    this.setState({ OtherAmount: value }, () => {
-      this.setState({ AmountPayable: value });
-    });
-  };
+  handleChange(value) {
+    this.setState({ OtherAmount: value, AmountPayable: value });
+  }
 
   handleCouncilChange = value => {
-    let total;
-    let amount;
-    this.setState({ CouncilAmount: value }, () => {
-      this.setState({ AmountPayable: value });
-    });
+    this.setState({ CouncilAmount: value, AmountPayable: value });
   };
 
   handlePropertyChange = value => {
-    let total;
-    let amount;
-    this.setState({ PropertyAmount: value }, () => {
-      this.setState({ AmountPayable: value });
-    });
+    this.setState({ PropertyAmount: value, AmountPayable: value });
   };
 
   renderUniqueAgents(agent) {
@@ -63,7 +53,7 @@ export default class ClientsDashboard extends React.Component {
           <div className="UserAgent-ItemAgeValue">{agent.IdNumber}</div>
         </div>
         <div className="UserAgent-ItemAge">
-          <div className="UserAgent-ItemAgeLabel">Date Of Brth</div>
+          <div className="UserAgent-ItemAgeLabel">Date Of Birth</div>
           <div className="UserAgent-ItemAgeValue">{agent["Date Of Birth"]}</div>
         </div>
         <div className="UserAgent-ItemAge">
@@ -438,7 +428,7 @@ export default class ClientsDashboard extends React.Component {
                     ? this.state.OtherPurpose
                     : agent.OtherPurpose
                 }
-                onChange={this.handleChange}
+                onChange={val => this.handleChange(val)}
               />
             </div>
           </div>
